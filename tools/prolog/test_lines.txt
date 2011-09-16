@@ -1,0 +1,45 @@
+#cat test_lines.txt | swipl -f words_to_numbers.pl -g main -t halt -q > test_lines.out
+Mustamäe tee sada kolmkümmend üks koma seitseteist kolmas korrus
+null
+sada kolmkümmend
+sada kolmkümmend üks
+null koma null
+null koma kaks
+seitse seitse
+kaks
+sada
+ükssada
+kakssada
+kaks koma ükssada
+kaks koma üks sada
+neliteist
+viis koma kaks
+kümme
+kakskümmend kolm
+üheksasadaüheksakümmendüheksa koma null
+üheksasada üheksakümmend üheksa koma null
+üheksasada üheksa koma null
+üheksasada sada koma null
+miinus kuus
+miinus kuus koma kolm
+miinus kuus koma kolmteist
+miinus kuus koma miinus kolmteist
+miinus null koma null
+miinus null koma kaks
+miinus null koma ükssada üheksakümmend kolm tuhat seitsesada kolmkümmend kaheksa
+miinus kaheksasada kaheksakümmend kaheksa koma seitsesada seitsekümmend seitse koma null
+tuhat
+üks tuhat
+ükstuhat
+sada tuhat kümme
+tuhat üheksasada üheksakümmend üheksa koma kolmsada kaksteist tuhat kaheksasada kaheksakümmend kaheksa
+üheksasada üheksakümmend üheksa tuhat üheksasada üheksakümmend üheksa koma kolmsada kaksteist tuhat kaheksasada kaheksakümmend kaheksa
+aastal tuhat üheksasada viiskümmend kaks
+miinus kaks tuhat miinus seitseteist koma null viis
+null koma tuhat
+null koma kaksteist tuhat
+null koma miinus kaksteist tuhat
+105807 sada viis tuhat kaheksasada seitse
+miinus null koma viis koma viis koma null
+miinus null koma viis koma miinus viis koma null
+kaks karpi s~okolaadi, S~okolaadi, z~okolaadi ja Z~okolaadi

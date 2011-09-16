@@ -1,0 +1,5 @@
+#JSGF V1.0;
+  
+grammar robot;
+   
+public <command> = (liigu | mine ) [ ( üks | kaks | kolm | neli | viis ) meetrit ] (edasi | tagasi);

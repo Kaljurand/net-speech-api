@@ -1,0 +1,138 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>Net Speech API</title>
+</head>
+<body>
+
+<h2>Introduction</h2>
+
+<p>Net Speech API is a Java API for the web-based Estonian speech recognition services
+that are provided by the Laboratory of Phonetics and Speech Technology at
+the Institute of Cybernetics at the Tallinn University of Technology.
+This API is meant to be used in every Java program that wants to communicate
+with these services, e.g. Android apps, Java applets for web browsers,
+Java desktop applications.</p>
+
+<p>Note: this API is work in progress</p>
+
+<h2>Online services</h2>
+
+<p>In principle there are two types of speech recognition services, with the
+following features:</p>
+
+<h3>Type 1 ("realtime")</h3>
+
+<ul>
+<li>Short input</li>
+<li>Input often expected to conform to a restricted grammar
+(e.g. calculator language, list of words)</li>
+<li>Transcription possibly immediately "executed" by the receiving application
+(added to calender, computed by the calculator, etc.)</li>
+<li>One speaker</li>
+<li>Immediate response (not more than a couple of seconds delay)</li>
+<li>Several matches are returned with confidence scores</li>
+<li>Simple transcription format: set of <em>(string, conf. score)</em> pairs</li>
+</ul>
+
+<p>Example: Google speech recognition server used by Chrome 11.</p>
+
+
+<h3>Type 2</h3>
+
+<ul>
+<li>Large input (e.g. an hour of audio, e.g. podcasts)</li>
+<li>Completely free-form input (maybe containing even non-speech, e.g. music)</li>
+<li>Multiple speakers</li>
+<li>Transcription takes longer to complete</li>
+<li>Possibly higher quality transription than with realtime
+(e.g. possible human-powered transcription)</li>
+<li>Rich transcription format (identifies paragraphs, speakers,
+pauses, music, changes of topic)</li>
+</ul>
+
+
+<h2>Components</h2>
+
+<h3>Constants</h3>
+
+<p>Various numbers and strings that denote the default service URLs,
+default input parameters, supported file types,
+supported parameters, error codes, etc.</p>
+
+<h3>Low-level interfaces</h3>
+
+<p>Public low-level interfaces for communicating with the
+speech recognition services, e.g.</p>
+
+<pre>
+String id = uploadAudio(File file, Settings...) throws IOException
+Document transcription = downloadTranscription(String id) throws IOException
+List&lt;String&gt; matches = recognize(byte[] audio, Settings...) throws IOException
+</pre>
+
+
+<h3>High-level interfaces</h3>
+
+<p>High-level interfaces that combine the lower level interfaces
+for the common use cases, e.g. polling the server with a given
+frequency for the given time.</p>
+
+
+<h3>Service response handling</h3>
+
+<p>The low-level methods return highly structured data in XML (or JSON).
+The users need to interpret these XML documents to extract certain content:
+speaker information, sync points, recognition matches and confidence values, etc.
+The classes and methods in this category help with that.</p>
+
+
+<h3>Management of transcriptions</h3>
+
+<p>Given a set of transcriptions, one needs help managing them.
+Transcriptions can be related to each other e.g. by sharing speakers.
+One would then like to manage the speakers independently: assign them names
+and real world identities.</p>
+
+
+<h3>Grammar management</h3>
+
+<p>Speech recognition can be supported by grammars, which both exclude certain
+transcriptions and normalize accepted transcriptions. While the grammar is
+usually applied during the recognition for better quality, it could
+also be applied on the proposed alternative transcriptions,
+e.g. to select a single one.</p>
+
+<p>This API helps with uploading grammars to the services and
+with applying the grammars on the client side.</p>
+
+<h4>Examples of simple but useful grammars</h4>
+
+<ul>
+<li>Simple calculator grammar (e.g. recognizes expressions such
+as "-1 - 2 / 3 + 4 * 1.3"). See also
+<a href="http://www.phon.ioc.ee/dokuwiki/doku.php?id=projects:tuvastus:evc.et">Estonian voice-driven calculator</a>.</li>
+
+<li>Grammar to recognize/normalize shopping list items ("3 kilo soola", "5 kotti ecuadori banaane") where
+first comes quantify (as a number), then follows the unit (as a single word in partitive, e.g. "kilogrammi"),
+and finally a short list of unconstrained words (the whole phrase being in partitive).
+This grammar should map "numbers by words" to "numbers by digits" ("sada neliteist koma viis" &rarr; "114.5"),
+and shorten the unit symbols ("milliliitrit" &rarr; "ml").</li>
+
+<li>Grammar to recognize/normalize placenames, e.g. a placename like "veitsenbergi kolgendyheksa tallinn"
+could be mapped to "A. Weizenbergi 39, Tallinn", so that it becomes searchable in mapping
+applications.</li>
+
+<li>Grammar to recognize/normalize dates and times ("reede hommikul kell kuus"), to be
+used in calender applications.</li>
+</ul>
+
+
+<h2>License</h2>
+
+<p>Net Speech API is free software licensed under the
+<a href="http://www.gnu.org/licenses/lgpl.html" target="_blank">GNU Lesser General Public Licence (LGPL)</a>.
+It can be downloaded from <a href="http://code.google.com/p/net-speech-api/" target="_blank">here</a>.</p>
+
+</body>
+</html>
