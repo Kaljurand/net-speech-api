@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="GF grammars" default="buildeverything" basedir=".">
+
+	<target name="clean" description="Clean up">
+		<delete file="out.txt"/>
+		<delete>
+			<fileset dir="." includes="**/*.gfo"/>
+			<fileset dir="." includes="**/*.pgf"/>
+			<fileset dir="." includes="**/*.jsgf"/>
+		</delete>
+	</target>
+
+</project>
