@@ -1,0 +1,41 @@
+1 m <
+go one meters back
+mine üks meetrit edasi
+
+1 m >
+go one meters forward
+mine üks meetrit tagasi
+
+2 m <
+go two meters back
+mine kaks meetrit edasi
+
+2 m >
+go two meters forward
+mine kaks meetrit tagasi
+
+3 m <
+go three meters back
+mine kolm meetrit edasi
+
+3 m >
+go three meters forward
+mine kolm meetrit tagasi
+
+4 m <
+go four meters back
+mine neli meetrit edasi
+
+4 m >
+go four meters forward
+mine neli meetrit tagasi
+
+5 m <
+go five meters back
+mine viis meetrit edasi
+
+5 m >
+go five meters forward
+mine viis meetrit tagasi
+
+
