@@ -9,13 +9,15 @@ concrete UnitconvEst of Unitconv = estonian ** {
 		f : Str -> Str -> { s : Case => Str } = \x,y -> { s = table { SgPart => x ; PlIn => y } };
 
 	lincat Main, Conv = {s : Str};
-	lincat Unit = {s : Case => Str};
+	lincat LengthUnit, VolumeUnit = {s : Case => Str};
 
 	lin
 		main x y = { s = x.s ++ y.s };
-		conv x y = { s = x.s ! SgPart ++ y.s ! PlIn };
+		length x y = { s = x.s ! SgPart ++ y.s ! PlIn };
+		volume x y = { s = x.s ! SgPart ++ y.s ! PlIn };
 
 		meter = f "meetrit" "meetrites";
 		foot = f "jalga" "jalgades";
+		liter = f "liitrit" "liitrites";
 
 }

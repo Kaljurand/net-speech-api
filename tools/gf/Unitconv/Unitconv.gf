@@ -5,12 +5,20 @@ flags startcat = Main ;
 cat
 	Main ;
 	Conv ;
-	Unit ;
+	LengthUnit ;
+	VolumeUnit ;
 
 fun
+	-- Quantified unit conversion
 	main : Numeral -> Conv -> Main ;
-	conv : Unit -> Unit -> Conv ;
-	meter, foot : Unit ;
-	--liter : Unit ;
+
+	-- Unit types
+	meter, foot : LengthUnit ;
+	liter : VolumeUnit ;
+
+	-- Type-aware unit conversion
+	-- TODO: use dependent types
+	length : LengthUnit -> LengthUnit -> Conv ;
+	volume : VolumeUnit -> VolumeUnit -> Conv ;
 
 }
