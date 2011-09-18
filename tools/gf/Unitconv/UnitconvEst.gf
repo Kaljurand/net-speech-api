@@ -6,7 +6,15 @@ concrete UnitconvEst of Unitconv = estonian ** {
 
 	oper
 		ss : Str -> {s : Str} = \x -> {s = x} ;
-		f : Str -> Str -> { s : Case => Str } = \x,y -> { s = table { SgPart => x ; PlIn => y } };
+		f : Str -> Str -> { s : Case => Str } = \x,y ->
+			{ s = table { SgPart => x ; PlIn => y } };
+		mk : Str -> { s : Case => Str } = \w -> 
+			let 
+				ws : Str = case w of {
+					_ + ("a" | "e" | "i" | "o") => w + "des" ; -- jalga + des
+					_                           => w + "es"    -- liitrit + es
+				} 
+			in f w ws;
 
 	lincat Main, Conv = {s : Str};
 	lincat LengthUnit, VolumeUnit = {s : Case => Str};
@@ -16,8 +24,11 @@ concrete UnitconvEst of Unitconv = estonian ** {
 		length x y = { s = x.s ! SgPart ++ y.s ! PlIn };
 		volume x y = { s = x.s ! SgPart ++ y.s ! PlIn };
 
+		-- The f-function requires both forms
 		meter = f "meetrit" "meetrites";
-		foot = f "jalga" "jalgades";
-		liter = f "liitrit" "liitrites";
+
+		-- The mk-function is smart and only requires the "base" form
+		foot = mk "jalga";
+		liter = mk "liitrit";
 
 }
