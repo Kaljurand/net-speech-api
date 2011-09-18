@@ -4,11 +4,13 @@ flags startcat = Main ;
 
 cat
 	Main ;
+	Conv ;
 	Unit ;
 
 fun
-	main : Numeral -> Unit -> Unit -> Main ;
-	meter : Unit ;
-	foot : Unit ;
+	main : Numeral -> Conv -> Main ;
+	conv : Unit -> Unit -> Conv ;
+	meter, foot : Unit ;
+	--liter : Unit ;
 
 }
