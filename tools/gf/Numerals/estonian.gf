@@ -1,6 +1,6 @@
---# -path=.:prelude
+concrete estonian of Numerals = {
 
-concrete estonian of Numerals = open Prelude in {
+-- Note: this grammar does not glue -teist, -kümmend, ja -sada
 
 flags coding=utf8;
 
@@ -43,19 +43,19 @@ lin pot110  =
 lin pot111  =
   {inh = pl ; s = table {p => "üksteist"}} ;
 lin pot1to19 d =
-  {inh = pl ; s = table {p => Prelude.glue d.s "teist"}} ;
+  {inh = pl ; s = table {p => d.s ++ "teist"}} ;
 lin pot0as1 n =
   {inh = n.inh ; s = table {p => n.s ! p}} ;
 lin pot1 d =
-  {inh = pl ; s = table {p => Prelude.glue d.s "kümmend"}} ;
+  {inh = pl ; s = table {p => d.s ++ "kümmend"}} ;
 lin pot1plus d e =
-  {inh = pl ; s = table {p => Prelude.glue d.s "kümmend" ++ e.s ! indep}} ;
+  {inh = pl ; s = table {p => d.s ++ "kümmend" ++ e.s ! indep}} ;
 lin pot1as2 n =
   {inh = n.inh ; s = table {p => n.s ! p}} ;
 lin pot2 d =
-  {inh = pl ; s = table {p => Prelude.glue (d.s ! attr) (sata ! (d.inh))}} ;
+  {inh = pl ; s = table {p => (d.s ! attr) ++ (sata ! (d.inh))}} ;
 lin pot2plus d e =
-  {inh = pl ; s = table {p => Prelude.glue (d.s ! attr) (sata ! (d.inh)) ++ e.s ! indep}} ;
+  {inh = pl ; s = table {p => (d.s ! attr) ++ (sata ! (d.inh)) ++ e.s ! indep}} ;
 lin pot2as3 n =
   {s = n.s ! indep} ;
 lin pot3 n =

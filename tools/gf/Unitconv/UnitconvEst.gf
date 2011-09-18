@@ -8,7 +8,7 @@ concrete UnitconvEst of Unitconv = estonian ** {
 		ss : Str -> {s : Str} = \x -> {s = x} ;
 		f : Str -> Str -> { s : Case => Str } = \x,y -> { s = table { SgPart => x ; PlIn => y } };
 
-	lincat Main = {s : Str};
+	lincat Main, Conv = {s : Str};
 	lincat Unit = {s : Case => Str};
 
 	lin

@@ -2,13 +2,13 @@ num (pot3plus (pot2plus (pot0 n9) (pot1plus n8 (pot0 n7))) (pot2plus (pot0 n5) (
 
 9 8 7 5 4 1
 nine hundred and eighty - seven thousand five hundred and forty - one
-üheksasada kaheksakümmend seitse tuhat viissada nelikümmend üks
+üheksa sada kaheksa kümmend seitse tuhat viis sada neli kümmend üks
 
 num (pot2as3 (pot2 pot01))
 
 1 0 0
 one hundred
-&+ sada
+sada
 
 num (pot2as3 (pot1as2 pot111))
 
@@ -20,7 +20,7 @@ num (pot2as3 (pot2plus pot01 pot111))
 
 1 1 1
 one hundred and eleven
-&+ sada üksteist
+sada üksteist
 
 The parser failed at token "1"
 
@@ -29,7 +29,7 @@ num (pot3plus (pot1as2 (pot0as1 (pot0 n4))) (pot2plus (pot0 n3) (pot1to19 n7)))
 
 4 3 1 7
 four thousand three hundred and seventeen
-neli tuhat kolmsada seitseteist
+neli tuhat kolm sada seitse teist
 
 Normalizing: kaks tuhat kaks
 num (pot3plus (pot1as2 (pot0as1 (pot0 n2))) (pot1as2 (pot0as1 (pot0 n2))))
@@ -37,8 +37,9 @@ num (pot3plus (pot1as2 (pot0as1 (pot0 n2))) (pot1as2 (pot0as1 (pot0 n2))))
 2002
 
 Normalizing: sada üksteist
-The parser failed at token "sada"
+num (pot2as3 (pot2plus pot01 pot111))
 
+111
 
 Normalizing: kaks tuhat kakskümmend kakssada kaksteist
 The parser failed at token "kaksk\252mmend"
