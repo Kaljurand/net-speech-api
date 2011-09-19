@@ -1,1 +1,1 @@
-echo "read_file -file=\"examples.txt\" -lines | p -tr -lang=UnitconvEst | l" | gf --run --path ../Numerals/:../lib/ UnitconvEst.gf UnitconvApp.gf
+echo "read_file -file=\"examples/UnitconvEst.txt\" -lines | p -tr -lang=UnitconvEst | l" | gf --run --path ../SimpleNumerals/:../lib/ UnitconvEst.gf UnitconvApp.gf

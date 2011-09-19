@@ -1,47 +1,37 @@
+Testing: decimal -> ALL
+
 num (pot3plus (pot2plus (pot0 n9) (pot1plus n8 (pot0 n7))) (pot2plus (pot0 n5) (pot1plus n4 pot01)))
+num (pot2as3 (pot2 pot01))
+num (pot2as3 (pot1as2 pot111))
+num (pot2as3 (pot2plus pot01 pot111))
+num (pot3plus (pot2plus (pot0 n3) (pot1plus n9 (pot0 n8))) (pot2plus (pot0 n7) (pot1plus n5 (pot0 n4))))
+num (pot3plus (pot1as2 (pot0as1 (pot0 n4))) (pot2plus (pot0 n3) (pot1to19 n7)))
 
 9 8 7 5 4 1
 nine hundred and eighty - seven thousand five hundred and forty - one
 üheksa sada kaheksa kümmend seitse tuhat viis sada neli kümmend üks
-
-num (pot2as3 (pot2 pot01))
-
 1 0 0
 one hundred
 sada
-
-num (pot2as3 (pot1as2 pot111))
-
 1 1
 eleven
 üksteist
-
-num (pot2as3 (pot2plus pot01 pot111))
-
 1 1 1
 one hundred and eleven
 sada üksteist
-
-The parser failed at token "1"
-
-
-num (pot3plus (pot1as2 (pot0as1 (pot0 n4))) (pot2plus (pot0 n3) (pot1to19 n7)))
-
+3 9 8 7 5 4
+three hundred and ninety - eight thousand seven hundred and fifty - four
+kolm sada üheksa kümmend kaheksa tuhat seitse sada viis kümmend neli
 4 3 1 7
 four thousand three hundred and seventeen
 neli tuhat kolm sada seitse teist
 
-Normalizing: kaks tuhat kaks
+Testing: estonian -> decimal
+
 num (pot3plus (pot1as2 (pot0as1 (pot0 n2))) (pot1as2 (pot0as1 (pot0 n2))))
+num (pot2as3 (pot2plus pot01 pot111))
+The parser failed at token "sada"
 
 2002
-
-Normalizing: sada üksteist
-num (pot2as3 (pot2plus pot01 pot111))
-
 111
-
-Normalizing: kaks tuhat kakskümmend kakssada kaksteist
-The parser failed at token "kaksk\252mmend"
-
 
