@@ -1,4 +1,4 @@
-concrete english of Numerals = {
+concrete english of Numerals = open StringOper in {
 flags language = en_US ;
 
 param DForm = unit  | teen  | ten  ;
@@ -17,7 +17,6 @@ oper mkNum : Str -> Str -> Str -> LinDigit =
   {s = table {unit => two ; teen => twelve ; ten => twenty}} ;
 oper regNum : Str -> LinDigit =
   \six -> mkNum six (six + "teen") (six + "ty") ;
-oper ss : Str -> {s : Str} = \s -> {s = s} ;
 
 lin num x = x ;
 lin n2 = mkNum "two"   "twelve"   "twenty" ;

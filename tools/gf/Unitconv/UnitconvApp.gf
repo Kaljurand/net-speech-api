@@ -1,16 +1,18 @@
-concrete UnitconvApp of Unitconv = decimal ** {
+concrete UnitconvApp of Unitconv = decimal, UnitApp ** {
 
-	lincat Main, Conv, LengthUnit, VolumeUnit = {s : Str} ;
+	oper
+		c : { s : Str } -> { s : Str } -> { s : Str }
+			= \x,y -> { s = x.s ++ "in" ++ y.s };
+
+
+	lincat Main, Conv = {s : Str} ;
 
 	lin
 		main x y = {s = x.s ++ y.s} ;
 
-		-- TODO: share code
-		length x y = {s = x.s ++ "in" ++ y.s} ;
-		volume x y = {s = x.s ++ "in" ++ y.s} ;
-
-		meter = { s = "m" } ;
-		foot = { s = "f" } ;
-		liter = { s = "l" } ;
+		length = c ;
+		volume = c ;
+		weight = c ;
+		time = c ;
 
 }

@@ -1,1 +1,1 @@
-echo "generate_trees -depth=4 | l" | gf --run --path ../Numerals/ UnitconvEst.gf UnitconvApp.gf
+echo "read_file -file=\"examples.txt\" -lines | p -tr -lang=UnitconvEst | l" | gf --run --path ../Numerals/:../lib/ UnitconvEst.gf UnitconvApp.gf

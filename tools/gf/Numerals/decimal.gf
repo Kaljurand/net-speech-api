@@ -1,4 +1,4 @@
-concrete decimal of Numerals = {
+concrete decimal of Numerals = open StringOper in {
 
 param Zeros = noz  | zz  ;
 
@@ -9,7 +9,6 @@ lincat Sub100 = {s : Zeros => Str} ;
 lincat Sub1000 = {s : Zeros => Str} ;
 lincat Sub1000000 = {s : Zeros => Str} ;
 
-oper ss : Str -> {s : Str} = \s -> {s = s} ;
 oper mkz : Str -> {s : Zeros => Str} = \s -> {s = table {_ => s}} ;
 
 lin num n = {s = n.s ! noz} ;

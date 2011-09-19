@@ -1,3 +1,4 @@
+export GF_LIB_PATH="../lib/"
 
 # This is not needed for speech recognition
 echo "parse -tr -lang=decimal \"9 8 7 5 4 1\" | l | ps -bind" | gf --run english.gf decimal.gf estonian.gf
