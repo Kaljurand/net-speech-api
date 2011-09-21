@@ -35,6 +35,7 @@
 %
 % - supports only the nominative singular case
 % - supports: ükssada (100), üks tuhat (1000)
+% - "tuhat sada" parses into "1100" rather than "1000 100"
 
 % TODO:
 % - investigate the problem of "out of local stack" after 103548, with

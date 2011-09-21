@@ -34,6 +34,13 @@ tuhat
 sada tuhat kümme
 tuhat üheksasada üheksakümmend üheksa koma kolmsada kaksteist tuhat kaheksasada kaheksakümmend kaheksa
 üheksasada üheksakümmend üheksa tuhat üheksasada üheksakümmend üheksa koma kolmsada kaksteist tuhat kaheksasada kaheksakümmend kaheksa
+tuhat sada
+tuhat ükssada
+tuhat üks sada
+üks tuhat üks üks sada
+üks tuhat üks ükssada
+ükstuhat üks üks sada
+ükstuhat üks ükssada
 aastal tuhat üheksasada viiskümmend kaks
 miinus kaks tuhat miinus seitseteist koma null viis
 null koma tuhat
