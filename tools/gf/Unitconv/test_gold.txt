@@ -1,9 +1,3 @@
-main (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))) (length meter foot)
-main (num (pot3 (pot1as2 (pot0as1 (pot0 n3))))) (volume liter cup)
-main (num (pot3plus (pot2plus pot01 pot111) (pot2plus pot01 pot110))) (weight cup_flour cup_flour)
-main (num (pot2as3 (pot1as2 (pot1to19 n2)))) (length foot foot)
-main (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))) (time minute second)
-
 2 m in f
 kaks meetrit jalgades
 
@@ -11,7 +5,7 @@ kaks meetrit jalgades
 kolm tuhat liitrit tassides
 
 1 1 1 1 1 0 flour-cup in flour-cup
-üks sada üksteist tuhat üks sada kümme tassi jahu jahu tassides
+sada üksteist tuhat sada kümme tassi jahu jahu tassides
 
 1 2 f in f
 kaksteist jalga jalgades

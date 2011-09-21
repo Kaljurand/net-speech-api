@@ -4,30 +4,43 @@ num (pot3plus (pot2plus (pot0 n9) (pot1plus n8 (pot0 n7))) (pot2plus (pot0 n5) (
 num (pot2as3 (pot2 pot01))
 num (pot2as3 (pot1as2 pot111))
 num (pot2as3 (pot2plus pot01 pot111))
-The parser failed at token "1"
+num (pot3plus (pot2plus (pot0 n3) (pot1plus n9 (pot0 n8))) (pot2plus (pot0 n7) (pot1plus n5 (pot0 n4))))
 num (pot3plus (pot1as2 (pot0as1 (pot0 n4))) (pot2plus (pot0 n3) (pot1to19 n7)))
 
 9 8 7 5 4 1
-üheksa sada kaheksakümmend seitse tuhat viis sada nelikümmend üks
+üheksasada kaheksakümmend seitse tuhat viissada nelikümmend üks
 1 0 0
-üks sada
+sada
 1 1
 üksteist
 1 1 1
-üks sada üksteist
+sada üksteist
+3 9 8 7 5 4
+kolmsada üheksakümmend kaheksa tuhat seitsesada viiskümmend neli
+4 3 1 7
+neli tuhat kolmsada seitseteist
 
 Testing: estonian -> decimal
 
-num (pot3plus (pot1as2 (pot0as1 pot01)) (pot1as2 (pot0as1 (pot0 n3))))
-num (pot3plus (pot1as2 (pot0as1 (pot0 n2))) (pot1as2 (pot0as1 (pot0 n2))))
-num (pot2as3 (pot2plus pot01 pot111))
+num (pot2as3 (pot1as2 (pot0as1 (pot0 n3))))
 num (pot2as3 (pot1as2 (pot1to19 n3)))
-num (pot3plus (pot1as2 (pot0as1 (pot0 n2))) (pot2plus (pot0 n2) (pot1plus n2 (pot0 n2))))
-The parser failed at token "kaksteist"
+num (pot2as3 (pot2 (pot0 n3)))
+num (pot2as3 (pot2plus (pot0 n3) (pot0as1 (pot0 n5))))
+num (pot2as3 (pot2plus (pot0 n3) (pot1plus n2 (pot0 n5))))
+num (pot3plus (pot1as2 (pot0as1 (pot0 n3))) (pot2plus (pot0 n3) (pot1plus n2 (pot0 n5))))
+num (pot3plus (pot1as2 (pot0as1 (pot0 n3))) (pot1as2 (pot0as1 (pot0 n3))))
+num (pot3plus (pot1as2 (pot0as1 pot01)) (pot1as2 (pot0as1 (pot0 n3))))
+num (pot2as3 (pot2plus pot01 pot111))
+num (pot2as3 (pot1as2 pot111))
 
-1003
-2002
-111
+3
 13
-2222
+300
+305
+325
+3325
+3003
+1003
+111
+11
 
