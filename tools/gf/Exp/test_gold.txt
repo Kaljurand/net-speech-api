@@ -1,0 +1,49 @@
+1 2
+kaksteist
+
+( 2 + 3 )
+kaks pluss kolm
+
+( ( ( 1 + 2 ) - ( 3 * 4 ) ) / 5 )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( ( ( ( 1 + 2 ) - 3 ) * 4 ) / 5 )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( ( ( 1 + ( 2 - 3 ) ) * 4 ) / 5 )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( ( 1 + ( 2 - ( 3 * 4 ) ) ) / 5 )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( ( 1 + ( ( 2 - 3 ) * 4 ) ) / 5 )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( ( 1 + 2 ) - ( ( 3 * 4 ) / 5 ) )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( ( 1 + 2 ) - ( 3 * ( 4 / 5 ) ) )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( ( ( 1 + 2 ) - 3 ) * ( 4 / 5 ) )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( ( 1 + ( 2 - 3 ) ) * ( 4 / 5 ) )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( 1 + ( ( 2 - ( 3 * 4 ) ) / 5 ) )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( 1 + ( ( ( 2 - 3 ) * 4 ) / 5 ) )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( 1 + ( 2 - ( ( 3 * 4 ) / 5 ) ) )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( 1 + ( 2 - ( 3 * ( 4 / 5 ) ) ) )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( 1 + ( ( 2 - 3 ) * ( 4 / 5 ) ) )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+

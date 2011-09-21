@@ -1,4 +1,4 @@
-concrete estonian of Numerals = {
+concrete estonian of Numerals = open StringOper in {
 
 -- TODO: not parsed: kaks tuhat kakskümmend kaksteist
 -- TODO: bind -sada
@@ -21,8 +21,6 @@ oper mkNum : Str -> Str -> Str -> LinDigit =
 
 oper regNum : Str -> LinDigit = 
   \x -> mkNum x (x + "teist") (x + "kümmend") ;
-
-oper ss : Str -> {s : Str} = \s -> {s = s} ;
 
 lin num x = x ;
 lin n2 = regNum "kaks" ;

@@ -49,16 +49,16 @@ The grammar author compiles these files into a single PGF-file (Go.pgf)
 
     gf -make --optimize-pgf GoEst.gf GoApp.gf
 
-... publishes it on some URL, e.g.
+publishes it on some URL, e.g.
 
     git commit Go.pgf; git push ...
-	cp Go.pgf ~/Dropbox/Public/...
+    cp Go.pgf ~/Dropbox/Public/...
 
-... notifies the server that the grammar on this URL has been updated
+notifies the server that the grammar on this URL has been updated
 
     curl http://.../fetch-grammar?lm=http://.../Go.pgf
 
-... and studies the server output in order to be notified of possible problems.
+and studies the server output in order to be notified of possible problems.
 
 
 The speech recognition server downloads the grammar file
@@ -97,3 +97,16 @@ For example
 
 The (simple plain text) linearization is the returned to the client.
 In case more outputs are desired then some container format must be used.
+
+Note also, that parsing can result in more than one parse tree.
+This is the case when the input is ambiguous, e.g. "2 - 3 - 4" with respect
+to a simple calculator grammar:
+
+    minus : Exp -> Exp -> Exp;
+    number : Number -> Exp;
+
+in case the concrete syntax (which describes the "-" sign) does not specify the associativity.
+As a result of multiple parse trees also multiple linearizations are produced
+which are not necessarily different. The server would then need to post-process the
+linearizations to preserve only the first, or to preserve only the different ones and
+return them in a container format.
