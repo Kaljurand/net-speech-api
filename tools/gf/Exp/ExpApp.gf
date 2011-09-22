@@ -9,6 +9,7 @@ lin
 	e_minus = infix "-";
 	e_mult = infix "*";
 	e_div = infix "/";
+	e_pow = infix "^";
 
 	numeral x = x;
 }

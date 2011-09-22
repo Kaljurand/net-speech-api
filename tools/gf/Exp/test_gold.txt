@@ -4,6 +4,12 @@ kaksteist
 ( 2 + 3 )
 kaks pluss kolm
 
+( ( 2 + 3 ) * 4 )
+kaks pluss kolm korda neli
+
+( 2 + ( 3 * 4 ) )
+kaks pluss kolm korda neli
+
 ( ( ( 1 + 2 ) - ( 3 * 4 ) ) / 5 )
 üks pluss kaks miinus kolm korda neli jagatud viis
 
@@ -45,5 +51,54 @@ kaks pluss kolm
 
 ( 1 + ( ( 2 - 3 ) * ( 4 / 5 ) ) )
 üks pluss kaks miinus kolm korda neli jagatud viis
+
+( 2 + ( 3 ^ 4 ) )
+kaks pluss kolm astmel neli
+
+( ( 2 + 3 ) ^ 4 )
+kaks pluss kolm astmel neli
+
+( ( 2 ^ 3 ) ^ 4 )
+kaks astmel kolm astmel neli
+
+( 2 ^ ( 3 ^ 4 ) )
+kaks astmel kolm astmel neli
+
+( ( 2 + ( 3 ^ 4 ) ) * 5 )
+kaks pluss kolm astmel neli korda viis
+
+( ( ( 2 + 3 ) ^ 4 ) * 5 )
+kaks pluss kolm astmel neli korda viis
+
+( 2 + ( ( 3 ^ 4 ) * 5 ) )
+kaks pluss kolm astmel neli korda viis
+
+( 2 + ( 3 ^ ( 4 * 5 ) ) )
+kaks pluss kolm astmel neli korda viis
+
+( ( 2 + 3 ) ^ ( 4 * 5 ) )
+kaks pluss kolm astmel neli korda viis
+
+
+1 2
+kaksteist
+
+( 2 + 3 )
+kaks pluss kolm
+
+( ( 2 + 3 ) * 4 )
+kaks pluss kolm korda neli
+
+( ( ( ( 1 + 2 ) - 3 ) * 4 ) / 5 )
+üks pluss kaks miinus kolm korda neli jagatud viis
+
+( 2 + ( 3 ^ 4 ) )
+kaks pluss kolm astmel neli
+
+( 2 ^ ( 3 ^ 4 ) )
+kaks astmel kolm astmel neli
+
+( ( 2 + ( 3 ^ 4 ) ) * 5 )
+kaks pluss kolm astmel neli korda viis
 
 

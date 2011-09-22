@@ -9,6 +9,7 @@ lin
 	e_minus = infixSS "miinus";
 	e_mult = infixSS "korda";
 	e_div = infixSS "jagatud";
+	e_pow = infixSS "astmel";
 
 	numeral x = x;
 }
