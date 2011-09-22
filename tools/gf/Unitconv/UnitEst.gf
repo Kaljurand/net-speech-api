@@ -12,8 +12,8 @@ flags coding=utf8;
 
 param Case = SgPart | PlIn ;
 
--- The f-function requires both forms (SgPart and PlIn)
--- The mk-function is smart and only requires the "base" form (SgPart)
+-- The f-function requires both forms (`SgPart` and `PlIn`)
+-- The mk-function is smart and only requires the "base" form (`SgPart`)
 oper
 	f : Str -> Str -> { s : Case => Str } = \x,y ->
 		{ s = table { SgPart => x ; PlIn => y } };

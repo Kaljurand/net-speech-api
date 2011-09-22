@@ -3,9 +3,9 @@ concrete ExpEstl of Exp = estonian ** open StringOper in {
 -- Unambiguous Estonian arithmetical expression grammar which implements the
 -- left-associative semantics, where the precedence of operators is the following:
 --
--- highest: numbers (note: the highest is defined in StringOper)
--- 2: pow (note: also right-assoc)
--- 0: plus, minus, mult, div (note: all are equal)
+--   * highest: numbers (note: the highest is defined in `StringOper`)
+--   * 2: pow (note: also right-assoc)
+--   * 0: plus, minus, mult, div (note: all are equal)
 --
 -- Such semantics seems appropriate for speech applications,
 -- because speech happens one token at a time and one has no means
@@ -15,11 +15,11 @@ concrete ExpEstl of Exp = estonian ** open StringOper in {
 --
 -- Example: the sentence
 --
---   kaks pluss kolm astmel neli korda viis
+--     kaks pluss kolm astmel neli korda viis
 --
 -- is parsed into (a single tree):
 --
---  ((n2 + (n3 ^ n4)) * n5)
+--     ((n2 + (n3 ^ n4)) * n5)
 --
 -- @author Kaarel Kaljurand
 -- @version 2011-09-22

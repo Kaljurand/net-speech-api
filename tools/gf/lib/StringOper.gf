@@ -14,6 +14,10 @@ param
 
 oper
 
+	-- Note that '4' is hard-coded in a few places below, therefore
+	-- if you change highestPrec to something else then
+	-- look for FIXME below for places than additionally need
+	-- an update.
 	highestPrec = 4 ;
 
 	-- Numbers from 0 to highestPrec
