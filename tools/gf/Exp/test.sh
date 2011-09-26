@@ -1,6 +1,6 @@
 # Declare the name of the grammar and the paths to the used libraries
 g="Exp"
-path="../SimpleNumerals/:../lib/"
+path="../Numerals/:../lib/"
 
 # These you probably do not need to modify
 l_est="${g}Est"

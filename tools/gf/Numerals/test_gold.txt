@@ -15,10 +15,10 @@ one hundred
 sada
 1 1
 eleven
-üksteist
+üks teist
 1 1 1
 one hundred and eleven
-sada üksteist
+sada üks teist
 3 9 8 7 5 4
 three hundred and ninety - eight thousand seven hundred and fifty - four
 kolm sada üheksa kümmend kaheksa tuhat seitse sada viis kümmend neli

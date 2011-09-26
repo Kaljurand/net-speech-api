@@ -1,5 +1,5 @@
 1 2
-kaksteist
+kaks teist
 
 ( 2 + 3 )
 kaks pluss kolm
@@ -81,7 +81,7 @@ kaks pluss kolm astmel neli korda viis
 
 
 1 2
-kaksteist
+kaks teist
 
 ( 2 + 3 )
 kaks pluss kolm

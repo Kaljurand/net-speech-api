@@ -21,7 +21,7 @@ then
 fi
 
 jsgf="${1%.*}.jsgf"
-path="../lib/:../SimpleNumerals/"
+path="../lib/:../Numerals/"
 
 # Generate JSGF for the given concrete syntax
 echo "Generating ${jsgf}..."

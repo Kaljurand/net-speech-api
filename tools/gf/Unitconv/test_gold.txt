@@ -5,10 +5,10 @@ kaks meetrit jalgades
 kolm tuhat liitrit tassides
 
 1 1 1 1 1 0 flour-cup in flour-cup
-sada üksteist tuhat sada kümme tassi jahu jahu tassides
+sada üks teist tuhat sada kümme tassi jahu jahu tassides
 
 1 2 f in f
-kaksteist jalga jalgades
+kaks teist jalga jalgades
 
 5 m in s
 viis minutit sekundites
