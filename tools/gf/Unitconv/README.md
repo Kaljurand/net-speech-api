@@ -34,6 +34,10 @@ and add the words of the unit to the concrete syntaxes (UnitEst.gf and UnitApp.g
     lin meter = mk "meetrit";
     lin meter = ss "m";
 
+The functions `mk` and `ss` are predefined. They take a string and generate the internally
+used lexicon structure, e.g. `mk` also generates the plural inessive form from the given string.
+You do not need to change these functions (unless it turns out that they do not work correctly).
+
 If the type is not described in the grammar then additionally add the new category to Unit.gf:
 
     cat LengthUnit;
