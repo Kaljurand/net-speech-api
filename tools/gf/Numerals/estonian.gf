@@ -1,6 +1,16 @@
 concrete estonian of Numerals = {
 
--- Note: this grammar does not glue -teist, -kümmend, ja -sada
+-- This is a simple port of examples/numerals/finnish.gf (GF v3.2.9) to Estonian.
+-- Only some strings have been renamed ("viisi" -> "viis") but no structures
+-- have been changed.
+--
+-- Note: this grammar does not glue -teist, -kümmend, ja -sada, which is
+-- orthographically incorrect but more suitable for the Estonian speech recognizer.
+--
+-- Note: this grammar supports "tuhat sada" and does not support "tuhat üks sada".
+--
+-- @author Kaarel Kaljurand
+-- @version 2011-09-26
 
 flags coding=utf8;
 
@@ -41,7 +51,7 @@ lin pot0 d =
 lin pot110  =
   {inh = pl ; s = table {p => "kümme"}} ;
 lin pot111  =
-  {inh = pl ; s = table {p => "üksteist"}} ;
+  {inh = pl ; s = table {p => "üks"++"teist"}} ;
 lin pot1to19 d =
   {inh = pl ; s = table {p => d.s ++ "teist"}} ;
 lin pot0as1 n =
@@ -53,7 +63,7 @@ lin pot1plus d e =
 lin pot1as2 n =
   {inh = n.inh ; s = table {p => n.s ! p}} ;
 lin pot2 d =
-  {inh = pl ; s = table {p => (d.s ! attr) ++ (sata ! (d.inh))}} ;
+  {inh = pl ; s = table {p => (d.s ! attr) ++ sata ! (d.inh)}} ;
 lin pot2plus d e =
   {inh = pl ; s = table {p => (d.s ! attr) ++ (sata ! (d.inh)) ++ e.s ! indep}} ;
 lin pot2as3 n =

@@ -19,7 +19,7 @@ In case of (1) the "raw" recognizer output will undergo some normalization
 The user will receive such normalized output and will do something with it (e.g. post it
 to Twitter), sometimes relaunching the recognizer service because the result was incorrect.
 
-In case of (2) the "raw" output with be converted into some machine code which the user will
+In case of (2) the "raw" output will be converted into some machine code which the user will
 not directly see, but which will be executed by his/her application. To handle the case that
 the recognition result is wrong, the application must
 provide a way to ask the user for a confirmation or allow for an UNDO.
@@ -93,7 +93,7 @@ then linearized into all the desired syntaxes.
 
 For example
 
-    echo "parse -lang=GoEst \"${recognizer_output}\"  | l -lang=GoApp" | gf --run Go.pgf
+    echo "parse -lang=GoEst \"${recognizer_output}\"  | linearize -lang=GoApp" | gf --run Go.pgf
 
 The (simple plain text) linearization is the returned to the client.
 In case more outputs are desired then some container format must be used.
