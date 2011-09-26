@@ -8,20 +8,7 @@ public <MAIN> = <Exp_cat> ;
 <Digit_1> = kaks | kolm | neli | viis | kuus
             | seitse | kaheksa | üheksa ;
 
-<Digit_2> = kaksteist | kolmteist | neliteist
-            | viisteist | kuusteist | seitseteist
-            | kaheksateist | üheksateist ;
-
-<Digit_3> = kakskümmend | kolmkümmend
-            | nelikümmend | viiskümmend | kuuskümmend
-            | seitsekümmend | kaheksakümmend | üheksakümmend ;
-
-<Digit_4> = kakssada | kolmsada | nelisada
-            | viissada | kuussada | seitsesada | kaheksasada
-            | üheksasada ;
-
-<Digit_cat> = <Digit_1> | <Digit_2>
-                     | <Digit_3> | <Digit_4> ;
+<Digit_cat> = <Digit_1> ;
 
 <Exp_1> = <Exp_4> <Exp_2> | <Exp_5> <Exp_2> ;
 
@@ -54,26 +41,47 @@ public <MAIN> = <Exp_cat> ;
 
 <Numeral_cat> = <Numeral_1> ;
 
-<Sub1000000_1> = <Sub1000_1> | <Sub1000_1> tuhat
-                 | <Sub1000_1> tuhat <Sub1000_1> ;
+<Sub1000000_1> = <Unknown_7> | <Unknown_8> tuhat
+                 | <Unknown_8> tuhat <Unknown_7> ;
 
 <Sub1000000_cat> = <Sub1000000_1> ;
 
-<Sub1000_1> = <Sub100_1> | <Sub10_2>
-              | <Sub10_2> <Sub100_1> ;
+<Sub1000_1> = <Sub100_1> ;
 
-<Sub1000_cat> = <Sub1000_1> ;
+<Sub1000_2> = <Sub100_2> ;
 
-<Sub100_1> = <Sub10_1> | <Digit_3> | kümme
-             | üksteist | <Digit_3> <Sub10_1> | <Digit_2> ;
+<Sub1000_3> = <Sub100_3> | <Unknown_6> sada
+              | <Unknown_6> sada <Unknown_9> ;
 
-<Sub100_cat> = <Sub100_1> ;
+<Sub1000_4> = <Sub100_4> | <Unknown_6> sada
+              | <Unknown_6> sada <Unknown_9> ;
 
-<Sub10_1> = <Digit_1> | üks ;
+<Sub1000_cat> = <Sub1000_1> | <Sub1000_2>
+                       | <Sub1000_3> | <Sub1000_4> ;
 
-<Sub10_2> = <Digit_4> | sada ;
+<Sub100_1> = <Sub10_1> ;
 
-<Sub10_cat> = <Sub10_1> | <Sub10_2> ;
+<Sub100_2> = <Sub10_2> ;
+
+<Sub100_3> = <Sub10_3> | <Digit_1> kümmend | kümme
+             | üks teist | <Digit_1> kümmend <Unknown_5>
+             | <Digit_1> teist ;
+
+<Sub100_4> = <Sub10_3> | <Digit_1> kümmend | kümme
+             | üks teist | <Digit_1> kümmend <Unknown_5>
+             | <Digit_1> teist ;
+
+<Sub100_cat> = <Sub100_1> | <Sub100_2>
+                      | <Sub100_3> | <Sub100_4> ;
+
+<Sub10_1> = üks ;
+
+<Sub10_2> = <NULL> ;
+
+<Sub10_3> = <Digit_1> ;
+
+<Sub10_cat> = <Sub10_1> | <Sub10_2>
+                     | <Sub10_3> ;
 
 <Unknown_1> = <Exp_4> | <Exp_5> ;
 
@@ -82,3 +90,13 @@ public <MAIN> = <Exp_cat> ;
 <Unknown_3> = <Exp_1> ;
 
 <Unknown_4> = <Exp_1> | <Exp_4> ;
+
+<Unknown_5> = <Sub10_1> | <Sub10_3> ;
+
+<Unknown_6> = <Sub10_2> | <Sub10_3> ;
+
+<Unknown_7> = <Sub1000_1> | <Sub1000_3> ;
+
+<Unknown_8> = <Sub1000_2> | <Sub1000_4> ;
+
+<Unknown_9> = <Sub100_1> | <Sub100_3> ;
