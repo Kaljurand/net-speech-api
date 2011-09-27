@@ -4,14 +4,20 @@ abstract Unit = {
 
 cat
 	LengthUnit ;
-	VolumeUnit ;
-	WeightUnit ;
+	MassUnit ;
 	TimeUnit ;
+	TemperatureUnit ;
+	AreaUnit ;
+	VolumeUnit ;
+	AngleUnit ;
 
 fun
 	meter, foot : LengthUnit ;
-	liter, cup : VolumeUnit ;
-	cup_flour : WeightUnit ;
+	cup_flour : MassUnit ;
 	second, minute, hour : TimeUnit ;
+	celsius : TemperatureUnit ;
+	hectare : AreaUnit ;
+	liter, cup : VolumeUnit ;
+	radian, arcsecond, arcminute, degree : AngleUnit ;
 
 }

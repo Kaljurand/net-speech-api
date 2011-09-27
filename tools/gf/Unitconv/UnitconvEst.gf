@@ -10,9 +10,6 @@ concrete UnitconvEst of Unitconv = estonian, UnitEst ** {
 
 	lin
 		main x y = { s = x.s ++ y.s };
-		length = c ;
-		volume = c ;
-		weight = c ;
-		time = c ;
+		length, mass, time, temperature, area, volume, angle = c ;
 
 }

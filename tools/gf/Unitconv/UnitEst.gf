@@ -25,18 +25,37 @@ oper
 			} 
 		in f w ws;
 
-lincat LengthUnit, VolumeUnit, WeightUnit, TimeUnit = {s : Case => Str};
+lincat
+	LengthUnit, MassUnit, TimeUnit, TemperatureUnit,
+	AreaUnit, VolumeUnit, AngleUnit = {s : Case => Str};
 
 lin
 
+--Length
 meter = mk "meetrit";
 foot = mk "jalga";
-liter = mk "liitrit";
-cup = mk "tassi";
+
+--Mass
+cup_flour = f "tassi jahu" "jahu tassides";
+
+--Time
 second = mk "sekundit";
 minute = mk "minutit";
 hour = mk "tundi";
 
-cup_flour = f "tassi jahu" "jahu tassides";
+--Temperature
+celsius = mk "kraadi";
 
+--Area
+hectare = mk "hektarit";
+
+--Volume
+liter = mk "liitrit";
+cup = mk "tassi";
+
+--Angle
+radian = mk "radiaani";
+arcsecond = mk "sekundit";
+arcminute = mk "minutit";
+degree = mk "kraadi";
 }

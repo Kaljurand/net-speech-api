@@ -1,16 +1,37 @@
 concrete UnitApp of Unit = open StringOper in {
 
-lincat LengthUnit, VolumeUnit, WeightUnit, TimeUnit = {s : Str} ;
+lincat
+	LengthUnit, MassUnit, TimeUnit, TemperatureUnit,
+	AreaUnit, VolumeUnit, AngleUnit = {s : Str};
 
 lin
 
+--Length
 meter = ss "m" ;
 foot = ss "f" ;
-liter = ss "l" ;
-cup = ss "cup" ;
+
+--Mass
+cup_flour = ss "flour-cup" ;
+
+--Time
 second = ss "s" ;
 minute = ss "m" ;
 hour = ss "h" ;
-cup_flour = ss "flour-cup" ;
+
+--Temperature
+celsius = ss "C";
+
+--Area
+hectare = ss "ha";
+
+--Volume
+liter = ss "l" ;
+cup = ss "cup" ;
+
+--Angle
+radian = ss "rad";
+arcsecond = ss "\"";
+arcminute = ss "'";
+degree = ss "deg";
 
 }

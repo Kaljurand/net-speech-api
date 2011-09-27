@@ -12,9 +12,19 @@ fun
 
 	-- Type-aware unit conversion
 	-- TODO: use dependent types
+
+	-- SI base units
 	length : LengthUnit -> LengthUnit -> Conv ;
-	volume : VolumeUnit -> VolumeUnit -> Conv ;
-	weight : WeightUnit -> WeightUnit -> Conv ;
+	mass : MassUnit -> MassUnit -> Conv ;
 	time : TimeUnit -> TimeUnit -> Conv ;
+	-- electric_current
+	temperature: TemperatureUnit -> TemperatureUnit -> Conv ;
+	-- amount of substance
+	-- luminous intensity
+
+	-- SI derived units
+	area : AreaUnit -> AreaUnit -> Conv ;
+	volume : VolumeUnit -> VolumeUnit -> Conv ;
+	angle : AngleUnit -> AngleUnit -> Conv ;
 
 }

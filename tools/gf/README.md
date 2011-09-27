@@ -110,3 +110,6 @@ As a result of multiple parse trees also multiple linearizations are produced
 which are not necessarily different. The server would then need to post-process the
 linearizations to preserve only the first, or to preserve only the different ones and
 return them in a container format.
+Another example of ambiguity is the phrase "10 minutes in seconds" where `minutes' and `seconds'
+can either refer to time or angles. This ambiguity might not reveal itself in natural
+language concrete syntaxes, but would in a mathematical syntax (`sec' vs `"').
