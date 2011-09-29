@@ -1,8 +1,8 @@
-2 m in f
+2 m in ft
 kaks meetrit jalgades
 
 
-3 0 0 0 l in cup
+3 0 0 0 l in cup_us
 kolm tuhat liitrit tassides
 
 
@@ -10,18 +10,28 @@ kolm tuhat liitrit tassides
 sada üks teist tuhat sada kümme tassi jahu jahu tassides
 
 
-1 2 f in f
+1 2 ft in ft
 kaks teist jalga jalgades
 
 
-5 ' in "
+5 ' in ''
 viis minutit sekundites
 
-5 m in s
+5 min in s
 viis minutit sekundites
 
 
-2 m in f
+2 ha in km**2
+kaks hektarit ruut kilo meetrites
+
+
+2 m in ft
 kaks meetrit jalgades
+
+1 0 0 0 m°C in °C
+tuhat milli kraadi kraadides
+
+2 km**2 in ha
+kaks ruut kilo meetrit hektarites
 
 

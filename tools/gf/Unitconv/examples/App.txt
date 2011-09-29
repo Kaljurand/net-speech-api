@@ -1,1 +1,3 @@
-2 m in f
+2 m in ft
+1 0 0 0 m°C in °C
+2 km**2 in ha

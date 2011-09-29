@@ -33,6 +33,9 @@ lin
 
 --Length
 meter = mk "meetrit";
+kilo_meter = mk "kilo meetrit";
+centi_meter = mk "senti meetrit";
+milli_meter = mk "milli meetrit";
 foot = mk "jalga";
 
 --Mass
@@ -45,16 +48,20 @@ hour = mk "tundi";
 
 --Temperature
 celsius = mk "kraadi";
+milli_celsius = mk "milli kraadi";
 
 --Area
 hectare = mk "hektarit";
+square_meter = mk "ruut meetrit";
+square_kilo_meter = mk "ruut kilo meetrit";
 
 --Volume
 liter = mk "liitrit";
+cubic_foot = mk "kuup jalga";
 cup = mk "tassi";
 
 --Angle
-radian = mk "radiaani";
+--radian = mk "radiaani";
 arcsecond = mk "sekundit";
 arcminute = mk "minutit";
 degree = mk "kraadi";

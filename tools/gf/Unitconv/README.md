@@ -15,9 +15,10 @@ This grammar demonstrates:
 TODO:
 
   * "large" vocabulary (hundreds of units)
-  * specify SI prefixes separately
+  * specify SI prefixes separately, i.e. refactor `kilo_meter` into `kilo` and `meter`
+  * Refactor out `square` and `cube`
   * discuss the ambiguity of "2 minutit sekundites"
-  * support "100 meetrit sekundis kilomeetrites tunnis"
+  * support "100 ruut senti meetrit sekundis ruut kilo meetrites tunnis"
   * lexing and unlexing (writing of numbers) (maybe use binding in the decimal grammar?)
   * exclude repetitions like "12 liters in liters"
   * use dependent types in unit type checking 

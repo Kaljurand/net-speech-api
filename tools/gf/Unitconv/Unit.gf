@@ -12,12 +12,13 @@ cat
 	AngleUnit ;
 
 fun
-	meter, foot : LengthUnit ;
+	kilo_meter, centi_meter, milli_meter, meter, foot : LengthUnit ;
 	cup_flour : MassUnit ;
 	second, minute, hour : TimeUnit ;
-	celsius : TemperatureUnit ;
-	hectare : AreaUnit ;
-	liter, cup : VolumeUnit ;
-	radian, arcsecond, arcminute, degree : AngleUnit ;
+	milli_celsius, celsius : TemperatureUnit ;
+	hectare, square_meter, square_kilo_meter : AreaUnit ;
+	liter, cup, cubic_foot : VolumeUnit ;
+	-- radian
+	arcsecond, arcminute, degree : AngleUnit ;
 
 }

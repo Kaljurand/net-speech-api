@@ -5,10 +5,30 @@ grammar UnitconvEst;
 
 public <MAIN> = <Main_cat> ;
 
-<Conv_1> = <LengthUnit_1> <LengthUnit_2>
+<AngleUnit_1> = minutit | sekundit | kraadi ;
+
+<AngleUnit_2> = minutites | sekundites
+                | kraadides ;
+
+<AngleUnit_cat> = <AngleUnit_1>
+                         | <AngleUnit_2> ;
+
+<AreaUnit_1> = hektarit | ruut kilo meetrit
+               | ruut meetrit ;
+
+<AreaUnit_2> = hektarites | ruut kilo meetrites
+               | ruut meetrites ;
+
+<AreaUnit_cat> = <AreaUnit_1>
+                        | <AreaUnit_2> ;
+
+<Conv_1> = <AngleUnit_1> <AngleUnit_2>
+           | <AreaUnit_1> <AreaUnit_2>
+           | <LengthUnit_1> <LengthUnit_2>
+           | <MassUnit_1> <MassUnit_2>
+           | <TemperatureUnit_1> <TemperatureUnit_2>
            | <TimeUnit_1> <TimeUnit_2>
-           | <VolumeUnit_1> <VolumeUnit_2>
-           | <WeightUnit_1> <WeightUnit_2> ;
+           | <VolumeUnit_1> <VolumeUnit_2> ;
 
 <Conv_cat> = <Conv_1> ;
 
@@ -17,9 +37,11 @@ public <MAIN> = <Main_cat> ;
 
 <Digit_cat> = <Digit_1> ;
 
-<LengthUnit_1> = jalga | meetrit ;
+<LengthUnit_1> = senti meetrit | jalga
+                 | kilo meetrit | meetrit | milli meetrit ;
 
-<LengthUnit_2> = jalgades | meetrites ;
+<LengthUnit_2> = senti meetrites | jalgades
+                 | kilo meetrites | meetrites | milli meetrites ;
 
 <LengthUnit_cat> = <LengthUnit_1>
                           | <LengthUnit_2> ;
@@ -27,6 +49,13 @@ public <MAIN> = <Main_cat> ;
 <Main_1> = <Numeral_1> <Conv_1> ;
 
 <Main_cat> = <Main_1> ;
+
+<MassUnit_1> = tassi jahu ;
+
+<MassUnit_2> = jahu tassides ;
+
+<MassUnit_cat> = <MassUnit_1>
+                        | <MassUnit_2> ;
 
 <Numeral_1> = <Sub1000000_1> ;
 
@@ -74,6 +103,14 @@ public <MAIN> = <Main_cat> ;
 <Sub10_cat> = <Sub10_1> | <Sub10_2>
                      | <Sub10_3> ;
 
+<TemperatureUnit_1> = kraadi | milli kraadi ;
+
+<TemperatureUnit_2> = kraadides
+                      | milli kraadides ;
+
+<TemperatureUnit_cat> = <TemperatureUnit_1>
+                               | <TemperatureUnit_2> ;
+
 <TimeUnit_1> = tundi | minutit | sekundit ;
 
 <TimeUnit_2> = tundides | minutites | sekundites ;
@@ -91,16 +128,10 @@ public <MAIN> = <Main_cat> ;
 
 <Unknown_5> = <Sub100_1> | <Sub100_3> ;
 
-<VolumeUnit_1> = tassi | liitrit ;
+<VolumeUnit_1> = kuup jalga | tassi | liitrit ;
 
-<VolumeUnit_2> = tassides | liitrites ;
+<VolumeUnit_2> = kuup jalgades | tassides
+                 | liitrites ;
 
 <VolumeUnit_cat> = <VolumeUnit_1>
                           | <VolumeUnit_2> ;
-
-<WeightUnit_1> = tassi jahu ;
-
-<WeightUnit_2> = jahu tassides ;
-
-<WeightUnit_cat> = <WeightUnit_1>
-                          | <WeightUnit_2> ;
