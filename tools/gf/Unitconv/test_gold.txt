@@ -31,6 +31,10 @@ kaks hektarit ruut kilo meetrites
 kaks kilo meetrit senti meetrites
 
 
+2 NOK in EEK
+kaks norra krooni kroonides
+
+
 Parsing examples/App.txt
 -------
 2 m in ft
@@ -59,5 +63,9 @@ kolm kilo tundi nano sekundites
 
 3 °C in m °C
 kolm kraadi milli kraadides
+
+
+3 EEK in EUR
+kolm krooni eurodes
 
 

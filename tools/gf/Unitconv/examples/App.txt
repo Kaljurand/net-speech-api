@@ -5,3 +5,4 @@
 3 k g in n g
 3 k h in n s
 3 °C in m °C
+3 EEK in EUR

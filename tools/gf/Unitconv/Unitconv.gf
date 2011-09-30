@@ -27,4 +27,7 @@ fun
 	volume : VolumeUnit -> VolumeUnit -> Conv ;
 	angle : AngleUnit -> AngleUnit -> Conv ;
 
+	-- Currency conversion
+	currency : CurrencyUnit -> CurrencyUnit -> Conv ;
+
 }

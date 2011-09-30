@@ -10,6 +10,7 @@ cat
 	AreaUnit ;
 	VolumeUnit ;
 	AngleUnit ;
+	Currency ; CurrencyUnit ;
 
 fun
 	prefixed_length_unit : Prefix -> Length -> LengthUnit ;
@@ -22,6 +23,7 @@ fun
 	mass_unit : Mass -> MassUnit ;
 	time_unit : Time -> TimeUnit ;
 	temperature_unit : Temperature -> TemperatureUnit ;
+	currency_unit : Currency -> CurrencyUnit ;
 
 	meter, foot : Length ;
 	gram, cup_flour : Mass ;
@@ -32,5 +34,8 @@ fun
 	liter, cup, cubic_foot : VolumeUnit ;
 	-- radian
 	arcsecond, arcminute, degree : AngleUnit ;
+
+	usd, cad, gbp, aud, nzd, eur, chf, jpy, nok : Currency ;
+	eek : Currency ;
 
 }

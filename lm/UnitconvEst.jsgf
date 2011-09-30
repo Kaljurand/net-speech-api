@@ -24,6 +24,7 @@ public <MAIN> = <Main_cat> ;
 
 <Conv_1> = <AngleUnit_1> <AngleUnit_2>
            | <AreaUnit_1> <AreaUnit_2>
+           | <CurrencyUnit_1> <CurrencyUnit_2>
            | <LengthUnit_1> <LengthUnit_2>
            | <MassUnit_1> <MassUnit_2>
            | <TemperatureUnit_1> <TemperatureUnit_2>
@@ -31,6 +32,26 @@ public <MAIN> = <Main_cat> ;
            | <VolumeUnit_1> <VolumeUnit_2> ;
 
 <Conv_cat> = <Conv_1> ;
+
+<CurrencyUnit_1> = <Currency_1> ;
+
+<CurrencyUnit_2> = <Currency_2> ;
+
+<CurrencyUnit_cat> = <CurrencyUnit_1>
+                            | <CurrencyUnit_2> ;
+
+<Currency_1> = austraalia dollarit
+               | kanada dollarit | franki | krooni | eurot
+               | naela | jeeni | norra krooni
+               | uus mere maa dollarit | dollarit ;
+
+<Currency_2> = austraalia dollarites
+               | kanada dollarites | frankides | kroonides
+               | eurodes | naelades | jeenides | norra kroonides
+               | uus mere maa dollarites | dollarites ;
+
+<Currency_cat> = <Currency_1>
+                        | <Currency_2> ;
 
 <Digit_1> = kaks | kolm | neli | viis | kuus
             | seitse | kaheksa | üheksa ;

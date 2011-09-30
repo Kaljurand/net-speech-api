@@ -40,11 +40,12 @@ lincat
 	Mass, MassUnit,
 	Time, TimeUnit,
 	Temperature, TemperatureUnit,
+	Currency, CurrencyUnit,
 	AreaUnit, VolumeUnit, AngleUnit = CaseStr;
 
 lin
 
-length_unit, mass_unit, time_unit, temperature_unit = id CaseStr ;
+length_unit, mass_unit, time_unit, temperature_unit, currency_unit = id CaseStr ;
 prefixed_length_unit, prefixed_mass_unit, prefixed_time_unit, prefixed_temperature_unit = prefix ;
 
 --Length
@@ -78,4 +79,27 @@ cup = mk "tassi";
 arcsecond = mk "sekundit";
 arcminute = mk "minutit";
 degree = mk "kraadi";
+
+-- Currency
+-- TODO: allow variants here maybe: { naelades | naeltes | inglise naelades }
+-- TODO: allow a general form "norra/usa/ameerika/eesti rahas"
+usd = mk "dollarit";
+cad = mk "kanada dollarit";
+nzd = mk "uus mere maa dollarit";
+aud = mk "austraalia dollarit";
+-- This gradation does not seem to be very regular
+-- e.g. meetrit -> *meetrides; dollarit -> *dollarides
+-- TODO: what does it depend on?
+eur = f "eurot" "eurodes";
+gbp = mk "naela";
+--gbp = f "naela" "naeltes";
+--gbp = f "inglise raha" "inglise rahas";
+chf = mk "franki";
+-- TODO: use Unicode!
+--chf = f "s~veitsi raha" "s~veitsi rahas";
+nok = mk "norra krooni";
+jpy = mk "jeeni";
+--jpy = f "jaapani raha" "jaapani rahas";
+eek = mk "krooni";
+
 }
