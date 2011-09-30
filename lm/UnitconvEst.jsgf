@@ -40,15 +40,23 @@ public <MAIN> = <Main_cat> ;
 <CurrencyUnit_cat> = <CurrencyUnit_1>
                             | <CurrencyUnit_2> ;
 
-<Currency_1> = austraalia dollarit
-               | kanada dollarit | franki | krooni | eurot
-               | naela | jeeni | norra krooni
-               | uus mere maa dollarit | dollarit ;
+<Currency_1> = austraalia (dollarit | raha)
+               | kanada (dollarit | raha) | franki
+               | eesti (krooni | raha) | krooni | eurot
+               | inglise (naela | raha) | naela
+               | jaapani (jeeni | raha) | jeeni
+               | norra (krooni | raha)
+               | uus mere maa (dollarit | raha)
+               | ameerika (dollarit | raha) | dollarit ;
 
-<Currency_2> = austraalia dollarites
-               | kanada dollarites | frankides | kroonides
-               | eurodes | naelades | jeenides | norra kroonides
-               | uus mere maa dollarites | dollarites ;
+<Currency_2> = austraalia (dollarites | rahas)
+               | kanada (dollarites | rahas) | frankides
+               | eesti (kroonides | rahas) | kroonides | eurodes
+               | inglise (naelades | rahas) | naelades
+               | jaapani (jeenides | rahas) | jeenides
+               | norra (kroonides | rahas)
+               | uus mere maa (dollarites | rahas)
+               | ameerika (dollarites | rahas) | dollarites ;
 
 <Currency_cat> = <Currency_1>
                         | <Currency_2> ;

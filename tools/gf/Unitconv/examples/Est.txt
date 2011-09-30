@@ -6,3 +6,5 @@ viis minutit sekundites
 kaks hektarit ruut kilo meetrites
 kaks kilo meetrit senti meetrites
 kaks norra krooni kroonides
+kaks norra raha kroonides
+kaks krooni dollarites

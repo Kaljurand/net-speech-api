@@ -15,6 +15,10 @@ This grammar demonstrates:
 
 TODO:
 
+  * discuss if it makes sense to support variants like {naelades | naeltes},
+	{ meetritesse | meetriteks }. Since these variants sound similar, we can also
+	rely on the speech recognizer robustness (i.e. it would convert a spoken
+	/naeltes/ or /naelteks/ into "naelades")
   * add units with s~/z~
   * "large" vocabulary (hundreds of terminals)
   * "large" grammar (many productions?)

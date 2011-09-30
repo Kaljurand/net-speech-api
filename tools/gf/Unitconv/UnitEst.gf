@@ -29,6 +29,21 @@ oper
 			} 
 		in f w ws;
 
+	mk_raha : Str -> CaseStr = \x ->
+		f (x ++ "raha") (x ++ "rahas") ;
+
+	-- Generates 3 variants, from two input strings, e.g.:
+	-- Input: "ameerika", "dollarit"
+	-- Output:
+	-- dollarit/dollarites
+	-- ameerika dollarit / ameerika dollarites
+	-- ameerika raha / ameerika rahas
+	mk_currency_variants_3 : Str -> Str -> CaseStr = \x,y ->
+		variants { mk y ; mk (x ++ y); mk_raha x };
+
+	mk_currency_variants_2 : Str -> Str -> CaseStr = \x,y ->
+		variants { mk (x ++ y); mk_raha x };
+
 	-- Places a prefix (`kilo`) in front of the given unit word (`meeter`).
 	-- TODO: Maybe we should return a more complex structure with a field
 	-- for the prefix, instead of doing string concatenation here.
@@ -81,25 +96,22 @@ arcminute = mk "minutit";
 degree = mk "kraadi";
 
 -- Currency
--- TODO: allow variants here maybe: { naelades | naeltes | inglise naelades }
--- TODO: allow a general form "norra/usa/ameerika/eesti rahas"
-usd = mk "dollarit";
-cad = mk "kanada dollarit";
-nzd = mk "uus mere maa dollarit";
-aud = mk "austraalia dollarit";
+usd = mk_currency_variants_3 "ameerika" "dollarit";
+gbp = mk_currency_variants_3 "inglise" "naela";
+jpy = mk_currency_variants_3 "jaapani" "jeeni";
+eek = mk_currency_variants_3 "eesti" "krooni";
+
+cad = mk_currency_variants_2 "kanada" "dollarit";
+nzd = mk_currency_variants_2 "uus mere maa" "dollarit";
+aud = mk_currency_variants_2 "austraalia" "dollarit";
+nok = mk_currency_variants_2 "norra" "krooni";
+
 -- This gradation does not seem to be very regular
 -- e.g. meetrit -> *meetrides; dollarit -> *dollarides
 -- TODO: what does it depend on?
 eur = f "eurot" "eurodes";
-gbp = mk "naela";
---gbp = f "naela" "naeltes";
---gbp = f "inglise raha" "inglise rahas";
+
 chf = mk "franki";
 -- TODO: use Unicode!
 --chf = f "s~veitsi raha" "s~veitsi rahas";
-nok = mk "norra krooni";
-jpy = mk "jeeni";
---jpy = f "jaapani raha" "jaapani rahas";
-eek = mk "krooni";
-
 }

@@ -6,3 +6,5 @@
 3 k h in n s
 3 °C in m °C
 3 EEK in EUR
+3 NOK in NOK
+3 USD in USD

@@ -1,71 +1,191 @@
 Parsing examples/Est.txt
 -------
 2 m in ft
+
 kaks meetrit jalgades
 
 
+
 3 0 0 0 l in cup_us
+
 kolm tuhat liitrit tassides
 
 
+
 1 1 1 1 1 0 flour-cup in flour-cup
+
 sada üks teist tuhat sada kümme tassi jahu jahu tassides
 
 
+
 1 2 ft in ft
+
 kaks teist jalga jalgades
 
 
+
 5 ' in ''
+
 viis minutit sekundites
 
+
 5 min in s
+
 viis minutit sekundites
+
 
 
 2 ha in km**2
+
 kaks hektarit ruut kilo meetrites
 
 
+
 2 k m in c m
+
 kaks kilo meetrit senti meetrites
 
 
+
 2 NOK in EEK
+
 kaks norra krooni kroonides
+
+kaks norra krooni eesti kroonides
+
+kaks norra krooni eesti rahas
+
+kaks norra raha kroonides
+
+kaks norra raha eesti kroonides
+
+kaks norra raha eesti rahas
+
+
+
+2 NOK in EEK
+
+kaks norra krooni kroonides
+
+kaks norra krooni eesti kroonides
+
+kaks norra krooni eesti rahas
+
+kaks norra raha kroonides
+
+kaks norra raha eesti kroonides
+
+kaks norra raha eesti rahas
+
+
+
+2 EEK in USD
+
+kaks krooni dollarites
+
+kaks krooni ameerika dollarites
+
+kaks krooni ameerika rahas
+
+kaks eesti krooni dollarites
+
+kaks eesti krooni ameerika dollarites
+
+kaks eesti krooni ameerika rahas
+
+kaks eesti raha dollarites
+
+kaks eesti raha ameerika dollarites
+
+kaks eesti raha ameerika rahas
+
 
 
 Parsing examples/App.txt
 -------
 2 m in ft
+
 kaks meetrit jalgades
 
 
+
 1 0 0 0 m °C in °C
+
 tuhat milli kraadi kraadides
 
 
+
 2 km**2 in ha
+
 kaks ruut kilo meetrit hektarites
 
 
+
 3 m m in µ m
+
 kolm milli meetrit mikro meetrites
 
 
+
 3 k g in n g
+
 kolm kilo grammi nano grammides
 
 
+
 3 k h in n s
+
 kolm kilo tundi nano sekundites
 
 
+
 3 °C in m °C
+
 kolm kraadi milli kraadides
 
 
+
 3 EEK in EUR
+
 kolm krooni eurodes
+
+kolm eesti krooni eurodes
+
+kolm eesti raha eurodes
+
+
+
+3 NOK in NOK
+
+kolm norra krooni norra kroonides
+
+kolm norra krooni norra rahas
+
+kolm norra raha norra kroonides
+
+kolm norra raha norra rahas
+
+
+
+3 USD in USD
+
+kolm dollarit dollarites
+
+kolm dollarit ameerika dollarites
+
+kolm dollarit ameerika rahas
+
+kolm ameerika dollarit dollarites
+
+kolm ameerika dollarit ameerika dollarites
+
+kolm ameerika dollarit ameerika rahas
+
+kolm ameerika raha dollarites
+
+kolm ameerika raha ameerika dollarites
+
+kolm ameerika raha ameerika rahas
+
 
 
