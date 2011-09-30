@@ -1,4 +1,4 @@
-concrete UnitEst of Unit = {
+concrete UnitEst of Unit = PrefixEst ** open StringOper in {
 
 -- This is a lexicon of the words of measurement units in Estonian.
 -- In principle two forms of each word must be provided
@@ -15,9 +15,13 @@ param Case = SgPart | PlIn ;
 -- The f-function requires both forms (`SgPart` and `PlIn`)
 -- The mk-function is smart and only requires the "base" form (`SgPart`)
 oper
-	f : Str -> Str -> { s : Case => Str } = \x,y ->
+	CaseStr : Type = { s : Case => Str } ;
+
+	prefix : Str -> CaseStr -> CaseStr = \x,y -> add_prefix x y;
+
+	f : Str -> Str -> CaseStr = \x,y ->
 		{ s = table { SgPart => x ; PlIn => y } };
-	mk : Str -> { s : Case => Str } = \w -> 
+	mk : Str -> CaseStr = \w -> 
 		let 
 			ws : Str = case w of {
 				_ + ("a" | "e" | "i" | "o") => w + "des" ; -- jalga + des
@@ -25,20 +29,30 @@ oper
 			} 
 		in f w ws;
 
+	-- Places a prefix (`kilo`) in front of the given unit word (`meeter`).
+	-- TODO: Maybe we should return a more complex structure with a field
+	-- for the prefix, instead of doing string concatenation here.
+	add_prefix : Str -> CaseStr -> CaseStr = \p,w ->
+		{ s = table { SgPart => p ++ (w.s ! SgPart) ; PlIn => p ++ (w.s ! PlIn) } };
+
 lincat
-	LengthUnit, MassUnit, TimeUnit, TemperatureUnit,
-	AreaUnit, VolumeUnit, AngleUnit = {s : Case => Str};
+	Length, LengthUnit,
+	Mass, MassUnit,
+	Time, TimeUnit,
+	Temperature, TemperatureUnit,
+	AreaUnit, VolumeUnit, AngleUnit = CaseStr;
 
 lin
 
+length_unit, mass_unit, time_unit, temperature_unit = id CaseStr ;
+prefixed_length_unit, prefixed_mass_unit, prefixed_time_unit, prefixed_temperature_unit = prefix ;
+
 --Length
 meter = mk "meetrit";
-kilo_meter = mk "kilo meetrit";
-centi_meter = mk "senti meetrit";
-milli_meter = mk "milli meetrit";
 foot = mk "jalga";
 
 --Mass
+gram = mk "grammi";
 cup_flour = f "tassi jahu" "jahu tassides";
 
 --Time
@@ -48,7 +62,6 @@ hour = mk "tundi";
 
 --Temperature
 celsius = mk "kraadi";
-milli_celsius = mk "milli kraadi";
 
 --Area
 hectare = mk "hektarit";

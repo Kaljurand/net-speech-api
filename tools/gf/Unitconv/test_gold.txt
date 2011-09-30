@@ -1,3 +1,5 @@
+Parsing examples/Est.txt
+-------
 2 m in ft
 kaks meetrit jalgades
 
@@ -25,13 +27,37 @@ viis minutit sekundites
 kaks hektarit ruut kilo meetrites
 
 
+2 k m in c m
+kaks kilo meetrit senti meetrites
+
+
+Parsing examples/App.txt
+-------
 2 m in ft
 kaks meetrit jalgades
 
-1 0 0 0 m°C in °C
+
+1 0 0 0 m °C in °C
 tuhat milli kraadi kraadides
+
 
 2 km**2 in ha
 kaks ruut kilo meetrit hektarites
+
+
+3 m m in µ m
+kolm milli meetrit mikro meetrites
+
+
+3 k g in n g
+kolm kilo grammi nano grammides
+
+
+3 k h in n s
+kolm kilo tundi nano sekundites
+
+
+3 °C in m °C
+kolm kraadi milli kraadides
 
 

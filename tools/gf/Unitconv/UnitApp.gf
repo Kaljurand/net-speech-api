@@ -1,21 +1,30 @@
-concrete UnitApp of Unit = open StringOper in {
+concrete UnitApp of Unit = PrefixApp ** open StringOper in {
 
 flags coding=utf8;
 
+oper
+	prefix : Str -> {s : Str} -> {s : Str} = \x,y -> ss (x ++ y.s);
+
 lincat
-	LengthUnit, MassUnit, TimeUnit, TemperatureUnit,
+	-- TODO: why do we use { s : Str } and not Str?
+	Length, LengthUnit,
+	Mass, MassUnit,
+	Time, TimeUnit,
+	Temperature, TemperatureUnit,
 	AreaUnit, VolumeUnit, AngleUnit = {s : Str};
 
 lin
 
+length_unit, mass_unit, time_unit, temperature_unit = id {s : Str};
+prefixed_length_unit, prefixed_mass_unit, prefixed_time_unit, prefixed_temperature_unit = prefix ;
+
+
 --Length
 meter = ss "m" ;
-kilo_meter = ss "km" ;
-centi_meter = ss "cm" ;
-milli_meter = ss "mm" ;
 foot = ss "ft" ;
 
 --Mass
+gram = ss "g" ;
 cup_flour = ss "flour-cup" ;
 
 --Time
@@ -25,7 +34,6 @@ hour = ss "h" ;
 
 --Temperature
 celsius = ss "°C";
-milli_celsius = ss "m°C";
 
 --Area
 hectare = ss "ha";

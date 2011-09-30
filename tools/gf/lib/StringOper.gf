@@ -14,6 +14,9 @@ param
 
 oper
 
+	-- Identity function
+	id : (A : Type) -> A -> A = \_,a -> a ;
+
 	-- Note that '4' is hard-coded in a few places below, therefore
 	-- if you change highestPrec to something else then
 	-- look for FIXME below for places than additionally need

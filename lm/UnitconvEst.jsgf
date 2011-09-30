@@ -37,29 +37,45 @@ public <MAIN> = <Main_cat> ;
 
 <Digit_cat> = <Digit_1> ;
 
-<LengthUnit_1> = senti meetrit | jalga
-                 | kilo meetrit | meetrit | milli meetrit ;
+<LengthUnit_1> = <Length_1>
+                 | <Prefix_1> <Length_1> ;
 
-<LengthUnit_2> = senti meetrites | jalgades
-                 | kilo meetrites | meetrites | milli meetrites ;
+<LengthUnit_2> = <Length_2>
+                 | <Prefix_1> <Length_2> ;
 
 <LengthUnit_cat> = <LengthUnit_1>
                           | <LengthUnit_2> ;
+
+<Length_1> = jalga | meetrit ;
+
+<Length_2> = jalgades | meetrites ;
+
+<Length_cat> = <Length_1> | <Length_2> ;
 
 <Main_1> = <Numeral_1> <Conv_1> ;
 
 <Main_cat> = <Main_1> ;
 
-<MassUnit_1> = tassi jahu ;
+<MassUnit_1> = <Mass_1> | <Prefix_1> <Mass_1> ;
 
-<MassUnit_2> = jahu tassides ;
+<MassUnit_2> = <Mass_2> | <Prefix_1> <Mass_2> ;
 
 <MassUnit_cat> = <MassUnit_1>
                         | <MassUnit_2> ;
 
+<Mass_1> = tassi jahu | grammi ;
+
+<Mass_2> = jahu tassides | grammides ;
+
+<Mass_cat> = <Mass_1> | <Mass_2> ;
+
 <Numeral_1> = <Sub1000000_1> ;
 
 <Numeral_cat> = <Numeral_1> ;
+
+<Prefix_1> = senti | kilo | mikro | milli | nano ;
+
+<Prefix_cat> = <Prefix_1> ;
 
 <Sub1000000_1> = <Unknown_3> | <Unknown_4> tuhat
                  | <Unknown_4> tuhat <Unknown_3> ;
@@ -103,20 +119,34 @@ public <MAIN> = <Main_cat> ;
 <Sub10_cat> = <Sub10_1> | <Sub10_2>
                      | <Sub10_3> ;
 
-<TemperatureUnit_1> = kraadi | milli kraadi ;
+<TemperatureUnit_1> = <Prefix_1> <Temperature_1>
+                      | <Temperature_1> ;
 
-<TemperatureUnit_2> = kraadides
-                      | milli kraadides ;
+<TemperatureUnit_2> = <Prefix_1> <Temperature_2>
+                      | <Temperature_2> ;
 
 <TemperatureUnit_cat> = <TemperatureUnit_1>
                                | <TemperatureUnit_2> ;
 
-<TimeUnit_1> = tundi | minutit | sekundit ;
+<Temperature_1> = kraadi ;
 
-<TimeUnit_2> = tundides | minutites | sekundites ;
+<Temperature_2> = kraadides ;
+
+<Temperature_cat> = <Temperature_1>
+                           | <Temperature_2> ;
+
+<TimeUnit_1> = <Prefix_1> <Time_1> | <Time_1> ;
+
+<TimeUnit_2> = <Prefix_1> <Time_2> | <Time_2> ;
 
 <TimeUnit_cat> = <TimeUnit_1>
                         | <TimeUnit_2> ;
+
+<Time_1> = tundi | minutit | sekundit ;
+
+<Time_2> = tundides | minutites | sekundites ;
+
+<Time_cat> = <Time_1> | <Time_2> ;
 
 <Unknown_1> = <Sub10_1> | <Sub10_3> ;
 
