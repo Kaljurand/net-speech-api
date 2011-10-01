@@ -55,20 +55,41 @@ lincat
 	Mass, MassUnit,
 	Time, TimeUnit,
 	Temperature, TemperatureUnit,
+	Area, AreaUnit,
+	Volume, VolumeUnit,
+	Frequency, FrequencyUnit,
 	Currency, CurrencyUnit,
-	AreaUnit, VolumeUnit, AngleUnit = CaseStr;
+	AngleUnit = CaseStr;
 
 lin
 
-length_unit, mass_unit, time_unit, temperature_unit, currency_unit = id CaseStr ;
-prefixed_length_unit, prefixed_mass_unit, prefixed_time_unit, prefixed_temperature_unit = prefix ;
+length_unit, mass_unit, time_unit, temperature_unit,
+area_unit,
+volume_unit,
+frequency_unit,
+currency_unit = id CaseStr ;
+
+prefixed_length_unit, prefixed_mass_unit,
+prefixed_time_unit, prefixed_temperature_unit,
+prefixed_area_unit,
+prefixed_volume_unit,
+prefixed_frequency_unit = prefix ;
+
+square = prefix "ruut";
+cube = prefix "kuup";
 
 --Length
 meter = mk "meetrit";
+--inch = mk "tolli";
 foot = mk "jalga";
+--yard = mk "jardi";
+mile = mk "miili";
 
 --Mass
 gram = mk "grammi";
+--ounce = mk "untsi";
+pound = mk "naela";
+ton = mk "tonni";
 cup_flour = f "tassi jahu" "jahu tassides";
 
 --Time
@@ -81,13 +102,16 @@ celsius = mk "kraadi";
 
 --Area
 hectare = mk "hektarit";
-square_meter = mk "ruut meetrit";
-square_kilo_meter = mk "ruut kilo meetrit";
 
 --Volume
 liter = mk "liitrit";
-cubic_foot = mk "kuup jalga";
+--pint = mk "pinti";
+--gallon = mk "gallonit";
 cup = mk "tassi";
+
+--Frequency
+-- TODO: fix PlIn form once the server supports it
+hertz = f "hertsi" "hertsi";
 
 --Angle
 --radian = mk "radiaani";

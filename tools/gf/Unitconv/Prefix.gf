@@ -28,6 +28,6 @@ cat
 	Prefix ;
 
 fun
-	kilo, centi, milli, micro, nano : Prefix ;
+	tera, giga, mega, kilo, hecto, deka, deci, centi, milli, micro, nano : Prefix ;
 
 }

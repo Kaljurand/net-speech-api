@@ -7,7 +7,13 @@ lincat
 
 lin
 
+tera = "tera";
+giga = "giga";
+mega = "mega";
 kilo = "kilo";
+hecto = "hekto";
+deka = "deka";
+deci = "detsi";
 centi = "senti";
 milli = "milli";
 micro = "mikro";

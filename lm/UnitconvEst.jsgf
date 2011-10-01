@@ -13,18 +13,25 @@ public <MAIN> = <Main_cat> ;
 <AngleUnit_cat> = <AngleUnit_1>
                          | <AngleUnit_2> ;
 
-<AreaUnit_1> = hektarit | ruut kilo meetrit
-               | ruut meetrit ;
+<AreaUnit_1> = <Area_1> | <Prefix_1> <Area_1>
+               | ruut <LengthUnit_1> ;
 
-<AreaUnit_2> = hektarites | ruut kilo meetrites
-               | ruut meetrites ;
+<AreaUnit_2> = <Area_2> | <Prefix_1> <Area_2>
+               | ruut <LengthUnit_2> ;
 
 <AreaUnit_cat> = <AreaUnit_1>
                         | <AreaUnit_2> ;
 
+<Area_1> = hektarit ;
+
+<Area_2> = hektarites ;
+
+<Area_cat> = <Area_1> | <Area_2> ;
+
 <Conv_1> = <AngleUnit_1> <AngleUnit_2>
            | <AreaUnit_1> <AreaUnit_2>
            | <CurrencyUnit_1> <CurrencyUnit_2>
+           | <FrequencyUnit_1> <FrequencyUnit_2>
            | <LengthUnit_1> <LengthUnit_2>
            | <MassUnit_1> <MassUnit_2>
            | <TemperatureUnit_1> <TemperatureUnit_2>
@@ -66,6 +73,19 @@ public <MAIN> = <Main_cat> ;
 
 <Digit_cat> = <Digit_1> ;
 
+<FrequencyUnit_1> = <Frequency_1>
+                    | <Prefix_1> <Frequency_1> ;
+
+<FrequencyUnit_2> = <Frequency_1>
+                    | <Prefix_1> <Frequency_1> ;
+
+<FrequencyUnit_cat> = <FrequencyUnit_1>
+                             | <FrequencyUnit_2> ;
+
+<Frequency_1> = hertsi ;
+
+<Frequency_cat> = <Frequency_1> ;
+
 <LengthUnit_1> = <Length_1>
                  | <Prefix_1> <Length_1> ;
 
@@ -75,9 +95,9 @@ public <MAIN> = <Main_cat> ;
 <LengthUnit_cat> = <LengthUnit_1>
                           | <LengthUnit_2> ;
 
-<Length_1> = jalga | meetrit ;
+<Length_1> = jalga | meetrit | miili ;
 
-<Length_2> = jalgades | meetrites ;
+<Length_2> = jalgades | meetrites | miilides ;
 
 <Length_cat> = <Length_1> | <Length_2> ;
 
@@ -92,9 +112,10 @@ public <MAIN> = <Main_cat> ;
 <MassUnit_cat> = <MassUnit_1>
                         | <MassUnit_2> ;
 
-<Mass_1> = tassi jahu | grammi ;
+<Mass_1> = tassi jahu | grammi | naela | tonni ;
 
-<Mass_2> = jahu tassides | grammides ;
+<Mass_2> = jahu tassides | grammides | naelades
+           | tonnides ;
 
 <Mass_cat> = <Mass_1> | <Mass_2> ;
 
@@ -102,7 +123,8 @@ public <MAIN> = <Main_cat> ;
 
 <Numeral_cat> = <Numeral_1> ;
 
-<Prefix_1> = senti | kilo | mikro | milli | nano ;
+<Prefix_1> = senti | detsi | deka | giga | hekto
+             | kilo | mega | mikro | milli | nano | tera ;
 
 <Prefix_cat> = <Prefix_1> ;
 
@@ -187,10 +209,17 @@ public <MAIN> = <Main_cat> ;
 
 <Unknown_5> = <Sub100_1> | <Sub100_3> ;
 
-<VolumeUnit_1> = kuup jalga | tassi | liitrit ;
+<VolumeUnit_1> = kuup <LengthUnit_1>
+                 | <Prefix_1> <Volume_1> | <Volume_1> ;
 
-<VolumeUnit_2> = kuup jalgades | tassides
-                 | liitrites ;
+<VolumeUnit_2> = kuup <LengthUnit_2>
+                 | <Prefix_1> <Volume_2> | <Volume_2> ;
 
 <VolumeUnit_cat> = <VolumeUnit_1>
                           | <VolumeUnit_2> ;
+
+<Volume_1> = tassi | liitrit ;
+
+<Volume_2> = tassides | liitrites ;
+
+<Volume_cat> = <Volume_1> | <Volume_2> ;

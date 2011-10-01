@@ -7,6 +7,8 @@ Introduction
 This grammar demonstrates:
 
   * modularity, e.g. numbers and SI prefixes are described in separate modules
+  * compositionality, e.g. SI prefixes can be easily applied to any units, area and
+    volume units can be built from any length units
   * support for multiple wordforms of the same word (`meetrit', `meetrites')
   * using opers to share code
   * smart paradigms (i.e. generate PlIn automatically from SgPart)
@@ -16,13 +18,12 @@ This grammar demonstrates:
 TODO:
 
   * discuss if it makes sense to support variants like {naelades | naeltes},
-	{ meetritesse | meetriteks }. Since these variants sound similar, we can also
-	rely on the speech recognizer robustness (i.e. it would convert a spoken
-	/naeltes/ or /naelteks/ into "naelades")
+    { meetritesse | meetriteks }. Since these variants sound similar, we can also
+    rely on the speech recognizer robustness (i.e. it would convert a spoken
+    /naeltes/ or /naelteks/ into "naelades")
   * add units with s~/z~
   * "large" vocabulary (hundreds of terminals)
   * "large" grammar (many productions?)
-  * refactor out `square` and `cube`
   * support "100 ruut senti meetrit sekundis ruut kilo meetrites tunnis" (requires support for SgIn)
   * handling rare (but legal?) forms like "kilo minut"
   * does attaching of probabilities work (in GF, in GF->JSGF, in JSGF->FSA)
@@ -35,11 +36,13 @@ TODO:
 How to add a new unit to the grammar
 ------------------------------------
 
-If the unit's type (e.g. LengthUnit, WeightUnit, ...) is already present in the grammar,
-then just edit the file Unit.gf to add the mapping of the new unit (e.g. `meter')
-to the existing type:
+### If the unit's physical quantity is already there
 
-    fun meter : LengthUnit;
+If the unit's quantity (e.g. Length, Mass, ...) is already present in the grammar,
+then just edit the file Unit.gf to add the mapping of the new unit (e.g. `meter')
+to the existing quantity:
+
+    fun meter : Length;
 
 and add the words of the unit to the concrete syntaxes (UnitEst.gf and UnitApp.gf):
 
@@ -47,17 +50,36 @@ and add the words of the unit to the concrete syntaxes (UnitEst.gf and UnitApp.g
     lin meter = ss "m";
 
 The functions `mk` and `ss` are predefined. They take a string and generate the internally
-used lexicon structure, e.g. `mk` also generates the plural inessive form from the given string.
-You do not need to change these functions (unless it turns out that they do not work correctly).
+used lexicon structure, e.g. the `mk` function (defined in UnitEst.gf) also generates
+the plural inessive (`PlIn`) form from the given singular partitive form (`SgPart`).
+If it turnes out that the automatically generated form is incorrect then use
+the `f`-function to provide both forms manually, e.g.
 
-If the type is not described in the grammar then additionally add the new category to Unit.gf:
+    lin euro = f "eurot" "eurodes" ;
 
-    cat LengthUnit;
 
-and the corresponding conversion function to Unitconv.gf:
+### If you want to add a unit of new physical quantity
+
+If the quantity of the unit is not already described in the grammar then
+additionally add a new category to Unit.gf:
+
+    cat Length ; LengthUnit;
+
+and add some functions:
+
+    length_unit : Length -> LengthUnit ;
+    prefixed_length_unit : Prefix -> Length -> LengthUnit ; -- only if unit can be SI-prefixed
+
+Into the concrete syntaxes (UnitEst.gf and UnitApp.gf) add the linearizations
+of these functions, e.g. in the case of UnitEst.gf:
+
+    length_unit = id CaseStr ;
+    prefixed_length_unit = prefix ;
+
+Also, add the corresponding conversion function to Unitconv.gf:
 
     length : LengthUnit -> LengthUnit -> Conv ;
 
-and the implementation of the function (in both UnitconvEst.gf and UnitconvApp.gf)
+and the linearization of the function (in both UnitconvEst.gf and UnitconvApp.gf)
 
     lin length = c ;

@@ -33,6 +33,9 @@ oper
 
 	ss : Str -> SS = \s -> {s = s} ;
 
+	prefixSS : Str -> SS -> SS = \f,x -> ss (f ++ x.s) ;
+	postfixSS : Str -> SS -> SS = \f,x -> ss (x.s ++ f) ;
+
 	infixSS : Str -> SS -> SS -> SS
 		= \f,x,y -> ss (x.s ++ f ++ y.s) ;
 

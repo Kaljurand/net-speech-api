@@ -1,6 +1,6 @@
 2 m in ft
 1 0 0 0 m °C in °C
-2 km**2 in ha
+2 k m **2 in ha
 3 m m in µ m
 3 k g in n g
 3 k h in n s
@@ -8,3 +8,4 @@
 3 EEK in EUR
 3 NOK in NOK
 3 USD in USD
+3 m Hz in µ Hz
