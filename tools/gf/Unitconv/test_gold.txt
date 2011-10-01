@@ -55,11 +55,15 @@ kaks norra krooni eesti kroonides
 
 kaks norra krooni eesti rahas
 
+kaks norra krooni vanas rahas
+
 kaks norra raha kroonides
 
 kaks norra raha eesti kroonides
 
 kaks norra raha eesti rahas
+
+kaks norra raha vanas rahas
 
 
 
@@ -71,11 +75,15 @@ kaks norra krooni eesti kroonides
 
 kaks norra krooni eesti rahas
 
+kaks norra krooni vanas rahas
+
 kaks norra raha kroonides
 
 kaks norra raha eesti kroonides
 
 kaks norra raha eesti rahas
+
+kaks norra raha vanas rahas
 
 
 
@@ -98,6 +106,12 @@ kaks eesti raha dollarites
 kaks eesti raha ameerika dollarites
 
 kaks eesti raha ameerika rahas
+
+kaks vana raha dollarites
+
+kaks vana raha ameerika dollarites
+
+kaks vana raha ameerika rahas
 
 
 
@@ -128,6 +142,34 @@ kaks kilo meetrit milli sekundis milli meetrites mikro sekundis
 2 k m * m s ** -2 in m m * µ s ** -2
 
 kaks kilo meetrit ruut milli sekundis milli meetrites ruut mikro sekundis
+
+
+
+2 k W ⋅ h in M W ⋅ h
+
+kaks kilo vatt tundi mega vatt tundides
+
+
+
+2 CHF in RUB
+
+kaks franki rublades
+
+kaks franki vene rublades
+
+kaks franki vene rahas
+
+kaks s~veitsi franki rublades
+
+kaks s~veitsi franki vene rublades
+
+kaks s~veitsi franki vene rahas
+
+kaks s~veitsi raha rublades
+
+kaks s~veitsi raha vene rublades
+
+kaks s~veitsi raha vene rahas
 
 
 
@@ -182,6 +224,8 @@ kolm krooni eurodes
 kolm eesti krooni eurodes
 
 kolm eesti raha eurodes
+
+kolm vana raha eurodes
 
 
 

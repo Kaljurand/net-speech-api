@@ -40,6 +40,8 @@ public <MAIN> = <Main_cat> ;
 <Conv_1> = <AngleUnit_1> <AngleUnit_2>
            | <AreaUnit_1> <AreaUnit_2>
            | <AccelerationUnit_1> <AccelerationUnit_2>
+           | <EnergyUnit_1> <EnergyUnit_2>
+           | <PowerUnit_1> <PowerUnit_2>
            | <SpeedUnit_1> <SpeedUnit_2>
            | <CurrencyUnit_1> <CurrencyUnit_2>
            | <FrequencyUnit_1> <FrequencyUnit_2>
@@ -59,21 +61,32 @@ public <MAIN> = <Main_cat> ;
                             | <CurrencyUnit_2> ;
 
 <Currency_1> = austraalia (dollarit | raha)
-               | kanada (dollarit | raha) | franki
-               | eesti (krooni | raha) | krooni | eurot
-               | inglise (naela | raha) | naela
+               | kanada (dollarit | raha)
+               | s~veitsi (franki | raha) | franki
+               | taani (krooni | raha)
+               | eesti (krooni | raha) | vana raha | krooni
+               | eurot | inglise (naela | raha) | naela
+               | islandi (krooni | raha)
                | jaapani (jeeni | raha) | jeeni
                | norra (krooni | raha)
                | uus mere maa (dollarit | raha)
+               | vene (raha | rubla) | rubla
+               | rootsi (krooni | raha)
                | ameerika (dollarit | raha) | dollarit ;
 
 <Currency_2> = austraalia (dollarites | rahas)
-               | kanada (dollarites | rahas) | frankides
-               | eesti (kroonides | rahas) | kroonides | eurodes
-               | inglise (naelades | rahas) | naelades
+               | kanada (dollarites | rahas)
+               | s~veitsi (frankides | rahas) | frankides
+               | taani (kroonides | rahas)
+               | eesti (kroonides | rahas) | vanas rahas
+                 | kroonides
+               | eurodes | inglise (naelades | rahas) | naelades
+               | islandi (kroonides | rahas)
                | jaapani (jeenides | rahas) | jeenides
                | norra (kroonides | rahas)
                | uus mere maa (dollarites | rahas)
+               | vene (rahas | rublades) | rublades
+               | rootsi (kroonides | rahas)
                | ameerika (dollarites | rahas) | dollarites ;
 
 <Currency_cat> = <Currency_1>
@@ -83,6 +96,21 @@ public <MAIN> = <Main_cat> ;
             | seitse | kaheksa | üheksa ;
 
 <Digit_cat> = <Digit_1> ;
+
+<EnergyUnit_1> = <Energy_1>
+                 | <Prefix_1> <Energy_1> ;
+
+<EnergyUnit_2> = <Energy_2>
+                 | <Prefix_1> <Energy_2> ;
+
+<EnergyUnit_cat> = <EnergyUnit_1>
+                          | <EnergyUnit_2> ;
+
+<Energy_1> = viga | viga | vatt tundi ;
+
+<Energy_2> = vigades | vigades | vatt tundides ;
+
+<Energy_cat> = <Energy_1> | <Energy_2> ;
 
 <FrequencyUnit_1> = <Frequency_1>
                     | <Prefix_1> <Frequency_1> ;
@@ -133,6 +161,19 @@ public <MAIN> = <Main_cat> ;
 <Numeral_1> = <Sub1000000_1> ;
 
 <Numeral_cat> = <Numeral_1> ;
+
+<PowerUnit_1> = <Power_1> | <Prefix_1> <Power_1> ;
+
+<PowerUnit_2> = <Power_2> | <Prefix_1> <Power_2> ;
+
+<PowerUnit_cat> = <PowerUnit_1>
+                         | <PowerUnit_2> ;
+
+<Power_1> = viga ;
+
+<Power_2> = vigades ;
+
+<Power_cat> = <Power_1> | <Power_2> ;
 
 <Prefix_1> = senti | detsi | deka | giga | hekto
              | kilo | mega | mikro | milli | nano | tera ;

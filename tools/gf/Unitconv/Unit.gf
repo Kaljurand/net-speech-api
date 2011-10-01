@@ -12,6 +12,8 @@ cat
 	Frequency ; FrequencyUnit ;
 	Speed ; SpeedUnit ;
 	AccelerationUnit ;
+	Energy ; EnergyUnit ;
+	Power ; PowerUnit ;
 	AngleUnit ;
 	Currency ; CurrencyUnit ;
 
@@ -27,6 +29,8 @@ fun
 	prefixed_area_unit : Prefix -> Area -> AreaUnit ;
 	prefixed_volume_unit : Prefix -> Volume -> VolumeUnit ;
 	prefixed_frequency_unit : Prefix -> Frequency -> FrequencyUnit ;
+	prefixed_energy_unit : Prefix -> Energy -> EnergyUnit ;
+	prefixed_power_unit : Prefix -> Power -> PowerUnit ;
 
 	-- TODO: maybe not use these rules and allow an empty prefix instead
 	-- But note that here we have also units that cannot be prefixed, e.g.
@@ -38,6 +42,8 @@ fun
 	area_unit : Area -> AreaUnit ;
 	volume_unit : Volume -> VolumeUnit ;
 	frequency_unit : Frequency -> FrequencyUnit ;
+	energy_unit : Energy -> EnergyUnit ;
+	power_unit : Power -> PowerUnit ;
 	speed_unit : Speed -> SpeedUnit ;
 	currency_unit : Currency -> CurrencyUnit ;
 
@@ -69,12 +75,17 @@ fun
 
 	hertz : Frequency ;
 
+	-- TODO: maybe generalize: watt_hour
+	joule, calorie, watt_hour : Energy ;
+
+	watt : Power ;
+
 	the_speed_of_light, knot : Speed ;
 
 	-- radian
 	arcsecond, arcminute, degree : AngleUnit ;
 
-	usd, cad, gbp, aud, nzd, eur, chf, jpy, nok : Currency ;
+	usd, cad, gbp, aud, nzd, eur, chf, jpy, nok, sek, dkk, isk, rub : Currency ;
 	eek : Currency ;
 
 }

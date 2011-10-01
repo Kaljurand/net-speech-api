@@ -119,6 +119,8 @@ lincat
 	Frequency, FrequencyUnit,
 	Speed, SpeedUnit,
 	AccelerationUnit,
+	Energy, EnergyUnit,
+	Power, PowerUnit,
 	Currency, CurrencyUnit,
 	AngleUnit = CaseStr;
 
@@ -129,12 +131,16 @@ area_unit,
 volume_unit,
 frequency_unit,
 speed_unit,
+energy_unit,
+power_unit,
 currency_unit = id CaseStr ;
 
 prefixed_length_unit, prefixed_mass_unit,
 prefixed_time_unit, prefixed_temperature_unit,
 prefixed_area_unit,
 prefixed_volume_unit,
+prefixed_energy_unit,
+prefixed_power_unit,
 prefixed_frequency_unit = prefix ;
 
 square = prefix "ruut";
@@ -182,6 +188,16 @@ hertz = f "hertsi" "hertsi";
 the_speed_of_light = f "valgus kiirust" "valgus kiirustest";
 knot = mk "sõlme";
 
+-- Energy
+-- TODO: fix bugs
+joule = mk "viga";
+calorie = mk "viga";
+watt_hour = mk "vatt tundi";
+
+-- Power
+-- TODO: fix bugs
+watt = mk "viga";
+
 --Angle
 --radian = mk "radiaani";
 arcsecond = mk "sekundit";
@@ -192,19 +208,28 @@ degree = mk "kraadi";
 usd = mk_currency_variants_3 "ameerika" "dollarit";
 gbp = mk_currency_variants_3 "inglise" "naela";
 jpy = mk_currency_variants_3 "jaapani" "jeeni";
-eek = mk_currency_variants_3 "eesti" "krooni";
+rub = mk_currency_variants_3 "vene" "rubla";
 
 cad = mk_currency_variants_2 "kanada" "dollarit";
 nzd = mk_currency_variants_2 "uus mere maa" "dollarit";
 aud = mk_currency_variants_2 "austraalia" "dollarit";
 nok = mk_currency_variants_2 "norra" "krooni";
+sek = mk_currency_variants_2 "rootsi" "krooni";
+dkk = mk_currency_variants_2 "taani" "krooni";
+isk = mk_currency_variants_2 "islandi" "krooni";
 
 -- This gradation does not seem to be very regular
 -- e.g. meetrit -> *meetrides; dollarit -> *dollarides
 -- TODO: what does it depend on?
 eur = f "eurot" "eurodes";
 
-chf = mk "franki";
 -- TODO: use Unicode!
---chf = f "s~veitsi raha" "s~veitsi rahas";
+chf = mk_currency_variants_3 "s~veitsi" "franki";
+
+eek = variants {
+		mk "krooni" ;
+		mk "eesti krooni";
+		mk_raha "eesti";
+		f "vana raha" "vanas rahas"
+	};
 }

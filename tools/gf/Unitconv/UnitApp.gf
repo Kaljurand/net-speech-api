@@ -22,6 +22,8 @@ lincat
 	Frequency, FrequencyUnit,
 	Speed, SpeedUnit,
 	AccelerationUnit,
+	Energy, EnergyUnit,
+	Power, PowerUnit,
 	Currency, CurrencyUnit,
 	AngleUnit = SS;
 
@@ -32,11 +34,15 @@ area_unit,
 volume_unit,
 frequency_unit,
 speed_unit,
+energy_unit,
+power_unit,
 currency_unit = id SS;
 
 prefixed_length_unit, prefixed_mass_unit, prefixed_time_unit,
 prefixed_temperature_unit,
 prefixed_area_unit, prefixed_volume_unit,
+prefixed_energy_unit,
+prefixed_power_unit,
 prefixed_frequency_unit = prefixSS ;
 
 square = postfixSS "**2";
@@ -80,6 +86,14 @@ hertz = ss "Hz";
 the_speed_of_light = ss "c";
 knot = ss "knot";
 
+-- Energy
+joule = ss "J";
+calorie = ss "Cal";
+watt_hour = infixSS "⋅" watt hour;
+
+-- Power
+watt = ss "W";
+
 --Angle
 --radian = ss "rad";
 arcsecond = ss "''";
@@ -97,5 +111,9 @@ chf = ss "CHF";
 nok = ss "NOK";
 jpy = ss "JPY";
 eek = ss "EEK";
+rub = ss "RUB";
+sek = ss "SEK";
+dkk = ss "DKK";
+isk = ss "ISK";
 
 }
