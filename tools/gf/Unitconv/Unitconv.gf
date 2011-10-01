@@ -28,6 +28,7 @@ fun
 	angle : AngleUnit -> AngleUnit -> Conv ;
 
 	frequency : FrequencyUnit -> FrequencyUnit -> Conv ;
+	conv_speed : SpeedUnit -> SpeedUnit -> Conv ;
 
 	-- Currency conversion
 	currency : CurrencyUnit -> CurrencyUnit -> Conv ;

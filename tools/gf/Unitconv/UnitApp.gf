@@ -11,6 +11,7 @@ lincat
 	Area, AreaUnit,
 	Volume, VolumeUnit,
 	Frequency, FrequencyUnit,
+	Speed, SpeedUnit,
 	Currency, CurrencyUnit,
 	AngleUnit = {s : Str};
 
@@ -19,7 +20,9 @@ lin
 length_unit, mass_unit, time_unit, temperature_unit,
 area_unit,
 volume_unit,
-frequency_unit, currency_unit = id SS;
+frequency_unit,
+speed_unit,
+currency_unit = id SS;
 
 prefixed_length_unit, prefixed_mass_unit, prefixed_time_unit,
 prefixed_temperature_unit,
@@ -29,6 +32,7 @@ prefixed_frequency_unit = prefixSS ;
 square = postfixSS "**2";
 cube = postfixSS "**3";
 
+speed = infixSS "/";
 
 --Length
 meter = ss "m";
@@ -56,7 +60,12 @@ hectare = ss "ha";
 liter = ss "L";
 cup = ss "cup_us";
 
+--Frequency
 hertz = ss "Hz";
+
+--Speed
+the_speed_of_light = ss "c";
+knot = ss "knot";
 
 --Angle
 --radian = ss "rad";

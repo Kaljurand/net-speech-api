@@ -119,6 +119,12 @@ viis sada kuup senti meetrit kuup mikro jalgades
 
 
 
+2 k m / m s in m m / µ s
+
+kaks kilo meetrit milli sekundis milli meetrites mikro sekundis
+
+
+
 Parsing examples/App.txt
 -------
 2 m in ft
@@ -210,6 +216,24 @@ kolm ameerika raha ameerika rahas
 3 m Hz in µ Hz
 
 kolm milli hertsi mikro hertsi
+
+
+
+3 m / s in k m / h
+
+kolm meetrit sekundis kilo meetrites tunnis
+
+
+
+3 c in k m / µ s
+
+kolm valgus kiirust kilo meetrites mikro sekundis
+
+
+
+3 k m / µ s in c
+
+kolm kilo meetrit mikro sekundis valgus kiirustest
 
 
 

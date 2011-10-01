@@ -30,12 +30,13 @@ public <MAIN> = <Main_cat> ;
 
 <Conv_1> = <AngleUnit_1> <AngleUnit_2>
            | <AreaUnit_1> <AreaUnit_2>
+           | <SpeedUnit_1> <SpeedUnit_2>
            | <CurrencyUnit_1> <CurrencyUnit_2>
            | <FrequencyUnit_1> <FrequencyUnit_2>
            | <LengthUnit_1> <LengthUnit_2>
            | <MassUnit_1> <MassUnit_2>
            | <TemperatureUnit_1> <TemperatureUnit_2>
-           | <TimeUnit_1> <TimeUnit_2>
+           | <TimeUnit_1> <TimeUnit_3>
            | <VolumeUnit_1> <VolumeUnit_2> ;
 
 <Conv_cat> = <Conv_1> ;
@@ -128,6 +129,21 @@ public <MAIN> = <Main_cat> ;
 
 <Prefix_cat> = <Prefix_1> ;
 
+<SpeedUnit_1> = <LengthUnit_1> <TimeUnit_2>
+                | <Speed_1> ;
+
+<SpeedUnit_2> = <LengthUnit_2> <TimeUnit_2>
+                | <Speed_2> ;
+
+<SpeedUnit_cat> = <SpeedUnit_1>
+                         | <SpeedUnit_2> ;
+
+<Speed_1> = sõlme | valgus kiirust ;
+
+<Speed_2> = sõlmedes | valgus kiirustest ;
+
+<Speed_cat> = <Speed_1> | <Speed_2> ;
+
 <Sub1000000_1> = <Unknown_3> | <Unknown_4> tuhat
                  | <Unknown_4> tuhat <Unknown_3> ;
 
@@ -190,14 +206,19 @@ public <MAIN> = <Main_cat> ;
 
 <TimeUnit_2> = <Prefix_1> <Time_2> | <Time_2> ;
 
+<TimeUnit_3> = <Prefix_1> <Time_3> | <Time_3> ;
+
 <TimeUnit_cat> = <TimeUnit_1>
-                        | <TimeUnit_2> ;
+                        | <TimeUnit_2> | <TimeUnit_3> ;
 
 <Time_1> = tundi | minutit | sekundit ;
 
-<Time_2> = tundides | minutites | sekundites ;
+<Time_2> = tunnis | minutis | sekundis ;
 
-<Time_cat> = <Time_1> | <Time_2> ;
+<Time_3> = tundides | minutites | sekundites ;
+
+<Time_cat> = <Time_1> | <Time_2>
+                    | <Time_3> ;
 
 <Unknown_1> = <Sub10_1> | <Sub10_3> ;
 

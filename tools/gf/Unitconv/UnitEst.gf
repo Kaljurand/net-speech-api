@@ -1,16 +1,33 @@
 concrete UnitEst of Unit = PrefixEst ** open StringOper in {
 
 -- This is a lexicon of the words of measurement units in Estonian.
+-- Some examples:
+--   * meetrit
+--   * kilo meetrit
+--   * ruut meetrit
+--   * ruut kilo meetrit
+--   * meetrit sekundis
+--   * kilo meetrit sekundis
+--   * dollarit
+--   * ameerika dollarit
+--   * ameerika raha
+--
 -- In principle two forms of each word must be provided
 -- (singular partitiv and plural inessiv), but using the mk-function
 -- you can only provide the partitive form, the inessive will be
 -- generated automatically. If the mk-function fails to generate the
 -- correct inessive form then use the f-function to provide both forms
 -- (or improve the mk-function to handle the new paradigm).
+-- In some cases also the singular inessiv is required (e.g. "kilomeetrites *tunnis*").
+-- The mk-function generates that as well (and the f3-function allows one to
+-- override it), but in most cases this form is not used (and does not even end up in JSGF).
+--
+-- @author Kaarel Kaljurand
+-- @version 2011-10-01
 
 flags coding=utf8;
 
-param Case = SgPart | PlIn ;
+param Case = SgPart | SgIn | PlIn ;
 
 -- The f-function requires both forms (`SgPart` and `PlIn`)
 -- The mk-function is smart and only requires the "base" form (`SgPart`)
@@ -19,15 +36,35 @@ oper
 
 	prefix : Str -> CaseStr -> CaseStr = \x,y -> add_prefix x y;
 
+	f3 : Str -> Str -> Str -> CaseStr = \sg1,sg2,pl1 ->
+		{
+			s = table {
+				SgPart => sg1 ;
+				SgIn => sg2 ;
+				PlIn => pl1
+			}
+	};
+
 	f : Str -> Str -> CaseStr = \x,y ->
-		{ s = table { SgPart => x ; PlIn => y } };
-	mk : Str -> CaseStr = \w -> 
+		{
+			s = table {
+				SgPart => x ;
+				PlIn => y ;
+				_ => "NOT_IMPLEMENTED"
+			}
+	};
+
+	mk : Str -> CaseStr = \sg_part -> 
 		let 
-			ws : Str = case w of {
-				_ + ("a" | "e" | "i" | "o") => w + "des" ; -- jalga + des
-				_                           => w + "es"    -- liitrit + es
+			pl_in : Str = case sg_part of {
+				_ + ("a" | "e" | "i" | "o") => sg_part + "des" ; -- jalga + des
+				_                           => sg_part + "es"    -- liitrit + es
+			} ;
+			sg_in : Str = case sg_part of {
+				base + ("t")                => base + "s" ; -- sekundit -> sekundis
+				_                           => sg_part + "s" -- raha + s
 			} 
-		in f w ws;
+		in f3 sg_part sg_in pl_in;
 
 	mk_raha : Str -> CaseStr = \x ->
 		f (x ++ "raha") (x ++ "rahas") ;
@@ -48,7 +85,27 @@ oper
 	-- TODO: Maybe we should return a more complex structure with a field
 	-- for the prefix, instead of doing string concatenation here.
 	add_prefix : Str -> CaseStr -> CaseStr = \p,w ->
-		{ s = table { SgPart => p ++ (w.s ! SgPart) ; PlIn => p ++ (w.s ! PlIn) } };
+		{
+			s = table {
+				SgPart => p ++ (w.s ! SgPart) ;
+				SgIn => p ++ (w.s ! SgIn) ;
+				PlIn => p ++ (w.s ! PlIn)
+			}
+	};
+
+	-- Note that the compound expressions do not have the SgIn-form
+	-- so we will not implement it:
+	-- SgPart: (kolm) meetrit sekundis
+	-- PlIn: meetrites sekundis
+	-- SgIn: * meetris sekundis
+	mk_speed : CaseStr -> CaseStr -> CaseStr = \x,y ->
+		{
+			s = table {
+				SgPart => (x.s ! SgPart) ++ (y.s ! SgIn) ;
+				PlIn => (x.s ! PlIn) ++ (y.s ! SgIn) ;
+				_ => "NOT_NEEDED"
+			}
+		};
 
 lincat
 	Length, LengthUnit,
@@ -58,6 +115,7 @@ lincat
 	Area, AreaUnit,
 	Volume, VolumeUnit,
 	Frequency, FrequencyUnit,
+	Speed, SpeedUnit,
 	Currency, CurrencyUnit,
 	AngleUnit = CaseStr;
 
@@ -67,6 +125,7 @@ length_unit, mass_unit, time_unit, temperature_unit,
 area_unit,
 volume_unit,
 frequency_unit,
+speed_unit,
 currency_unit = id CaseStr ;
 
 prefixed_length_unit, prefixed_mass_unit,
@@ -77,6 +136,8 @@ prefixed_frequency_unit = prefix ;
 
 square = prefix "ruut";
 cube = prefix "kuup";
+
+speed = mk_speed;
 
 --Length
 meter = mk "meetrit";
@@ -95,7 +156,7 @@ cup_flour = f "tassi jahu" "jahu tassides";
 --Time
 second = mk "sekundit";
 minute = mk "minutit";
-hour = mk "tundi";
+hour = f3 "tundi" "tunnis" "tundides";
 
 --Temperature
 celsius = mk "kraadi";
@@ -112,6 +173,10 @@ cup = mk "tassi";
 --Frequency
 -- TODO: fix PlIn form once the server supports it
 hertz = f "hertsi" "hertsi";
+
+-- TODO: temporary hack (using f) because 'kiirustes' is not in dict
+the_speed_of_light = f "valgus kiirust" "valgus kiirustest";
+knot = mk "sõlme";
 
 --Angle
 --radian = mk "radiaani";

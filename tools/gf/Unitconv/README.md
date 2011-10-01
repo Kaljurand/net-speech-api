@@ -7,8 +7,10 @@ Introduction
 This grammar demonstrates:
 
   * modularity, e.g. numbers and SI prefixes are described in separate modules
-  * compositionality, e.g. SI prefixes can be easily applied to any units, area and
-    volume units can be built from any length units
+  * compositionality, e.g.
+    * SI prefixes can be easily applied to any units,
+    * area and volume units can be built from any length units,
+    * speed units are built by combining length and time units (km / h)
   * support for multiple wordforms of the same word (`meetrit', `meetrites')
   * using opers to share code
   * smart paradigms (i.e. generate PlIn automatically from SgPart)

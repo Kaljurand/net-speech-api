@@ -10,5 +10,6 @@ concrete UnitconvApp of Unitconv = decimal, UnitApp ** {
 	lin
 		main x y = {s = x.s ++ y.s} ;
 
-		length, mass, time, temperature, area, volume, angle, frequency, currency = c ;
+		length, mass, time, temperature, area, volume, angle, frequency,
+		conv_speed, currency = c ;
 }

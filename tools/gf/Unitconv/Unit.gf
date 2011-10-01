@@ -10,12 +10,14 @@ cat
 	Area ; AreaUnit ;
 	Volume ; VolumeUnit ;
 	Frequency ; FrequencyUnit ;
+	Speed ; SpeedUnit ;
 	AngleUnit ;
 	Currency ; CurrencyUnit ;
 
 fun
 	-- Some simple units can be SI-prefixed to make a prefixed unit
 	-- e.g. "meter" can be turned into "kilometer"
+	-- Some quantities can not have prefixed units, e.g. speed and currency
 	-- TODO: maybe require that the 2nd argument is a SI unit
 	prefixed_length_unit : Prefix -> Length -> LengthUnit ;
 	prefixed_mass_unit : Prefix -> Mass -> MassUnit ;
@@ -35,12 +37,18 @@ fun
 	area_unit : Area -> AreaUnit ;
 	volume_unit : Volume -> VolumeUnit ;
 	frequency_unit : Frequency -> FrequencyUnit ;
+	speed_unit : Speed -> SpeedUnit ;
 	currency_unit : Currency -> CurrencyUnit ;
 
-	-- The Length-unit (possibly prefixed) can be turned into
-	-- an Area-unit (square) or VolumeUnit (cube).
+	-- Length (possibly prefixed) can be turned into
+	-- Area (by square) or Volume (by cube), e.g.
+	-- m**2, cm**3
 	square : LengthUnit -> AreaUnit ;
 	cube : LengthUnit -> VolumeUnit ;
+
+	-- Speed is expressed by combining Length and Time, e.g.
+	-- km / h
+	speed : LengthUnit -> TimeUnit -> SpeedUnit ;
 
 	-- Simple units
 
@@ -58,6 +66,8 @@ fun
 	liter, cup : Volume ;
 
 	hertz : Frequency ;
+
+	the_speed_of_light, knot : Speed ;
 
 	-- radian
 	arcsecond, arcminute, degree : AngleUnit ;

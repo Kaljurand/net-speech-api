@@ -9,3 +9,6 @@
 3 NOK in NOK
 3 USD in USD
 3 m Hz in µ Hz
+3 m / s in k m / h
+3 c in k m / µ s
+3 k m / µ s in c
