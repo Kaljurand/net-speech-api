@@ -5,6 +5,15 @@ grammar UnitconvEst;
 
 public <MAIN> = <Main_cat> ;
 
+<AccelerationUnit_1> = <LengthUnit_1> ruut
+                       <TimeUnit_2> ;
+
+<AccelerationUnit_2> = <LengthUnit_2> ruut
+                       <TimeUnit_2> ;
+
+<AccelerationUnit_cat> = <AccelerationUnit_1>
+                                | <AccelerationUnit_2> ;
+
 <AngleUnit_1> = minutit | sekundit | kraadi ;
 
 <AngleUnit_2> = minutites | sekundites
@@ -30,6 +39,7 @@ public <MAIN> = <Main_cat> ;
 
 <Conv_1> = <AngleUnit_1> <AngleUnit_2>
            | <AreaUnit_1> <AreaUnit_2>
+           | <AccelerationUnit_1> <AccelerationUnit_2>
            | <SpeedUnit_1> <SpeedUnit_2>
            | <CurrencyUnit_1> <CurrencyUnit_2>
            | <FrequencyUnit_1> <FrequencyUnit_2>

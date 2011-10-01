@@ -2,8 +2,17 @@ concrete UnitApp of Unit = PrefixApp ** open StringOper in {
 
 flags coding=utf8;
 
+oper
+
+	simple_product : Str -> SS -> SS -> SS
+        = \n1,x,y -> ss (x.s ++ "*" ++ y.s ++ "**" ++ n1) ;
+
+	product : Str -> Str -> SS -> SS -> SS
+        = \n1,n2,x,y -> ss (x.s ++ "**" ++ n1 ++ "*" ++ y.s ++ "**" ++ n2) ;
+
+
 lincat
-	-- TODO: why do we use { s : Str } and not Str?
+	-- TODO: why do we use SS and not Str?
 	Length, LengthUnit,
 	Mass, MassUnit,
 	Time, TimeUnit,
@@ -12,8 +21,9 @@ lincat
 	Volume, VolumeUnit,
 	Frequency, FrequencyUnit,
 	Speed, SpeedUnit,
+	AccelerationUnit,
 	Currency, CurrencyUnit,
-	AngleUnit = {s : Str};
+	AngleUnit = SS;
 
 lin
 
@@ -33,6 +43,9 @@ square = postfixSS "**2";
 cube = postfixSS "**3";
 
 speed = infixSS "/";
+-- m*s-2, m/s², m·s-², m*s**-2
+--acceleration = product "1" "-2";
+acceleration = simple_product "-2";
 
 --Length
 meter = ss "m";

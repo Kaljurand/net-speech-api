@@ -98,11 +98,13 @@ oper
 	-- SgPart: (kolm) meetrit sekundis
 	-- PlIn: meetrites sekundis
 	-- SgIn: * meetris sekundis
-	mk_speed : CaseStr -> CaseStr -> CaseStr = \x,y ->
+	-- Note the first argument is used to provide "ruut" in case of
+	-- "meetrit ruut sekundis".
+	mk_meter_per_second : Str -> CaseStr -> CaseStr -> CaseStr = \p,x,y ->
 		{
 			s = table {
-				SgPart => (x.s ! SgPart) ++ (y.s ! SgIn) ;
-				PlIn => (x.s ! PlIn) ++ (y.s ! SgIn) ;
+				SgPart => (x.s ! SgPart) ++ p ++ (y.s ! SgIn) ;
+				PlIn => (x.s ! PlIn) ++ p ++ (y.s ! SgIn) ;
 				_ => "NOT_NEEDED"
 			}
 		};
@@ -116,6 +118,7 @@ lincat
 	Volume, VolumeUnit,
 	Frequency, FrequencyUnit,
 	Speed, SpeedUnit,
+	AccelerationUnit,
 	Currency, CurrencyUnit,
 	AngleUnit = CaseStr;
 
@@ -137,7 +140,8 @@ prefixed_frequency_unit = prefix ;
 square = prefix "ruut";
 cube = prefix "kuup";
 
-speed = mk_speed;
+speed = mk_meter_per_second "";
+acceleration = mk_meter_per_second "ruut";
 
 --Length
 meter = mk "meetrit";

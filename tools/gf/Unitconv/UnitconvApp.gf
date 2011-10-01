@@ -11,5 +11,5 @@ concrete UnitconvApp of Unitconv = decimal, UnitApp ** {
 		main x y = {s = x.s ++ y.s} ;
 
 		length, mass, time, temperature, area, volume, angle, frequency,
-		conv_speed, currency = c ;
+		conv_speed, conv_acceleration, currency = c ;
 }

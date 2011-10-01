@@ -12,3 +12,4 @@ kaks milli liitrit mikro tassides
 kaks mega hektarit ruut kilo meetrites
 viis sada kuup senti meetrit kuup mikro jalgades 
 kaks kilo meetrit milli sekundis milli meetrites mikro sekundis
+kaks kilo meetrit ruut milli sekundis milli meetrites ruut mikro sekundis

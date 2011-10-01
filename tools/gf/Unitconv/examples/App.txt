@@ -12,3 +12,4 @@
 3 m / s in k m / h
 3 c in k m / µ s
 3 k m / µ s in c
+3 m * s ** -2 in k m * µ s ** -2

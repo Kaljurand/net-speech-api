@@ -11,6 +11,7 @@ cat
 	Volume ; VolumeUnit ;
 	Frequency ; FrequencyUnit ;
 	Speed ; SpeedUnit ;
+	AccelerationUnit ;
 	AngleUnit ;
 	Currency ; CurrencyUnit ;
 
@@ -46,9 +47,10 @@ fun
 	square : LengthUnit -> AreaUnit ;
 	cube : LengthUnit -> VolumeUnit ;
 
-	-- Speed is expressed by combining Length and Time, e.g.
-	-- km / h
+	-- Speed and Acceleration are expressed by combining Length and Time, e.g.
+	-- km / h, km*m**-2
 	speed : LengthUnit -> TimeUnit -> SpeedUnit ;
+	acceleration : LengthUnit -> TimeUnit -> AccelerationUnit ;
 
 	-- Simple units
 

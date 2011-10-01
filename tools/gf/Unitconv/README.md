@@ -26,7 +26,6 @@ TODO:
   * add units with s~/z~
   * "large" vocabulary (hundreds of terminals)
   * "large" grammar (many productions?)
-  * support "100 ruut senti meetrit sekundis ruut kilo meetrites tunnis" (requires support for SgIn)
   * handling rare (but legal?) forms like "kilo minut"
   * does attaching of probabilities work (in GF, in GF->JSGF, in JSGF->FSA)
   * lexing and unlexing (writing of numbers) (maybe use binding in the decimal grammar?)

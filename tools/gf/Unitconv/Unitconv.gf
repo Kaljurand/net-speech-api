@@ -29,6 +29,7 @@ fun
 
 	frequency : FrequencyUnit -> FrequencyUnit -> Conv ;
 	conv_speed : SpeedUnit -> SpeedUnit -> Conv ;
+	conv_acceleration : AccelerationUnit -> AccelerationUnit -> Conv ;
 
 	-- Currency conversion
 	currency : CurrencyUnit -> CurrencyUnit -> Conv ;
