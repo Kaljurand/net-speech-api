@@ -26,6 +26,8 @@ path=$2
 # Generate JSGF for the given concrete syntax
 echo "Generating ${jsgf}..."
 gf -make --optimize-pgf --path $path --output-format=jsgf $1
+#gf -make --verbose=3 --optimize-pgf --path $path --output-format=slf $1
+#gf -make --optimize-pgf --path $path --output-format=srgs_abnf $1
 
 echo "Converting it to Latin1 encoding..."
 # Convert the JSGF grammar from UTF8 to Latin1 to be compatible

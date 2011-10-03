@@ -118,7 +118,7 @@ public <MAIN> = <Calc_cat> ;
 
 <Energy_cat> = <Energy_1> | <Energy_2> ;
 
-<Exp_1> = <Exp_4> <Exp_2> | <Exp_5> <Exp_2> ;
+<Exp_1> = <Exp_4> <Exp_2> ;
 
 <Exp_2> = <Exp_3> ;
 
@@ -127,6 +127,7 @@ public <MAIN> = <Calc_cat> ;
           | miinus <Unknown_4> | miinus ( <Exp_1> )
           | korda <Unknown_4> | korda ( <Exp_1> )
           | pluss <Unknown_4> | pluss ( <Exp_1> )
+          | astmel <Unknown_4> | astmel ( <Exp_1> )
           | jagatud <Unknown_4> <Exp_2>
             | jagatud ( <Exp_1> ) <Exp_2>
           | miinus <Unknown_4> <Exp_2>
@@ -134,16 +135,13 @@ public <MAIN> = <Calc_cat> ;
           | korda <Unknown_4> <Exp_2>
             | korda ( <Exp_1> ) <Exp_2>
           | pluss <Unknown_4> <Exp_2>
-            | pluss ( <Exp_1> ) <Exp_2> ;
+            | pluss ( <Exp_1> ) <Exp_2>
+          | astmel <Unknown_4> <Exp_2>
+            | astmel ( <Exp_1> ) <Exp_2> ;
 
-<Exp_4> = <Unknown_5> astmel <Unknown_4>
-          | <Unknown_5> astmel ( <Unknown_6> )
-          | ( <Unknown_7> ) astmel <Unknown_4>
-          | ( <Unknown_7> ) astmel ( <Unknown_6> ) ;
+<Exp_4> = <Numeral_1> ;
 
-<Exp_5> = <Numeral_1> ;
-
-<Exp_cat> = <Exp_1> | <Exp_4> | <Exp_5> ;
+<Exp_cat> = <Exp_1> | <Exp_4> ;
 
 <FrequencyUnit_1> = <Frequency_1>
                     | <Prefix_1> <Frequency_1> ;
@@ -234,8 +232,8 @@ public <MAIN> = <Calc_cat> ;
 
 <Speed_cat> = <Speed_1> | <Speed_2> ;
 
-<Sub1000000_1> = <Unknown_10> | <Unknown_11> tuhat
-                 | <Unknown_11> tuhat <Unknown_10> ;
+<Sub1000000_1> = <Unknown_7> | <Unknown_8> tuhat
+                 | <Unknown_8> tuhat <Unknown_7> ;
 
 <Sub1000000_cat> = <Sub1000000_1> ;
 
@@ -243,11 +241,11 @@ public <MAIN> = <Calc_cat> ;
 
 <Sub1000_2> = <Sub100_2> ;
 
-<Sub1000_3> = <Sub100_3> | <Unknown_9> sada
-              | <Unknown_9> sada <Unknown_12> ;
+<Sub1000_3> = <Sub100_3> | <Unknown_6> sada
+              | <Unknown_6> sada <Unknown_9> ;
 
-<Sub1000_4> = <Sub100_4> | <Unknown_9> sada
-              | <Unknown_9> sada <Unknown_12> ;
+<Sub1000_4> = <Sub100_4> | <Unknown_6> sada
+              | <Unknown_6> sada <Unknown_9> ;
 
 <Sub1000_cat> = <Sub1000_1> | <Sub1000_2>
                        | <Sub1000_3> | <Sub1000_4> ;
@@ -257,11 +255,11 @@ public <MAIN> = <Calc_cat> ;
 <Sub100_2> = <Sub10_2> ;
 
 <Sub100_3> = <Sub10_3> | <Digit_1> kümmend | kümme
-             | üks teist | <Digit_1> kümmend <Unknown_8>
+             | üks teist | <Digit_1> kümmend <Unknown_5>
              | <Digit_1> teist ;
 
 <Sub100_4> = <Sub10_3> | <Digit_1> kümmend | kümme
-             | üks teist | <Digit_1> kümmend <Unknown_8>
+             | üks teist | <Digit_1> kümmend <Unknown_5>
              | <Digit_1> teist ;
 
 <Sub100_cat> = <Sub100_1> | <Sub100_2>
@@ -314,14 +312,7 @@ public <MAIN> = <Calc_cat> ;
 <Time_cat> = <Time_1> | <Time_2>
                     | <Time_3> ;
 
-<Unknown_1> = <Exp_4> <Unknown_2>
-              | <Exp_5> <Unknown_2> ;
-
-<Unknown_10> = <Sub1000_1> | <Sub1000_3> ;
-
-<Unknown_11> = <Sub1000_2> | <Sub1000_4> ;
-
-<Unknown_12> = <Sub100_1> | <Sub100_3> ;
+<Unknown_1> = <Exp_4> <Unknown_2> ;
 
 <Unknown_2> = <Unknown_3> | <NULL> ;
 
@@ -332,19 +323,21 @@ public <MAIN> = <Calc_cat> ;
               | korda <Unknown_4> <Unknown_2>
                 | korda ( <Exp_1> ) <Unknown_2>
               | pluss <Unknown_4> <Unknown_2>
-                | pluss ( <Exp_1> ) <Unknown_2> ;
+                | pluss ( <Exp_1> ) <Unknown_2>
+              | astmel <Unknown_4> <Unknown_2>
+                | astmel ( <Exp_1> ) <Unknown_2> ;
 
-<Unknown_4> = <Exp_4> | <Exp_5> ;
+<Unknown_4> = <Exp_4> ;
 
-<Unknown_5> = <Exp_5> ;
+<Unknown_5> = <Sub10_1> | <Sub10_3> ;
 
-<Unknown_6> = <Exp_1> ;
+<Unknown_6> = <Sub10_2> | <Sub10_3> ;
 
-<Unknown_7> = <Exp_1> | <Exp_4> ;
+<Unknown_7> = <Sub1000_1> | <Sub1000_3> ;
 
-<Unknown_8> = <Sub10_1> | <Sub10_3> ;
+<Unknown_8> = <Sub1000_2> | <Sub1000_4> ;
 
-<Unknown_9> = <Sub10_2> | <Sub10_3> ;
+<Unknown_9> = <Sub100_1> | <Sub100_3> ;
 
 <VolumeUnit_1> = kuup <LengthUnit_1>
                  | <Prefix_1> <Volume_1> | <Volume_1> ;

@@ -92,13 +92,13 @@ kaks pluss kolm korda neli
 ( ( ( ( 1 + 2 ) - 3 ) * 4 ) / 5 )
 üks pluss kaks miinus kolm korda neli jagatud viis
 
-( 2 + ( 3 ^ 4 ) )
+( ( 2 + 3 ) ^ 4 )
 kaks pluss kolm astmel neli
 
-( 2 ^ ( 3 ^ 4 ) )
+( ( 2 ^ 3 ) ^ 4 )
 kaks astmel kolm astmel neli
 
-( ( 2 + ( 3 ^ 4 ) ) * 5 )
+( ( ( 2 + 3 ) ^ 4 ) * 5 )
 kaks pluss kolm astmel neli korda viis
 
 
