@@ -23,7 +23,7 @@ concrete UnitEst of Unit = PrefixEst ** open StringOper in {
 -- override it), but in most cases this form is not used (and does not even end up in JSGF).
 --
 -- @author Kaarel Kaljurand
--- @version 2011-10-01
+-- @version 2011-10-03
 
 flags coding=utf8;
 
@@ -61,7 +61,7 @@ oper
 				_                           => sg_part + "es"    -- liitrit + es
 			} ;
 			sg_in : Str = case sg_part of {
-				base + ("t")                => base + "s" ; -- sekundit -> sekundis
+				base + ("t" | "d")          => base + "s" ; -- sekundit -> sekundis
 				_                           => sg_part + "s" -- raha + s
 			} 
 		in f3 sg_part sg_in pl_in;
@@ -151,22 +151,29 @@ acceleration = mk_meter_per_second "ruut";
 
 --Length
 meter = mk "meetrit";
---inch = mk "tolli";
+inch = mk "tolli";
 foot = mk "jalga";
---yard = mk "jardi";
+yard = mk "jardi";
 mile = mk "miili";
 
 --Mass
 gram = mk "grammi";
---ounce = mk "untsi";
+ounce = mk "untsi";
 pound = mk "naela";
 ton = mk "tonni";
 cup_flour = f "tassi jahu" "jahu tassides";
 
 --Time
+-- TODO: replace "asja"
 second = mk "sekundit";
 minute = mk "minutit";
 hour = f3 "tundi" "tunnis" "tundides";
+day = mk "päeva";
+week = mk "asja";
+month = mk "kuud";
+year = mk "aastat";
+decade = mk "asja";
+century = mk "asja";
 
 --Temperature
 celsius = mk "kraadi";
@@ -176,30 +183,27 @@ hectare = mk "hektarit";
 
 --Volume
 liter = mk "liitrit";
---pint = mk "pinti";
---gallon = mk "gallonit";
+pint = mk "pinti";
+gallon = mk "gallonit";
 cup = mk "tassi";
 
 --Frequency
--- TODO: fix PlIn form once the server supports it
-hertz = f "hertsi" "hertsi";
+hertz = mk "hertsi";
 
--- TODO: temporary hack (using f) because 'kiirustes' is not in dict
-the_speed_of_light = f "valgus kiirust" "valgus kiirustest";
+the_speed_of_light = mk "valgus kiirust";
 knot = mk "sõlme";
 
 -- Energy
--- TODO: fix bugs
-joule = mk "viga";
-calorie = mk "viga";
+-- TODO: use Unicode!
+joule = mk "dz~auli";
+calorie = mk "kalorit";
 watt_hour = mk "vatt tundi";
 
 -- Power
--- TODO: fix bugs
-watt = mk "viga";
+watt = mk "vatti";
 
 --Angle
---radian = mk "radiaani";
+radian = mk "radiaani";
 arcsecond = mk "sekundit";
 arcminute = mk "minutit";
 degree = mk "kraadi";

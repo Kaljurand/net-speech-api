@@ -14,10 +14,11 @@ public <MAIN> = <Main_cat> ;
 <AccelerationUnit_cat> = <AccelerationUnit_1>
                                 | <AccelerationUnit_2> ;
 
-<AngleUnit_1> = minutit | sekundit | kraadi ;
+<AngleUnit_1> = minutit | sekundit | kraadi
+                | radiaani ;
 
-<AngleUnit_2> = minutites | sekundites
-                | kraadides ;
+<AngleUnit_2> = minutites | sekundites | kraadides
+                | radiaanides ;
 
 <AngleUnit_cat> = <AngleUnit_1>
                          | <AngleUnit_2> ;
@@ -106,24 +107,28 @@ public <MAIN> = <Main_cat> ;
 <EnergyUnit_cat> = <EnergyUnit_1>
                           | <EnergyUnit_2> ;
 
-<Energy_1> = viga | viga | vatt tundi ;
+<Energy_1> = kalorit | dz~auli | vatt tundi ;
 
-<Energy_2> = vigades | vigades | vatt tundides ;
+<Energy_2> = kalorites | dz~aulides
+             | vatt tundides ;
 
 <Energy_cat> = <Energy_1> | <Energy_2> ;
 
 <FrequencyUnit_1> = <Frequency_1>
                     | <Prefix_1> <Frequency_1> ;
 
-<FrequencyUnit_2> = <Frequency_1>
-                    | <Prefix_1> <Frequency_1> ;
+<FrequencyUnit_2> = <Frequency_2>
+                    | <Prefix_1> <Frequency_2> ;
 
 <FrequencyUnit_cat> = <FrequencyUnit_1>
                              | <FrequencyUnit_2> ;
 
 <Frequency_1> = hertsi ;
 
-<Frequency_cat> = <Frequency_1> ;
+<Frequency_2> = hertsides ;
+
+<Frequency_cat> = <Frequency_1>
+                         | <Frequency_2> ;
 
 <LengthUnit_1> = <Length_1>
                  | <Prefix_1> <Length_1> ;
@@ -134,9 +139,11 @@ public <MAIN> = <Main_cat> ;
 <LengthUnit_cat> = <LengthUnit_1>
                           | <LengthUnit_2> ;
 
-<Length_1> = jalga | meetrit | miili ;
+<Length_1> = jalga | tolli | meetrit | miili
+             | jardi ;
 
-<Length_2> = jalgades | meetrites | miilides ;
+<Length_2> = jalgades | tollides | meetrites
+             | miilides | jardides ;
 
 <Length_cat> = <Length_1> | <Length_2> ;
 
@@ -151,10 +158,11 @@ public <MAIN> = <Main_cat> ;
 <MassUnit_cat> = <MassUnit_1>
                         | <MassUnit_2> ;
 
-<Mass_1> = tassi jahu | grammi | naela | tonni ;
+<Mass_1> = tassi jahu | grammi | untsi | naela
+           | tonni ;
 
-<Mass_2> = jahu tassides | grammides | naelades
-           | tonnides ;
+<Mass_2> = jahu tassides | grammides | untsides
+           | naelades | tonnides ;
 
 <Mass_cat> = <Mass_1> | <Mass_2> ;
 
@@ -169,9 +177,9 @@ public <MAIN> = <Main_cat> ;
 <PowerUnit_cat> = <PowerUnit_1>
                          | <PowerUnit_2> ;
 
-<Power_1> = viga ;
+<Power_1> = vatti ;
 
-<Power_2> = vigades ;
+<Power_2> = vattides ;
 
 <Power_cat> = <Power_1> | <Power_2> ;
 
@@ -191,7 +199,7 @@ public <MAIN> = <Main_cat> ;
 
 <Speed_1> = sõlme | valgus kiirust ;
 
-<Speed_2> = sõlmedes | valgus kiirustest ;
+<Speed_2> = sõlmedes | valgus kiirustes ;
 
 <Speed_cat> = <Speed_1> | <Speed_2> ;
 
@@ -262,11 +270,15 @@ public <MAIN> = <Main_cat> ;
 <TimeUnit_cat> = <TimeUnit_1>
                         | <TimeUnit_2> | <TimeUnit_3> ;
 
-<Time_1> = tundi | minutit | sekundit ;
+<Time_1> = asja | päeva | asja | tundi | minutit
+           | kuud | sekundit | asja | aastat ;
 
-<Time_2> = tunnis | minutis | sekundis ;
+<Time_2> = asjas | päevas | asjas | tunnis
+           | minutis | kuus | sekundis | asjas | aastas ;
 
-<Time_3> = tundides | minutites | sekundites ;
+<Time_3> = asjades | päevades | asjades | tundides
+           | minutites | kuudes | sekundites | asjades
+           | aastates ;
 
 <Time_cat> = <Time_1> | <Time_2>
                     | <Time_3> ;
@@ -290,8 +302,9 @@ public <MAIN> = <Main_cat> ;
 <VolumeUnit_cat> = <VolumeUnit_1>
                           | <VolumeUnit_2> ;
 
-<Volume_1> = tassi | liitrit ;
+<Volume_1> = tassi | gallonit | liitrit | pinti ;
 
-<Volume_2> = tassides | liitrites ;
+<Volume_2> = tassides | gallonites | liitrites
+             | pintides ;
 
 <Volume_cat> = <Volume_1> | <Volume_2> ;

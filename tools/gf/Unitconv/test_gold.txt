@@ -1,53 +1,53 @@
 Parsing examples/Est.txt
 -------
-2 m in ft
+2 m IN ft
 
 kaks meetrit jalgades
 
 
 
-3 0 0 0 L in cup_us
+3 0 0 0 L IN cup_us
 
 kolm tuhat liitrit tassides
 
 
 
-1 1 1 1 1 0 flour-cup in flour-cup
+1 1 1 1 1 0 flour-cup IN flour-cup
 
 sada üks teist tuhat sada kümme tassi jahu jahu tassides
 
 
 
-1 2 ft in ft
+1 2 ft IN ft
 
 kaks teist jalga jalgades
 
 
 
-5 ' in ''
+5 ' IN ''
 
 viis minutit sekundites
 
 
-5 min in s
+5 min IN s
 
 viis minutit sekundites
 
 
 
-2 ha in k m **2
+2 ha IN k m **2
 
 kaks hektarit ruut kilo meetrites
 
 
 
-2 k m in c m
+2 k m IN c m
 
 kaks kilo meetrit senti meetrites
 
 
 
-2 NOK in EEK
+2 NOK IN EEK
 
 kaks norra krooni kroonides
 
@@ -67,7 +67,7 @@ kaks norra raha vanas rahas
 
 
 
-2 NOK in EEK
+2 NOK IN EEK
 
 kaks norra krooni kroonides
 
@@ -87,7 +87,7 @@ kaks norra raha vanas rahas
 
 
 
-2 EEK in USD
+2 EEK IN USD
 
 kaks krooni dollarites
 
@@ -115,43 +115,43 @@ kaks vana raha ameerika rahas
 
 
 
-2 m L in µ cup_us
+2 m L IN µ cup_us
 
 kaks milli liitrit mikro tassides
 
 
 
-2 M ha in k m **2
+2 M ha IN k m **2
 
 kaks mega hektarit ruut kilo meetrites
 
 
 
-5 0 0 c m **3 in µ ft **3
+5 0 0 c m **3 IN µ ft **3
 
 viis sada kuup senti meetrit kuup mikro jalgades
 
 
 
-2 k m / m s in m m / µ s
+2 k m / m s IN m m / µ s
 
 kaks kilo meetrit milli sekundis milli meetrites mikro sekundis
 
 
 
-2 k m * m s ** -2 in m m * µ s ** -2
+2 k m * m s ** -2 IN m m * µ s ** -2
 
 kaks kilo meetrit ruut milli sekundis milli meetrites ruut mikro sekundis
 
 
 
-2 k W ⋅ h in M W ⋅ h
+2 k W h IN M W h
 
 kaks kilo vatt tundi mega vatt tundides
 
 
 
-2 CHF in RUB
+2 CHF IN RUB
 
 kaks franki rublades
 
@@ -175,49 +175,49 @@ kaks s~veitsi raha vene rahas
 
 Parsing examples/App.txt
 -------
-2 m in ft
+2 m IN ft
 
 kaks meetrit jalgades
 
 
 
-1 0 0 0 m °C in °C
+1 0 0 0 m °C IN °C
 
 tuhat milli kraadi kraadides
 
 
 
-2 k m **2 in ha
+2 k m **2 IN ha
 
 kaks ruut kilo meetrit hektarites
 
 
 
-3 m m in µ m
+3 m m IN µ m
 
 kolm milli meetrit mikro meetrites
 
 
 
-3 k g in n g
+3 k g IN n g
 
 kolm kilo grammi nano grammides
 
 
 
-3 k h in n s
+3 k h IN n s
 
 kolm kilo tundi nano sekundites
 
 
 
-3 °C in m °C
+3 °C IN m °C
 
 kolm kraadi milli kraadides
 
 
 
-3 EEK in EUR
+3 EEK IN EUR
 
 kolm krooni eurodes
 
@@ -229,7 +229,7 @@ kolm vana raha eurodes
 
 
 
-3 NOK in NOK
+3 NOK IN NOK
 
 kolm norra krooni norra kroonides
 
@@ -241,7 +241,7 @@ kolm norra raha norra rahas
 
 
 
-3 USD in USD
+3 USD IN USD
 
 kolm dollarit dollarites
 
@@ -263,33 +263,39 @@ kolm ameerika raha ameerika rahas
 
 
 
-3 m Hz in µ Hz
+3 m Hz IN µ Hz
 
-kolm milli hertsi mikro hertsi
+kolm milli hertsi mikro hertsides
 
 
 
-3 m / s in k m / h
+3 m / s IN k m / h
 
 kolm meetrit sekundis kilo meetrites tunnis
 
 
 
-3 c in k m / µ s
+3 c IN k m / µ s
 
 kolm valgus kiirust kilo meetrites mikro sekundis
 
 
 
-3 k m / µ s in c
+3 k m / µ s IN c
 
-kolm kilo meetrit mikro sekundis valgus kiirustest
+kolm kilo meetrit mikro sekundis valgus kiirustes
 
 
 
-3 m * s ** -2 in k m * µ s ** -2
+3 m * s ** -2 IN k m * µ s ** -2
 
 kolm meetrit ruut sekundis kilo meetrites ruut mikro sekundis
+
+
+
+3 in IN ft
+
+kolm tolli jalgades
 
 
 

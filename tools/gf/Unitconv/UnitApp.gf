@@ -57,9 +57,12 @@ acceleration = simple_product "-2";
 meter = ss "m";
 foot = ss "ft";
 mile = ss "mile";
+inch = ss "in";
+yard = ss "yard";
 
 --Mass
 gram = ss "g";
+ounce = ss "oz";
 pound = ss "lb";
 ton = ss "t";
 cup_flour = ss "flour-cup";
@@ -68,6 +71,13 @@ cup_flour = ss "flour-cup";
 second = ss "s";
 minute = ss "min";
 hour = ss "h";
+day = ss "day";
+week = ss "week";
+month = ss "month";
+year = ss "year";
+decade = ss "decade";
+century = ss "century";
+
 
 --Temperature
 celsius = ss "°C";
@@ -77,6 +87,8 @@ hectare = ss "ha";
 
 --Volume
 liter = ss "L";
+pint = ss "pint";
+gallon = ss "gal";
 cup = ss "cup_us";
 
 --Frequency
@@ -88,14 +100,15 @@ knot = ss "knot";
 
 -- Energy
 joule = ss "J";
-calorie = ss "Cal";
-watt_hour = infixSS "⋅" watt hour;
+calorie = ss "cal";
+-- watt_hour = infixSS "⋅" watt hour;
+watt_hour = infixSS "" watt hour;
 
 -- Power
 watt = ss "W";
 
 --Angle
---radian = ss "rad";
+radian = ss "rad";
 arcsecond = ss "''";
 arcminute = ss "'";
 degree = ss "°";

@@ -1,15 +1,16 @@
-2 m in ft
-1 0 0 0 m °C in °C
-2 k m **2 in ha
-3 m m in µ m
-3 k g in n g
-3 k h in n s
-3 °C in m °C
-3 EEK in EUR
-3 NOK in NOK
-3 USD in USD
-3 m Hz in µ Hz
-3 m / s in k m / h
-3 c in k m / µ s
-3 k m / µ s in c
-3 m * s ** -2 in k m * µ s ** -2
+2 m IN ft
+1 0 0 0 m °C IN °C
+2 k m **2 IN ha
+3 m m IN µ m
+3 k g IN n g
+3 k h IN n s
+3 °C IN m °C
+3 EEK IN EUR
+3 NOK IN NOK
+3 USD IN USD
+3 m Hz IN µ Hz
+3 m / s IN k m / h
+3 c IN k m / µ s
+3 k m / µ s IN c
+3 m * s ** -2 IN k m * µ s ** -2
+3 in IN ft

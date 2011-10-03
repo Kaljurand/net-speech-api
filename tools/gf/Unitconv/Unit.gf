@@ -1,6 +1,11 @@
 abstract Unit = Prefix ** {
 
--- Here one must register all the measurement units and their types.
+-- This is a registry of the measurement units and their quantities.
+-- Wikpedia: "Length is a physical quantity. Metre is a unit of length that
+-- represents a definite predetermined length."
+
+-- @author Kaarel Kaljurand
+-- @version 2011-10-03
 
 cat
 	Length ; LengthUnit ;
@@ -24,6 +29,7 @@ fun
 	-- TODO: maybe require that the 2nd argument is a SI unit
 	prefixed_length_unit : Prefix -> Length -> LengthUnit ;
 	prefixed_mass_unit : Prefix -> Mass -> MassUnit ;
+	-- TODO: maybe not prefix time (*kilo year)
 	prefixed_time_unit : Prefix -> Time -> TimeUnit ;
 	prefixed_temperature_unit : Prefix -> Temperature -> TemperatureUnit ;
 	prefixed_area_unit : Prefix -> Area -> AreaUnit ;
@@ -60,18 +66,17 @@ fun
 
 	-- Simple units
 
-	-- TODO: inch, yard
-	meter, foot, mile : Length ;
-	-- TODO: ounce
-	gram, pound, ton, cup_flour : Mass ;
-	second, minute, hour : Time ;
+	meter, foot, inch, yard, mile : Length ;
+	gram, ounce, pound, ton, cup_flour : Mass ;
+	second, minute, hour, day, week, month, year, decade, century : Time ;
 	celsius : Temperature;
 
-	-- Only units which cannot be constructed from a length unit,
+	-- Only the Area units which are not constructed from a length unit,
 	-- i.e. we have `hectare` here but not `square meter`.
 	hectare : Area ;
-	-- TODO: gallon, pint
-	liter, cup : Volume ;
+
+	-- Only the Volume units which are not constructed from Length (e.g. cm^3)
+	liter, gallon, pint, cup : Volume ;
 
 	hertz : Frequency ;
 
@@ -82,8 +87,7 @@ fun
 
 	the_speed_of_light, knot : Speed ;
 
-	-- radian
-	arcsecond, arcminute, degree : AngleUnit ;
+	radian, arcsecond, arcminute, degree : AngleUnit ;
 
 	usd, cad, gbp, aud, nzd, eur, chf, jpy, nok, sek, dkk, isk, rub : Currency ;
 	eek : Currency ;

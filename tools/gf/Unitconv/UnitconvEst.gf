@@ -9,7 +9,7 @@ concrete UnitconvEst of Unitconv = estonian, UnitEst ** {
 	lincat Main, Conv = {s : Str};
 
 	lin
-		main x y = { s = x.s ++ y.s };
+		main num conv = { s = num.s ++ conv.s } ;
 		length, mass, time, temperature, area, volume, angle, frequency,
 		conv_speed, conv_acceleration,
 		conv_energy, conv_power, currency = c ;

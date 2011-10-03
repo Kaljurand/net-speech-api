@@ -19,6 +19,10 @@ This grammar demonstrates:
 
 TODO:
 
+  * support numbers with a comma
+  * ambiguity as a UI technique
+  * complex conversions, e.g. cost of a time-limited service (internet, parking):
+    * "50 cents per 10 minutes in euros per 2 hours"
   * discuss if it makes sense to support variants like {naelades | naeltes},
     { meetritesse | meetriteks }. Since these variants sound similar, we can also
     rely on the speech recognizer robustness (i.e. it would convert a spoken
