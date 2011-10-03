@@ -36,7 +36,7 @@ fun main : Main;
 
 concrete = """concrete <NAME_ABSTRACT><NAME_LANG> of <NAME_ABSTRACT> = {
 
--- <NAME_LANG> is ...
+-- <NAME_ABSTRACT><NAME_LANG> is ...
 --
 -- @author
 -- @version
@@ -63,7 +63,7 @@ examples="examples/"
 e_f="${examples}<NAME_LANG>.txt"
 
 # These are the actual tests
-cat ${e_f} | sed "s/^/p -lang=${l} \\"/" | sed 's/$/" | l -all/' | gf --run --path $path ${l_f}
+cat ${e_f} | sed "s/^/p -tr -lang=${l} \\"/" | sed 's/$/" | l -all/' | gf --run --path $path ${l_f}
 """
 
 
