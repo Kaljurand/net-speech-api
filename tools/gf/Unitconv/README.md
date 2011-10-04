@@ -20,6 +20,8 @@ This grammar demonstrates:
 TODO:
 
   * support numbers with a comma
+  * put Estonian-specific opers into a separate library and structure in the style of RGL
+  * put currencies into a separate module
   * combining Unitconv with Exp, possibilities:
     * simple union, creating a new language (Unitconv + Exp) (will need 2 startcats?);
     * Unitconv uses expressions instead of numbers;
@@ -40,6 +42,14 @@ TODO:
   * exclude repetitions like "12 liters in liters"
   * use dependent types in unit type checking
   * demonstrate and discuss the limitations of FSA and CFG in expressivity (compared to GF)
+  * does it make sense to write FSA-optimized versions for each grammar, i.e. so that we have e.g.
+    * CalcApp (executable code),
+    * CalcEst (used to generate App),
+    * CalcEstFSA (used ONLY by the speech recognizer),
+    where CalcEst and CalcEstFSA recognize the exact same language but can assign different parse
+    trees, e.g. "a + b ^ c * d" could be parsed as
+    * (a + (b ^ (c * d)))
+    * ((a + (b ^ c)) * d)
 
 
 How to add a new unit to the grammar
