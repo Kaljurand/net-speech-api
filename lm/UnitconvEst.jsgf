@@ -114,6 +114,11 @@ public <MAIN> = <Main_cat> ;
 
 <Energy_cat> = <Energy_1> | <Energy_2> ;
 
+<Fraction_1> = <Numeral_1>
+               | <Numeral_1> koma <Numeral_1> ;
+
+<Fraction_cat> = <Fraction_1> ;
+
 <FrequencyUnit_1> = <Frequency_1>
                     | <Prefix_1> <Frequency_1> ;
 
@@ -147,7 +152,7 @@ public <MAIN> = <Main_cat> ;
 
 <Length_cat> = <Length_1> | <Length_2> ;
 
-<Main_1> = <Numeral_1> <Conv_1> ;
+<Main_1> = <Fraction_1> <Conv_1> ;
 
 <Main_cat> = <Main_1> ;
 
@@ -166,7 +171,7 @@ public <MAIN> = <Main_cat> ;
 
 <Mass_cat> = <Mass_1> | <Mass_2> ;
 
-<Numeral_1> = <Sub1000000_1> ;
+<Numeral_1> = null | <Sub1000000_1> ;
 
 <Numeral_cat> = <Numeral_1> ;
 

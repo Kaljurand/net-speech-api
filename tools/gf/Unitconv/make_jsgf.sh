@@ -5,27 +5,32 @@
 #
 # Usage:
 #
-# sh make_jsgf.sh UnitconvEst.gf
+# sh make_jsgf.sh CalcEst.gf "../lib/"
 #
 # Note: because of `recode` this script can only
 # be applied to files that are in the same directory with it.
 # TODO: fix this problem
 #
 # @author Kaarel Kaljurand
-# @version 2011-09-21
+# @version 2011-10-04
 
-if [ $# -ne 1 ]
+if [ $# -ne 2 ]
 then
-	echo "Usage: sh make_jsgf.sh <gf-file>"
+	echo "Usage: sh make_jsgf.sh <gf-file> <path>"
 	exit
 fi
 
 jsgf="${1%.*}.jsgf"
-path="../lib/:../Numerals/"
+path=$2
 
 # Generate JSGF for the given concrete syntax
 echo "Generating ${jsgf}..."
 gf -make --optimize-pgf --path $path --output-format=jsgf $1
+#gf -make --verbose=3 --optimize-pgf --path $path --output-format=slf $1
+#gf -make --optimize-pgf --path $path --output-format=srgs_abnf $1
+# --prof
+# --output-file=FILE
+# --output-dir=${dir_jsgf}
 
 echo "Converting it to Latin1 encoding..."
 # Convert the JSGF grammar from UTF8 to Latin1 to be compatible

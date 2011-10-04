@@ -1,4 +1,4 @@
-abstract Unitconv = Numerals, Unit ** {
+abstract Unitconv = Fraction, Unit ** {
 
 flags startcat = Main ;
 
@@ -8,7 +8,7 @@ cat
 
 fun
 	-- Quantified unit conversion
-	main : Numeral -> Conv -> Main ;
+	main : Fraction -> Conv -> Main ;
 
 	-- Type-aware unit conversion
 	-- TODO: use dependent types

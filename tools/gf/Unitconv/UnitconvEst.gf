@@ -1,4 +1,4 @@
-concrete UnitconvEst of Unitconv = estonian, UnitEst ** {
+concrete UnitconvEst of Unitconv = FractionEst, UnitEst ** {
 
 	flags coding=utf8;
 

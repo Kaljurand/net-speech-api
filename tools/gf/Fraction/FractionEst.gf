@@ -1,8 +1,10 @@
+--# -path=lib:Numerals
+
 concrete FractionEst of Fraction = estonian ** open StringOper in {
 
 flags coding = utf8;
 
-lincat Fraction = { s : Str };
+lincat Fraction = SS;
 
 lin
 	null = ss "null";

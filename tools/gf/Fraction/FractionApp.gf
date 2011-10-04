@@ -1,3 +1,5 @@
+--# -path=lib:Numerals
+
 concrete FractionApp of Fraction = decimal ** open StringOper in {
 
 -- The simple combination by placing a dot between two numberals has the

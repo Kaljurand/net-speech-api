@@ -1,3 +1,5 @@
+--# -path=Numerals
+
 abstract Fraction = Numerals ** {
 
 -- Fraction is an extension of Numeral which adds two functions

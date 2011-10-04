@@ -1,4 +1,4 @@
-concrete UnitconvApp of Unitconv = decimal, UnitApp ** {
+concrete UnitconvApp of Unitconv = FractionApp, UnitApp ** {
 
 	oper
 		c : { s : Str } -> { s : Str } -> { s : Str }
