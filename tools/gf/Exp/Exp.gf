@@ -1,4 +1,4 @@
-abstract Exp = Numerals ** {
+abstract Exp = Fraction ** {
 
 flags startcat = Exp ;
 
@@ -7,5 +7,5 @@ cat
 
 fun
 	e_plus, e_minus, e_mult, e_div, e_pow : Exp -> Exp -> Exp;
-	numeral : Numeral -> Exp;
+	numeral : Fraction -> Exp;
 }

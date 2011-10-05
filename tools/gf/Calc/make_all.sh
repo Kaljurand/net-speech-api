@@ -1,6 +1,6 @@
 # TODO: specify these on the commandline
 dir_jsgf=../../../lm/
-path="../Exp/:../Unitconv/:../Numerals/:../lib/"
+path="../Exp/:../Unitconv/:../Numerals/:../Fraction/:../lib/"
 name="Calc"
 lang="Est"
 

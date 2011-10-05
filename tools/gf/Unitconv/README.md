@@ -19,9 +19,7 @@ This grammar demonstrates:
 
 TODO:
 
-  * support numbers with a comma
   * put Estonian-specific opers into a separate library and structure in the style of RGL
-  * put currencies into a separate module
   * combining Unitconv with Exp, possibilities:
     * simple union, creating a new language (Unitconv + Exp) (will need 2 startcats?);
     * Unitconv uses expressions instead of numbers;

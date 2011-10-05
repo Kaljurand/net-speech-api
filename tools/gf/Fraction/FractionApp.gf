@@ -18,6 +18,13 @@ lincat Fraction = SS;
 
 lin
 	null = ss "0";
+	quarter = ss "0 . 2 5";
+	half = ss "0 . 5";
+	three_quarters = ss "0 . 7 5";
+	one_and_half = ss "1 . 5";
+	-- TODO: we could represent Pi also with the symbol π
+	-- in order to be more accurate.
+	pi = ss "3 . 1 4 1 5 9 2 6 5";
 	fraction x y = infixSS "." x y;
 	copy = id SS;
 }

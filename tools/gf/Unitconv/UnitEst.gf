@@ -1,4 +1,4 @@
-concrete UnitEst of Unit = PrefixEst ** open StringOper in {
+concrete UnitEst of Unit = PrefixEst, CurrencyEst ** open StringOper, Estonian in {
 
 -- This is a lexicon of the words of measurement units in Estonian.
 -- Some examples:
@@ -23,91 +23,9 @@ concrete UnitEst of Unit = PrefixEst ** open StringOper in {
 -- override it), but in most cases this form is not used (and does not even end up in JSGF).
 --
 -- @author Kaarel Kaljurand
--- @version 2011-10-03
+-- @version 2011-10-04
 
 flags coding=utf8;
-
-param Case = SgPart | SgIn | PlIn ;
-
--- The f-function requires both forms (`SgPart` and `PlIn`)
--- The mk-function is smart and only requires the "base" form (`SgPart`)
-oper
-	CaseStr : Type = { s : Case => Str } ;
-
-	prefix : Str -> CaseStr -> CaseStr = \x,y -> add_prefix x y;
-
-	f3 : Str -> Str -> Str -> CaseStr = \sg1,sg2,pl1 ->
-		{
-			s = table {
-				SgPart => sg1 ;
-				SgIn => sg2 ;
-				PlIn => pl1
-			}
-	};
-
-	f : Str -> Str -> CaseStr = \x,y ->
-		{
-			s = table {
-				SgPart => x ;
-				PlIn => y ;
-				_ => "NOT_IMPLEMENTED"
-			}
-	};
-
-	mk : Str -> CaseStr = \sg_part -> 
-		let 
-			pl_in : Str = case sg_part of {
-				_ + ("a" | "e" | "i" | "o") => sg_part + "des" ; -- jalga + des
-				_                           => sg_part + "es"    -- liitrit + es
-			} ;
-			sg_in : Str = case sg_part of {
-				base + ("t" | "d")          => base + "s" ; -- sekundit -> sekundis
-				_                           => sg_part + "s" -- raha + s
-			} 
-		in f3 sg_part sg_in pl_in;
-
-	mk_raha : Str -> CaseStr = \x ->
-		f (x ++ "raha") (x ++ "rahas") ;
-
-	-- Generates 3 variants, from two input strings, e.g.:
-	-- Input: "ameerika", "dollarit"
-	-- Output:
-	-- dollarit/dollarites
-	-- ameerika dollarit / ameerika dollarites
-	-- ameerika raha / ameerika rahas
-	mk_currency_variants_3 : Str -> Str -> CaseStr = \x,y ->
-		variants { mk y ; mk (x ++ y); mk_raha x };
-
-	mk_currency_variants_2 : Str -> Str -> CaseStr = \x,y ->
-		variants { mk (x ++ y); mk_raha x };
-
-	-- Places a prefix (`kilo`) in front of the given unit word (`meeter`).
-	-- TODO: Maybe we should return a more complex structure with a field
-	-- for the prefix, instead of doing string concatenation here.
-	add_prefix : Str -> CaseStr -> CaseStr = \p,w ->
-		{
-			s = table {
-				SgPart => p ++ (w.s ! SgPart) ;
-				SgIn => p ++ (w.s ! SgIn) ;
-				PlIn => p ++ (w.s ! PlIn)
-			}
-	};
-
-	-- Note that the compound expressions do not have the SgIn-form
-	-- so we will not implement it:
-	-- SgPart: (kolm) meetrit sekundis
-	-- PlIn: meetrites sekundis
-	-- SgIn: * meetris sekundis
-	-- Note the first argument is used to provide "ruut" in case of
-	-- "meetrit ruut sekundis".
-	mk_meter_per_second : Str -> CaseStr -> CaseStr -> CaseStr = \p,x,y ->
-		{
-			s = table {
-				SgPart => (x.s ! SgPart) ++ p ++ (y.s ! SgIn) ;
-				PlIn => (x.s ! PlIn) ++ p ++ (y.s ! SgIn) ;
-				_ => "NOT_NEEDED"
-			}
-		};
 
 lincat
 	Length, LengthUnit,
@@ -121,7 +39,6 @@ lincat
 	AccelerationUnit,
 	Energy, EnergyUnit,
 	Power, PowerUnit,
-	Currency, CurrencyUnit,
 	AngleUnit = CaseStr;
 
 lin
@@ -132,8 +49,7 @@ volume_unit,
 frequency_unit,
 speed_unit,
 energy_unit,
-power_unit,
-currency_unit = id CaseStr ;
+power_unit = id CaseStr ;
 
 prefixed_length_unit, prefixed_mass_unit,
 prefixed_time_unit, prefixed_temperature_unit,
@@ -208,32 +124,4 @@ arcsecond = mk "sekundit";
 arcminute = mk "minutit";
 degree = mk "kraadi";
 
--- Currency
-usd = mk_currency_variants_3 "ameerika" "dollarit";
-gbp = mk_currency_variants_3 "inglise" "naela";
-jpy = mk_currency_variants_3 "jaapani" "jeeni";
-rub = mk_currency_variants_3 "vene" "rubla";
-
-cad = mk_currency_variants_2 "kanada" "dollarit";
-nzd = mk_currency_variants_2 "uus mere maa" "dollarit";
-aud = mk_currency_variants_2 "austraalia" "dollarit";
-nok = mk_currency_variants_2 "norra" "krooni";
-sek = mk_currency_variants_2 "rootsi" "krooni";
-dkk = mk_currency_variants_2 "taani" "krooni";
-isk = mk_currency_variants_2 "islandi" "krooni";
-
--- This gradation does not seem to be very regular
--- e.g. meetrit -> *meetrides; dollarit -> *dollarides
--- TODO: what does it depend on?
-eur = f "eurot" "eurodes";
-
--- TODO: use Unicode!
-chf = mk_currency_variants_3 "s~veitsi" "franki";
-
-eek = variants {
-		mk "krooni" ;
-		mk "eesti krooni";
-		mk_raha "eesti";
-		f "vana raha" "vanas rahas"
-	};
 }

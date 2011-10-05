@@ -1,4 +1,4 @@
-concrete UnitApp of Unit = PrefixApp ** open StringOper in {
+concrete UnitApp of Unit = PrefixApp, CurrencyApp ** open StringOper in {
 
 flags coding=utf8;
 
@@ -24,7 +24,6 @@ lincat
 	AccelerationUnit,
 	Energy, EnergyUnit,
 	Power, PowerUnit,
-	Currency, CurrencyUnit,
 	AngleUnit = SS;
 
 lin
@@ -35,8 +34,7 @@ volume_unit,
 frequency_unit,
 speed_unit,
 energy_unit,
-power_unit,
-currency_unit = id SS;
+power_unit = id SS;
 
 prefixed_length_unit, prefixed_mass_unit, prefixed_time_unit,
 prefixed_temperature_unit,
@@ -112,21 +110,5 @@ radian = ss "rad";
 arcsecond = ss "''";
 arcminute = ss "'";
 degree = ss "°";
-
---Currency
-usd = ss "USD";
-cad = ss "CAD";
-nzd = ss "NZD";
-aud = ss "AUD";
-eur = ss "EUR";
-gbp = ss "GBP";
-chf = ss "CHF";
-nok = ss "NOK";
-jpy = ss "JPY";
-eek = ss "EEK";
-rub = ss "RUB";
-sek = ss "SEK";
-dkk = ss "DKK";
-isk = ss "ISK";
 
 }

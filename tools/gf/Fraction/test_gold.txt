@@ -1,0 +1,88 @@
+copy null
+
+null
+
+
+
+fraction null null
+
+null koma null
+
+
+
+fraction null (num (pot2as3 (pot1as2 (pot1to19 n5))))
+
+null koma viis teist
+
+
+
+fraction (num (pot2as3 (pot1as2 (pot1to19 n2)))) (num (pot2as3 (pot2 (pot0 n3))))
+
+kaks teist koma kolm sada
+
+
+
+quarter
+
+veerand
+
+
+
+half
+
+pool
+
+
+
+three_quarters
+
+kolm veerand
+
+
+
+one_and_half
+
+pool teist
+
+
+
+pi
+
+Pii
+
+
+
+copy null
+
+0
+
+
+
+fraction null null
+
+0 . 0
+
+
+
+fraction (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))) (num (pot2as3 (pot1as2 (pot0as1 (pot0 n3)))))
+
+2 . 3
+
+
+
+fraction null (num (pot2as3 (pot1as2 (pot1 n5))))
+
+0 . 5 0
+
+
+
+fraction (num (pot2as3 (pot1as2 (pot0as1 pot01)))) (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5)))))
+one_and_half
+
+1 . 5
+
+
+1 . 5
+
+
+

@@ -2,3 +2,8 @@ null
 null koma null
 null koma viis teist
 kaks teist koma kolm sada
+veerand
+pool
+kolm veerand
+pool teist
+Pii

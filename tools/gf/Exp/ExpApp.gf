@@ -1,4 +1,4 @@
-concrete ExpApp of Exp = decimal ** open StringOper in {
+concrete ExpApp of Exp = FractionApp ** open StringOper in {
 
 flags coding=utf8;
 

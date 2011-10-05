@@ -1,11 +1,11 @@
-abstract Unit = Prefix ** {
+abstract Unit = Prefix, Currency ** {
 
 -- This is a registry of the measurement units and their quantities.
 -- Wikpedia: "Length is a physical quantity. Metre is a unit of length that
 -- represents a definite predetermined length."
 
 -- @author Kaarel Kaljurand
--- @version 2011-10-03
+-- @version 2011-10-04
 
 cat
 	Length ; LengthUnit ;
@@ -20,7 +20,6 @@ cat
 	Energy ; EnergyUnit ;
 	Power ; PowerUnit ;
 	AngleUnit ;
-	Currency ; CurrencyUnit ;
 
 fun
 	-- Some simple units can be SI-prefixed to make a prefixed unit
@@ -51,7 +50,6 @@ fun
 	energy_unit : Energy -> EnergyUnit ;
 	power_unit : Power -> PowerUnit ;
 	speed_unit : Speed -> SpeedUnit ;
-	currency_unit : Currency -> CurrencyUnit ;
 
 	-- Length (possibly prefixed) can be turned into
 	-- Area (by square) or Volume (by cube), e.g.
@@ -88,8 +86,4 @@ fun
 	the_speed_of_light, knot : Speed ;
 
 	radian, arcsecond, arcminute, degree : AngleUnit ;
-
-	usd, cad, gbp, aud, nzd, eur, chf, jpy, nok, sek, dkk, isk, rub : Currency ;
-	eek : Currency ;
-
 }

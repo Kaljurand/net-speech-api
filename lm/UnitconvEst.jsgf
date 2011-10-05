@@ -54,44 +54,39 @@ public <MAIN> = <Main_cat> ;
 
 <Conv_cat> = <Conv_1> ;
 
-<CurrencyUnit_1> = <Currency_1> ;
+<CurrencyUnit_1> = austraalia (dollarit | raha)
+                   | kanada (dollarit | raha)
+                   | s~veitsi (franki | raha) | franki
+                   | taani (krooni | raha)
+                   | eesti (krooni | raha) | vana raha | krooni
+                   | eurot | inglise (naela | raha) | naela
+                   | ungari (forintit | raha) | forintit
+                   | islandi (krooni | raha)
+                   | jaapani (jeeni | raha) | jeeni
+                   | norra (krooni | raha)
+                   | uus mere maa (dollarit | raha)
+                   | vene (raha | rubla) | rubla
+                   | rootsi (krooni | raha)
+                   | ameerika (dollarit | raha) | dollarit ;
 
-<CurrencyUnit_2> = <Currency_2> ;
+<CurrencyUnit_2> = austraalia (dollarites | rahas)
+                   | kanada (dollarites | rahas)
+                   | s~veitsi (frankides | rahas) | frankides
+                   | taani (kroonides | rahas)
+                   | eesti (kroonides | rahas) | vanas rahas
+                     | kroonides
+                   | eurodes | inglise (naelades | rahas) | naelades
+                   | ungari (forintites | rahas) | forintites
+                   | islandi (kroonides | rahas)
+                   | jaapani (jeenides | rahas) | jeenides
+                   | norra (kroonides | rahas)
+                   | uus mere maa (dollarites | rahas)
+                   | vene (rahas | rublades) | rublades
+                   | rootsi (kroonides | rahas)
+                   | ameerika (dollarites | rahas) | dollarites ;
 
 <CurrencyUnit_cat> = <CurrencyUnit_1>
                             | <CurrencyUnit_2> ;
-
-<Currency_1> = austraalia (dollarit | raha)
-               | kanada (dollarit | raha)
-               | s~veitsi (franki | raha) | franki
-               | taani (krooni | raha)
-               | eesti (krooni | raha) | vana raha | krooni
-               | eurot | inglise (naela | raha) | naela
-               | islandi (krooni | raha)
-               | jaapani (jeeni | raha) | jeeni
-               | norra (krooni | raha)
-               | uus mere maa (dollarit | raha)
-               | vene (raha | rubla) | rubla
-               | rootsi (krooni | raha)
-               | ameerika (dollarit | raha) | dollarit ;
-
-<Currency_2> = austraalia (dollarites | rahas)
-               | kanada (dollarites | rahas)
-               | s~veitsi (frankides | rahas) | frankides
-               | taani (kroonides | rahas)
-               | eesti (kroonides | rahas) | vanas rahas
-                 | kroonides
-               | eurodes | inglise (naelades | rahas) | naelades
-               | islandi (kroonides | rahas)
-               | jaapani (jeenides | rahas) | jeenides
-               | norra (kroonides | rahas)
-               | uus mere maa (dollarites | rahas)
-               | vene (rahas | rublades) | rublades
-               | rootsi (kroonides | rahas)
-               | ameerika (dollarites | rahas) | dollarites ;
-
-<Currency_cat> = <Currency_1>
-                        | <Currency_2> ;
 
 <Digit_1> = kaks | kolm | neli | viis | kuus
             | seitse | kaheksa | üheksa ;
@@ -115,7 +110,8 @@ public <MAIN> = <Main_cat> ;
 <Energy_cat> = <Energy_1> | <Energy_2> ;
 
 <Fraction_1> = <Numeral_1>
-               | <Numeral_1> koma <Numeral_1> ;
+               | <Numeral_1> koma <Numeral_1> | pool | pool teist
+               | Pii | veerand | kolm veerand ;
 
 <Fraction_cat> = <Fraction_1> ;
 

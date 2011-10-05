@@ -1,9 +1,9 @@
-concrete CalcEst of Calc = ExpEstl, UnitconvEst ** open StringOper in {
+concrete CalcEst of Calc = ExpEst, UnitconvEst ** open StringOper in {
 
--- CalcEst is a union of ExpEstl and UnitconvEst.
+-- CalcEst is a union of ExpEst and UnitconvEst.
 --
 -- @author Kaarel Kaljurand
--- @version 2011-10-03
+-- @version 2011-10-05
 
 lincat Calc = SS;
 lin exp, unitconv = id SS;

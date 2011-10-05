@@ -1,4 +1,4 @@
-concrete ExpEstl of Exp = estonian ** open StringOper in {
+concrete ExpEstl of Exp = FractionEst ** open StringOper in {
 
 -- Unambiguous Estonian arithmetical expression grammar which implements the
 -- left-associative semantics, where the precedence of operators is the following:
@@ -21,7 +21,7 @@ concrete ExpEstl of Exp = estonian ** open StringOper in {
 --     ((n2 + (n3 ^ n4)) * n5)
 --
 -- @author Kaarel Kaljurand
--- @version 2011-10-03
+-- @version 2011-10-05
 
 flags coding=utf8;
 

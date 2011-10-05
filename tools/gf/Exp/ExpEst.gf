@@ -1,4 +1,4 @@
-concrete ExpEst of Exp = estonian ** open StringOper in {
+concrete ExpEst of Exp = FractionEst ** open StringOper in {
 
 flags coding=utf8;
 
