@@ -1,7 +1,7 @@
 
 # Declare the name of the grammar and the paths to the used libraries
 name="Calc"
-path="../Exp/:../Unitconv/:../Numerals/:../lib/"
+path="../Exp/:../Unitconv/:../Numerals/:../Fraction/:../lib/"
 
 # These you probably do not need to modify
 l="${name}App"
