@@ -1,0 +1,2 @@
+direction (address2 s94 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))) (address2 s74 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n4))))))
+

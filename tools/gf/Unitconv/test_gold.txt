@@ -24,7 +24,7 @@ kaks teist jalga jalgades
 
 
 
-5 ' IN ''
+5 ' IN "
 
 viis minutit sekundites
 

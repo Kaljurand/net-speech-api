@@ -1,0 +1,8 @@
+address1 s94
+
+address2 s94 (num (pot2as3 (pot1as2 (pot1plus n2 (pot0 n3)))))
+
+address1 s94
+
+address2 s94 (num (pot2as3 (pot1as2 (pot1plus n2 (pot0 n3)))))
+

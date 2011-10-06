@@ -107,7 +107,7 @@ watt = ss "W";
 
 --Angle
 radian = ss "rad";
-arcsecond = ss "''";
+arcsecond = ss "\"";
 arcminute = ss "'";
 degree = ss "°";
 
