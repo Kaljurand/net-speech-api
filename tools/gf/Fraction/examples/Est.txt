@@ -7,3 +7,4 @@ pool
 kolm veerand
 pool teist
 Pii
+miinus null koma viis sada

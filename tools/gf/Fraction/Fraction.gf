@@ -7,19 +7,31 @@ abstract Fraction = Numerals ** {
 -- It also adds a few numerals (null, half, pi, ...).
 --
 -- @author Kaarel Kaljurand
--- @version 2011-10-05
+-- @version 2011-10-06
 
 flags startcat = Fraction ;
 
-cat Fraction;
+cat Fraction; FractionBase; NumeralPair;
 
 fun
 	null : Numeral;
-	quarter : Fraction;
-	half : Fraction;
-	three_quarters : Fraction;
-	one_and_half : Fraction;
-	pi : Fraction;
-	fraction : Numeral -> Numeral -> Fraction;
-	copy : Numeral -> Fraction;
+	pair : Numeral -> Numeral -> NumeralPair;
+
+	copy1 : Numeral -> FractionBase;
+	copy2 : NumeralPair -> FractionBase;
+
+	neg1 : Numeral -> FractionBase;
+	neg2 : NumeralPair -> FractionBase;
+
+	-- One cannot apply 'minus' to the result of 'quarter', e.g.
+	-- "miinus veerand" is not possible, but one can of course say
+	-- "miinus null koma viis".
+	quarter : FractionBase;
+	half : FractionBase;
+	three_quarters : FractionBase;
+	one_and_half : FractionBase;
+	pi : FractionBase;
+
+	-- There should be only one top node of the syntax tree.
+	fraction : FractionBase -> Fraction;
 }

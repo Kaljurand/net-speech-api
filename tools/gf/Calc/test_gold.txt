@@ -1,10 +1,10 @@
-exp (e_mult (e_plus (numeral (copy (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))))) (numeral (copy (num (pot2as3 (pot1as2 (pot0as1 (pot0 n3)))))))) (numeral (copy (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))))))
+exp (e_mult (e_plus (numeral (fraction (copy1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))) (numeral (fraction (copy1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n3))))))))) (numeral (fraction (copy1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5)))))))))
 
 kaks pluss kolm korda viis
 
 
 
-unitconv (main (copy (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))) (length (length_unit meter) (length_unit foot)))
+unitconv (main (fraction (copy1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))))) (length (length_unit meter) (length_unit foot)))
 
 kaks meetrit jalgades
 

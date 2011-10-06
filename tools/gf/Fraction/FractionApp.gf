@@ -9,12 +9,12 @@ concrete FractionApp of Fraction = decimal ** open StringOper in {
 --   * not allowed: "1 . 002"
 --
 -- @author Kaarel Kaljurand
--- @version 2011-10-04
+-- @version 2011-10-06
 
 
 flags coding = utf8;
 
-lincat Fraction = SS;
+lincat Fraction, FractionBase, NumeralPair = SS;
 
 lin
 	null = ss "0";
@@ -22,9 +22,9 @@ lin
 	half = ss "0 . 5";
 	three_quarters = ss "0 . 7 5";
 	one_and_half = ss "1 . 5";
-	-- TODO: we could represent Pi also with the symbol π
-	-- in order to be more accurate.
-	pi = ss "3 . 1 4 1 5 9 2 6 5";
-	fraction x y = infixSS "." x y;
-	copy = id SS;
+	pi = ss "PI";
+	pair x y = infixSS "." x y;
+	neg1 x = prefixSS "-" x;
+	neg2 x = prefixSS "-" x;
+	copy1, copy2, fraction = id SS;
 }

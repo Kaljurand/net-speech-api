@@ -22,11 +22,20 @@ public <MAIN> = <Exp_cat> ;
 
 <Exp_cat> = <Exp_1> ;
 
-<Fraction_1> = <Numeral_1>
-               | <Numeral_1> koma <Numeral_1> | pool | pool teist
-               | Pii | veerand | kolm veerand ;
+<FractionBase_1> = <Numeral_1> | <NumeralPair_1>
+                   | pool | miinus <Numeral_1>
+                   | miinus <NumeralPair_1> | pool teist | Pii
+                   | veerand | kolm veerand ;
+
+<FractionBase_cat> = <FractionBase_1> ;
+
+<Fraction_1> = <FractionBase_1> ;
 
 <Fraction_cat> = <Fraction_1> ;
+
+<NumeralPair_1> = <Numeral_1> koma <Numeral_1> ;
+
+<NumeralPair_cat> = <NumeralPair_1> ;
 
 <Numeral_1> = null | <Sub1000000_1> ;
 
