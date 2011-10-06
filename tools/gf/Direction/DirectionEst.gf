@@ -1,9 +1,9 @@
-concrete DirectionEst of Direction = AddressEst ** {
+concrete DirectionEst of Direction = AddressEst ** open StringOper in {
 
 flags coding=utf8;
 
-lincat Direction = Str;
+lincat Direction = SS;
 
 lin
-	direction x y = "Algus" ++ x ++ "Lõpp" ++ y;
+	direction x y = ss ("Algus" ++ x.s ++ "Lõpp" ++ y.s);
 }

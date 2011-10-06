@@ -5,8 +5,8 @@ grammar AddressEst;
 
 public <MAIN> = <Address_cat> ;
 
-<Address_1> = <Street_1> Tallinn
-              | <Street_1> <Numeral_1> Tallinn ;
+<Address_1> = <Street_1> <Town_1>
+              | <Street_1> <Numeral_1> <Town_1> ;
 
 <Address_cat> = <Address_1> ;
 
@@ -423,6 +423,10 @@ public <MAIN> = <Address_cat> ;
 
 <Sub10_cat> = <Sub10_1> | <Sub10_2>
                      | <Sub10_3> ;
+
+<Town_1> = [Tallinn] ;
+
+<Town_cat> = <Town_1> ;
 
 <Unknown_1> = <Sub10_1> | <Sub10_3> ;
 
