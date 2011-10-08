@@ -2,7 +2,7 @@ echo "Removing automatically generated files..."
 ant clean
 
 echo "Testing..."
-for x in Go Numerals Unitconv SimpleNumerals Exp Fraction Calc Address Direction; do
+for x in Go Numerals Unitconv SimpleNumerals Exp Fraction Calc Address Direction Action; do
 	echo " $x";
 	cd $x;
 	sh test.sh > test_out.txt;

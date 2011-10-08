@@ -1,0 +1,54 @@
+f2 (exp (e_mult (e_plus (numeral (fraction (copy1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))) (numeral (fraction (copy1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n3))))))))) (numeral (fraction (copy1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))))))))
+
+kaks pluss kolm korda viis
+
+
+
+f2 (exp (e_pow (e_mult (e_plus (numeral (fraction (copy1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))) (numeral (fraction (copy1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n3))))))))) (numeral (fraction (copy1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))))))) (numeral (fraction (neg1 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n6))))))))))
+
+kaks pluss kolm korda viis astmel miinus kuus
+
+
+
+f2 (unitconv (main (fraction (copy2 (pair (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))) (num (pot2as3 (pot1as2 (pot0as1 (pot0 n3)))))))) (length (length_unit meter) (length_unit foot))))
+
+kaks koma kolm meetrit jalgades
+
+
+
+f1 (direction_id (address2 s94 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))) tallinn))
+
+Estonia puiestee kaks Tallinn
+
+Estonia puiestee kaks
+
+
+
+f1 (direction (address2 s94 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))) tallinn) (address1 s94 tallinn))
+
+Algus Estonia puiestee kaks Tallinn Lõpp Estonia puiestee Tallinn
+
+Algus Estonia puiestee kaks Tallinn Lõpp Estonia puiestee
+
+Algus Estonia puiestee kaks Lõpp Estonia puiestee Tallinn
+
+Algus Estonia puiestee kaks Lõpp Estonia puiestee
+
+
+
+( ( 2 + 3 ) * 5 )
+
+
+
+2 ft **2 IN m **2
+
+
+
+( ( ( 2 + 3 ) * 5 ) ^ - 6 . 3 )
+
+
+
+( 2 + ( 3 * 5 ) )
+
+
+

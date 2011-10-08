@@ -5,7 +5,7 @@
 #
 # Usage:
 #
-# sh make_jsgf.sh Calc/CalcEst.gf "lib:Exp:Fraction:Numerals:Unitconv"
+# sh make_jsgf.sh Action/ActionEst.gf "lib:Calc:Direction:Address:Exp:Fraction:Numerals:Unitconv"
 #
 # Note: because of `recode` this script can only
 # be applied to files that are in the same directory with it.

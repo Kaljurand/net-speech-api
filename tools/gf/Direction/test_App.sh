@@ -1,7 +1,5 @@
-
-# Declare the name of the grammar and the paths to the used libraries
-name="Direction"
-path="../Numerals/:../lib/"
+name=$1
+path=$2
 
 # These you probably do not need to modify
 l="${name}App"

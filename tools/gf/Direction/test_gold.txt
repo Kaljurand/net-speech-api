@@ -2,3 +2,19 @@ direction (address2 s94 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))) tallinn) (
 
 direction (address1 s94 tallinn) (address2 s74 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n4))))) tallinn)
 
+direction_id (address1 s74 tallinn)
+
+direction_id (address2 s74 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n4))))) tallinn)
+
+direction (address2 s94 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))) tallinn) (address2 s74 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n4))))) tallinn)
+
+FROM Estonia puiestee 2 , Tallinn TO Carl Robert Jakobsoni 4 , Tallinn
+
+
+
+direction_id (address2 s94 (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))) tallinn)
+
+Estonia puiestee 2 , Tallinn
+
+
+

@@ -14,8 +14,7 @@ public <MAIN> = <Action_cat> ;
 <AccelerationUnit_cat> = <AccelerationUnit_1>
                                 | <AccelerationUnit_2> ;
 
-<Action_1> = <Address_1> | <Direction_1>
-             | <Calc_1> ;
+<Action_1> = <Direction_1> | <Calc_1> ;
 
 <Action_cat> = <Action_1> ;
 
@@ -107,8 +106,8 @@ public <MAIN> = <Action_cat> ;
 
 <Digit_cat> = <Digit_1> ;
 
-<Direction_1> = Algus <Address_1> Lõpp
-                <Address_1> ;
+<Direction_1> = Algus <Address_1> Lõpp <Address_1>
+                | <Address_1> ;
 
 <Direction_cat> = <Direction_1> ;
 

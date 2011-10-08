@@ -15,8 +15,8 @@ public <MAIN> = <Direction_cat> ;
 
 <Digit_cat> = <Digit_1> ;
 
-<Direction_1> = Algus <Address_1> Lõpp
-                <Address_1> ;
+<Direction_1> = Algus <Address_1> Lõpp <Address_1>
+                | <Address_1> ;
 
 <Direction_cat> = <Direction_1> ;
 
