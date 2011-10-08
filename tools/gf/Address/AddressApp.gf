@@ -1,4 +1,4 @@
-concrete AddressApp of Address = TownApp, StreetFEst, decimal ** open StringOper in {
+concrete AddressApp of Address = TownEst, StreetFEst, decimal ** open StringOper in {
 
 -- Using Estonian town and street names but "decimal" numerals.
 

@@ -7,7 +7,7 @@
 # python create_project.py --name="Test" --lang="Est,App"
 #
 # @author Kaarel Kaljurand
-# @version 2011-10-03
+# @version 2011-10-08
 #
 import sys
 import argparse
@@ -26,15 +26,15 @@ abstract = """abstract <NAME_ABSTRACT> = {
 -- @author
 -- @version
 
-flags startcat = Main ;
+flags startcat = <NAME_ABSTRACT>;
 
-cat Main;
+cat <NAME_ABSTRACT>;
 
-fun main : Main;
+fun f : <NAME_ABSTRACT>;
 }
 """
 
-concrete = """concrete <NAME_ABSTRACT><NAME_LANG> of <NAME_ABSTRACT> = {
+concrete = """concrete <NAME_ABSTRACT><NAME_LANG> of <NAME_ABSTRACT> = open StringOper in {
 
 -- <NAME_ABSTRACT><NAME_LANG> is ...
 --
@@ -43,16 +43,16 @@ concrete = """concrete <NAME_ABSTRACT><NAME_LANG> of <NAME_ABSTRACT> = {
 
 flags coding = utf8;
 
-lincat Main = { s : Str };
+lincat <NAME_ABSTRACT> = { s : Str };
 
-lin main = { s = "main" };
+lin f = { s = "f" };
 }
 """
 
 test = """
 # Declare the name of the grammar and the paths to the used libraries
-name="<NAME_ABSTRACT>"
-path="../Numerals/:../lib/"
+name=$1
+path=$2
 
 # These you probably do not need to modify
 l="${name}<NAME_LANG>"

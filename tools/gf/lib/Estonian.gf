@@ -1,5 +1,7 @@
 resource Estonian = {
 
+-- TODO: use overloading to share oper names
+
 -- @author Kaarel Kaljurand
 -- @version 2011-10-05
 

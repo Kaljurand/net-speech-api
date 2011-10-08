@@ -114,3 +114,26 @@ Another example of ambiguity is the phrase "5 minutes in seconds" where `minutes
 can either refer to time or angles. This ambiguity might not reveal itself in natural
 language concrete syntaxes, but would in a mathematical syntax (`sec' vs `"').
 Also, the ambiguity might not reveal itself in the ``final answer'' (1 min in sec = 60).
+
+
+Grammars
+--------
+
+A little comparison of the grammars included in this directory.
+
+### Unitconv
+
+Linguistically and structurally most complicated.
+
+  * different morphological forms
+  * variants
+  * type agreement
+  * ...
+
+### Expr
+
+Computationally most compilcated (contains recursion).
+
+### Address
+
+Very large in terms of terminals, otherwise very simple.
