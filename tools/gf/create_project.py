@@ -43,7 +43,7 @@ concrete = """concrete <NAME_ABSTRACT><NAME_LANG> of <NAME_ABSTRACT> = open Stri
 
 flags coding = utf8;
 
-lincat <NAME_ABSTRACT> = { s : Str };
+lincat <NAME_ABSTRACT> = SS;
 
 lin f = { s = "f" };
 }
