@@ -24,10 +24,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Properties;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-
 import ee.ioc.phon.netspeechapi.UserAgent;
 
 public class ChunkedWebRecSession implements RecSession, UserAgent {
@@ -35,7 +31,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	public static final String CONF_BASE_URL = "base_url";
 
 	// API identifier in the User-Agent
-	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.1";
+	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.2";
 
 	private String userAgent = USER_AGENT;
 
@@ -44,7 +40,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	private HttpURLConnection connection;
 	private OutputStream out;
 
-	private String result = ""; 
+	private ChunkedWebRecSessionResult result;
 	private boolean finished = false;
 
 	public ChunkedWebRecSession()  {
@@ -52,20 +48,36 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 		configuration.setProperty(CONF_BASE_URL, "http://localhost:8080/");
 	}
 
-	public ChunkedWebRecSession(URL url)  {
-		this(url, null);
+
+	public ChunkedWebRecSession(URL wsUrl)  {
+		this(wsUrl, null, null);
+	}
+
+
+	public ChunkedWebRecSession(URL wsUrl, URL lmUrl) {
+		this(wsUrl, lmUrl, null);
 	}
 
 
 	/**
+	 * <p>Recognizer session is constructed on the basis of the recognizer
+	 * webservice URL. Optionally one can specify the speech recognition grammar
+	 * to guide the recognizer. The grammar must be in either JSGF or PGF format.
+	 * In the latter case, one can also specify a language into which the
+	 * raw recognition result is translated. Specifying the language without the
+	 * grammar does not make sense and in this case the language is ignored.</p>
+	 *
 	 * @param wsUrl Recognizer webservice URL
-	 * @param lmUrl Language model (JSGF grammar) URL
+	 * @param lmUrl Language model (JSGF or PGF grammar) URL
+	 * @param lang  Target language to which to translate the raw recognizer output (in case PGF)
 	 */
-	public ChunkedWebRecSession(URL wsUrl, URL lmUrl) {
+	public ChunkedWebRecSession(URL wsUrl, URL lmUrl, String lang) {
 		if (lmUrl == null) {
 			configuration.setProperty(CONF_BASE_URL, wsUrl.toExternalForm());
-		} else {
+		} else if (lang == null) {
 			configuration.setProperty(CONF_BASE_URL, wsUrl.toExternalForm() + "?lm=" + lmUrl.toExternalForm());
+		} else {
+			configuration.setProperty(CONF_BASE_URL, wsUrl.toExternalForm() + "?lm=" + lmUrl.toExternalForm() + "&output-lang=" + lang);
 		}
 	}
 
@@ -86,10 +98,24 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 		System.out.println("Created connection: " + connection);
 	}
 
+
+	/**
+	 * @deprecated
+	 */
 	@Override
 	public String getCurrentResult() throws IOException {
+		if (result == null || result.getUtterances().isEmpty()) {
+			return "";
+		}
+		return result.getUtterances().get(0);
+	}
+
+
+	@Override
+	public ChunkedWebRecSessionResult getResult() throws IOException {
 		return result;
 	}
+
 
 	@Override
 	public boolean isFinished() {
@@ -106,9 +132,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 			try {
 				out.close();
 				InputStream is = connection.getInputStream();
-				Object obj = JSONValue.parse(new InputStreamReader(is));
-				JSONObject jsonObj=(JSONObject)obj;
-				result = ((JSONObject)((JSONArray)jsonObj.get("hypotheses")).get(0)).get("utterance").toString();
+				result = new ChunkedWebRecSessionResult(new InputStreamReader(is));
 			} finally {
 				connection.disconnect();
 				finished = true;

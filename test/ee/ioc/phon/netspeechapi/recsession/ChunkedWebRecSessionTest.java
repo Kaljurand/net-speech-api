@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import org.apache.commons.io.FileUtils;
@@ -24,14 +26,20 @@ public class ChunkedWebRecSessionTest {
 	private static final File T3_FILE = new File(Settings.DIR + "test_mine_edasi.raw");
 	private static final String T3_RESPONSE = "mine edasi";
 
+	private static final File T4_FILE = new File(Settings.DIR + "test_kaks_minutit_sekundites.raw");
+
 	/*
 	 * Note: to register a grammar, first do a GET on:
 	 * http://bark.phon.ioc.ee/speech-api/v1/fetch-jsgf?lm=http://net-speech-api.googlecode.com/hg/lm/robot.jsgf
 	 */
 	private static final String T3_LM = "http://net-speech-api.googlecode.com/hg/lm/robot.jsgf";
+	private static final String T4_LM = "http://kaljurand.github.com/Grammars/grammars/pgf/Calc.pgf";
+	private static final String T4_LANG = "App";
+	private static final List<String> T4_RESPONSE = new ArrayList<String>();
 
 	private static URL sWsUrl;
 	private static URL sT3LmUrl;
+	private static URL sT4LmUrl;
 	private static byte[] sBytes;
 
 	static {
@@ -43,6 +51,12 @@ public class ChunkedWebRecSessionTest {
 
 		try {
 			sT3LmUrl = new URL(T3_LM);
+		} catch (MalformedURLException e) {
+			fail("should not throw MalformedURLException");
+		}
+
+		try {
+			sT4LmUrl = new URL(T4_LM);
 		} catch (MalformedURLException e) {
 			fail("should not throw MalformedURLException");
 		}
@@ -142,6 +156,27 @@ public class ChunkedWebRecSessionTest {
 			e.printStackTrace();
 		}
 		assertEquals(T3_RESPONSE, response);
+	}
+
+
+	@Test
+	public final void testRecognize4() {
+		ChunkedWebRecSession recSession = new ChunkedWebRecSession(sWsUrl, sT4LmUrl, T4_LANG);
+		recSession.setUserAgentComment(USER_AGENT_COMMENT);
+		List<String> response = null;
+		try {
+			recSession.create();
+			// blocks if true
+			recSession.sendChunk(fileToBytes(T4_FILE), true);
+			response = recSession.getResult().getLinearizations();
+		} catch (IOException e) {
+			fail("should not throw IOException");
+			e.printStackTrace();
+		} catch (NotAvailableException e) {
+			fail("should not throw NotAvailableException");
+			e.printStackTrace();
+		}
+		assertEquals(T4_RESPONSE, response);
 	}
 
 

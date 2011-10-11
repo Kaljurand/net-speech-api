@@ -26,6 +26,8 @@ public interface RecSession {
 
 	String getCurrentResult() throws IOException;
 
+	ChunkedWebRecSessionResult getResult() throws IOException;
+
 	boolean isFinished();
 
 	void cancel();

@@ -26,10 +26,15 @@ def index_words(file):
 	TODO: support abbreviations, e.g. USA[uuessaa]
 	"""
 	legal_words = {}
+	line_num = 0
 	for line in open(file):
+		line_num = line_num + 1
 		splits = line.split()
-		entry = splits[0]
-		legal_words[entry] = 1
+		if (len(splits) > 1):
+			entry = splits[0]
+			legal_words[entry] = 1
+		else:
+			print >> sys.stderr, 'Warning: ignored line', line_num
 	return legal_words
 
 
