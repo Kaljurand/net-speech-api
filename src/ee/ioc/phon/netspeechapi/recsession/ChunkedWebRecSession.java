@@ -95,7 +95,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 		connection.connect();
 		out = connection.getOutputStream();
 
-		System.out.println("Created connection: " + connection);
+		// System.out.println("Created connection: " + connection);
 	}
 
 
@@ -126,7 +126,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	public void sendChunk(byte[] bytes, boolean isLast) throws IOException {
 		if (bytes.length > 0) {
 			out.write(bytes);
-			System.out.println("Wrote " + bytes.length + " bytes");
+			// System.out.println("Wrote " + bytes.length + " bytes");
 		}
 		if (isLast) {
 			try {

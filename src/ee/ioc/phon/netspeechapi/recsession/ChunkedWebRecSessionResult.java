@@ -19,15 +19,12 @@ public class ChunkedWebRecSessionResult implements RecSessionResult {
 
 		for (Object o1 : (JSONArray) jsonObj.get("hypotheses")) {
 			JSONObject jo1 = (JSONObject) o1;
-			Object ut = jo1.get("utterance");
-			if (ut != null) {
-				mUtterances.add(ut.toString());
-			}
+			add(mUtterances, jo1.get("utterance"));
 			Object lins = jo1.get("linearizations");
 			if (lins != null) {
 				for (Object o2 : (JSONArray) lins) {
 					JSONObject jo2 = (JSONObject) o2;
-					mLinearizations.add(jo2.get("output").toString());
+					add(mLinearizations, jo2.get("output"));
 				}
 			}
 		}
@@ -47,4 +44,10 @@ public class ChunkedWebRecSessionResult implements RecSessionResult {
 		return mUtterances;
 	}
 
+
+	private void add(List<String> list, Object obj) {
+		if (obj != null) {
+			list.add(obj.toString());
+		}
+	}
 }
