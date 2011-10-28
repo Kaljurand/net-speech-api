@@ -31,7 +31,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 public abstract class AbstractUserAgent implements UserAgent {
 
 	// API identifier in the User-Agent
-	public static final String USER_AGENT = "NetSpeechApi/0.1.0";
+	public static final String USER_AGENT = "NetSpeechApi/0.1.1";
 
 	private String mUserAgent = USER_AGENT;
 

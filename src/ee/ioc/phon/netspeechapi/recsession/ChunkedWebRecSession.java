@@ -31,7 +31,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	public static final String CONF_BASE_URL = "base_url";
 
 	// API identifier in the User-Agent
-	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.2";
+	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.3";
 
 	private String userAgent = USER_AGENT;
 

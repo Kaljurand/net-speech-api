@@ -5,7 +5,7 @@
     <property name="name" value="Net Speech API"/>
 	<!-- This should match the number in
 src/ee/ioc/phon/netspeechapi/AbstractUserAgent.java -->
-    <property name="version" value="0.1.0"/>
+    <property name="version" value="0.1.1"/>
     <property name="libs" value="lib/json_simple-1.1.jar;lib/httpcore-4.1.jar;lib/httpclient-4.1.1.jar;lib/commons-lang-2.2.jar;lib/commons-logging-1.1.1.jar;lib/apache-mime4j-0.6.jar;lib/httpmime-4.1.1.jar"/>
     <property name="classes" location="bin/"/>
     <property name="test_src" location="test/"/>
@@ -28,7 +28,7 @@ src/ee/ioc/phon/netspeechapi/AbstractUserAgent.java -->
             description="Create JAR files"
             depends="compile">
         <jar
-            destfile="netspeechapi.jar"
+            destfile="netspeechapi-${version}.jar"
             basedir="${classes}"
         />
     </target>
@@ -51,7 +51,7 @@ src/ee/ioc/phon/netspeechapi/AbstractUserAgent.java -->
 
     <target name="clean"
             description="Clean up">
-        <delete file="netspeechapi.jar"/>
+        <delete file="netspeechapi-${version}.jar"/>
         <delete dir="${classes}"/>
         <delete dir="docs/"/>
         <delete dir="test_report/"/>
