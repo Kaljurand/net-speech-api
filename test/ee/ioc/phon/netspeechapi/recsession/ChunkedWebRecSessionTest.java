@@ -28,10 +28,6 @@ public class ChunkedWebRecSessionTest {
 
 	private static final File T4_FILE = new File(Settings.DIR + "test_kaks_minutit_sekundites.raw");
 
-	/*
-	 * Note: to register a grammar, first do a GET on:
-	 * http://bark.phon.ioc.ee/speech-api/v1/fetch-jsgf?lm=http://net-speech-api.googlecode.com/hg/lm/robot.jsgf
-	 */
 	private static final String T3_LM = "http://net-speech-api.googlecode.com/hg/lm/robot.jsgf";
 	private static final String T4_LM = "http://kaljurand.github.com/Grammars/grammars/pgf/Calc.pgf";
 	private static final String T4_LANG = "App";
@@ -67,6 +63,9 @@ public class ChunkedWebRecSessionTest {
 			fail("should not throw IOException");
 			e.printStackTrace();
 		}
+
+		T4_RESPONSE.add("2 ' IN \"");
+		T4_RESPONSE.add("2 min IN s");
 	}
 
 
