@@ -69,7 +69,7 @@ public class ChunkedWebRecSessionResult implements RecSessionResult {
 	private void add(List<String> list, Object obj) {
 		if (obj != null) {
 			String str = obj.toString();
-			if (! str.isEmpty()) {
+			if (str.length() > 0) {
 				list.add(str);
 			}
 		}
