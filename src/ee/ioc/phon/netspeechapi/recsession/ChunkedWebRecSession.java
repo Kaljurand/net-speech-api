@@ -30,9 +30,12 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 
 	public static final String CONF_BASE_URL = "base_url";
 
-	// API identifier in the User-Agent
-	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.3";
+	public static final String CONTENT_TYPE = "audio/x-raw-int;rate=16000;channels=1;signed=true;endianness=1234;depth=16;width=16";
 
+	// API identifier in the User-Agent
+	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.4";
+
+	private String mContentType = CONTENT_TYPE;
 	private String userAgent = USER_AGENT;
 
 	private Properties configuration = new Properties();
@@ -90,7 +93,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
 		connection.setDoInput(true);
-		connection.setRequestProperty("Content-Type", "audio/x-raw-int; rate=16000;channels=1;signed=true;endianness=1234;depth=16;width=16");
+		connection.setRequestProperty("Content-Type", mContentType);
 		connection.setRequestProperty("User-Agent", userAgent);
 		connection.connect();
 		out = connection.getOutputStream();
@@ -161,6 +164,12 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 			finished = true;
 		}
 	}
+
+
+	public void setContentType(String contentType) {
+		mContentType = contentType;
+	}
+
 
 	/**
 	 * <p>

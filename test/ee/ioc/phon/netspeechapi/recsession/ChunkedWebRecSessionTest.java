@@ -23,12 +23,12 @@ public class ChunkedWebRecSessionTest {
 	private static final String USER_AGENT_COMMENT = "ChunkedWebRecSessionTest";
 	private static final File T2_FILE = new File(Settings.DIR + "test_12345.raw");
 
-	private static final File T3_FILE = new File(Settings.DIR + "test_mine_edasi.raw");
+	private static final File T3_FILE = new File(Settings.DIR + "test_mine_edasi.flac");
+	private static final String T3_CONTENT_TYPE = "audio/x-flac;rate=16000";
 	private static final String T3_RESPONSE = "mine edasi";
+	private static final String T3_LM = "http://net-speech-api.googlecode.com/hg/lm/robot.jsgf";
 
 	private static final File T4_FILE = new File(Settings.DIR + "test_kaks_minutit_sekundites.raw");
-
-	private static final String T3_LM = "http://net-speech-api.googlecode.com/hg/lm/robot.jsgf";
 	private static final String T4_LM = "http://kaljurand.github.com/Grammars/grammars/pgf/Calc.pgf";
 	private static final String T4_LANG = "App";
 	private static final List<String> T4_RESPONSE = new ArrayList<String>();
@@ -141,6 +141,7 @@ public class ChunkedWebRecSessionTest {
 	public final void testRecognize3() {
 		ChunkedWebRecSession recSession = new ChunkedWebRecSession(sWsUrl, sT3LmUrl);
 		recSession.setUserAgentComment(USER_AGENT_COMMENT);
+		recSession.setContentType(T3_CONTENT_TYPE);
 		String response = null;
 		try {
 			recSession.create();
