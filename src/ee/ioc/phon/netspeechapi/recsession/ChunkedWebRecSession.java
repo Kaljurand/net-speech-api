@@ -33,7 +33,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	public static final String CONTENT_TYPE = "audio/x-raw-int;rate=16000;channels=1;signed=true;endianness=1234;depth=16;width=16";
 
 	// API identifier in the User-Agent
-	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.4";
+	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.5";
 
 	private String mContentType = CONTENT_TYPE;
 	private String userAgent = USER_AGENT;
@@ -46,19 +46,19 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	private ChunkedWebRecSessionResult result;
 	private boolean finished = false;
 
-	public ChunkedWebRecSession()  {
-		// set default base URL
-		configuration.setProperty(CONF_BASE_URL, "http://localhost:8080/");
-	}
-
 
 	public ChunkedWebRecSession(URL wsUrl)  {
-		this(wsUrl, null, null);
+		this(wsUrl, null, null, 1);
 	}
 
 
 	public ChunkedWebRecSession(URL wsUrl, URL lmUrl) {
-		this(wsUrl, lmUrl, null);
+		this(wsUrl, lmUrl, null, 1);
+	}
+
+
+	public ChunkedWebRecSession(URL wsUrl, URL lmUrl, String lang) {
+		this(wsUrl, lmUrl, lang, 1);
 	}
 
 
@@ -73,14 +73,16 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	 * @param wsUrl Recognizer webservice URL
 	 * @param lmUrl Language model (JSGF or PGF grammar) URL
 	 * @param lang  Target language to which to translate the raw recognizer output (in case PGF)
+	 * @param nbest Max number of transcription hypotheses to return
 	 */
-	public ChunkedWebRecSession(URL wsUrl, URL lmUrl, String lang) {
+	public ChunkedWebRecSession(URL wsUrl, URL lmUrl, String lang, int nbest) {
 		if (lmUrl == null) {
-			configuration.setProperty(CONF_BASE_URL, wsUrl.toExternalForm());
+			configuration.setProperty(CONF_BASE_URL, wsUrl.toExternalForm() + "?nbest=" + nbest);
 		} else if (lang == null) {
-			configuration.setProperty(CONF_BASE_URL, wsUrl.toExternalForm() + "?lm=" + lmUrl.toExternalForm());
+			configuration.setProperty(CONF_BASE_URL, wsUrl.toExternalForm() + "?lm=" + lmUrl.toExternalForm() + "&nbest=" + nbest);
 		} else {
-			configuration.setProperty(CONF_BASE_URL, wsUrl.toExternalForm() + "?lm=" + lmUrl.toExternalForm() + "&output-lang=" + lang);
+			configuration.setProperty(CONF_BASE_URL,
+					wsUrl.toExternalForm() + "?lm=" + lmUrl.toExternalForm() + "&output-lang=" + lang + "&nbest=" + nbest);
 		}
 	}
 

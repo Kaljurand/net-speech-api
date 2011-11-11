@@ -39,7 +39,7 @@ public interface RecSessionResult {
 	 * the linearization is not preserved.</p>
 	 *
 	 * <p>The implementation MUST return a (possibly empty) list
-	 * which MUST NOT contain empty <code>Strings</code>.
+	 * which MUST NOT contain empty <code>String</code>s.
 	 * <code>null</code> is not allowed as a return value.</p>
 	 *
 	 * @return (flat) list of linearizations
