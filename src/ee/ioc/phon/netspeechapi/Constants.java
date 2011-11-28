@@ -27,5 +27,8 @@ public class Constants {
 	public static final String MIME_FLAC = "audio/x-flac";
 	public static final String MIME_WAV = "audio/wav";
 	public static final String MIME_RAW = "audio/x-raw-int";
+
+	public static final String EXT_WAV = ".wav";
+
 	public static final int MAX_TOKEN_LENGTH = 50;
 }

@@ -27,13 +27,19 @@ public class MyFileUtils {
 
 	static {
 		Map<String, String> aMap = new HashMap<String, String>();
-		aMap.put(Constants.MIME_WAV, ".wav");
+		aMap.put(Constants.MIME_WAV, Constants.EXT_WAV);
 		aMap.put("audio/ogg", ".ogg");
 		aMap.put("audio/mpeg", ".mp3");
 		aMap.put("audio/mp4", ".mp4");
 		aMap.put("audio/AMR", ".amr");
 		aMap.put("audio/amr", ".amr");
 		aMap.put("audio/3gpp", ".3gpp");
+		aMap.put("audio/aac", ".aac");
+		aMap.put("audio/flac", ".flac");
+		aMap.put("audio/x-flac", ".flac");
+		aMap.put("audio/aiff", ".aiff");
+		aMap.put("audio/x-matroska", ".mka");
+		aMap.put("video/x-matroska", ".mkv");
 		sMimeToExt = Collections.unmodifiableMap(aMap);
 	}
 
@@ -46,7 +52,7 @@ public class MyFileUtils {
 	public static String getExtensionFromMime(String mimeType) {
 		String ext = sMimeToExt.get(mimeType);
 		if (ext == null) {
-			return Constants.MIME_WAV;
+			return Constants.EXT_WAV;
 		}
 		return ext;
 	}

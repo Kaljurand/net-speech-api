@@ -24,6 +24,9 @@ public class AudioUploaderTest {
 	private static final String T1_MIME = Constants.MIME_WAV;
 	private static final String T1_MPE = Settings.DIR + "test_estspeechapi.mpe";
 	private static final String T2_FILE = Settings.DIR + "test_recognize1.wav";
+	private static final String T3_FILE = Settings.DIR + "test_mine_edasi.flac";
+	private static final String T3_MIME = Constants.MIME_FLAC;
+	private static final String T3_MPE = Settings.DIR + "test_mine_edasi.mpe";
 	private static final String USER_AGENT_COMMENT = "AudioUploaderTest";
 	private static final String UNPREDICTABLE_TOKEN = "unpredictable_token";
 
@@ -73,6 +76,26 @@ public class AudioUploaderTest {
 		MultipartEntity entity = hr.createMultipartEntity(fileBody, T1_MIME, Settings.RATE);
 		try {
 			entity.writeTo(new FileOutputStream(T1_MPE));
+		} catch (FileNotFoundException e) {
+			fail("should not throw FileNotFoundException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("should not throw IOException");
+			e.printStackTrace();
+		}
+		assertEquals(true, true);
+	}
+
+	@Test
+	public final void testCreateMultipartEntity3() {
+		File file = new File(T3_FILE);
+		AudioUploader hr = new AudioUploader(Settings.EMAIL);
+		hr.setUserAgentComment(USER_AGENT_COMMENT);
+		String filename = MyFileUtils.createRandomFilename(T3_MIME);
+		FileBody fileBody = new FileBody(file, filename, T3_MIME, null);
+		MultipartEntity entity = hr.createMultipartEntity(fileBody, T3_MIME, Settings.RATE);
+		try {
+			entity.writeTo(new FileOutputStream(T3_MPE));
 		} catch (FileNotFoundException e) {
 			fail("should not throw FileNotFoundException");
 			e.printStackTrace();
