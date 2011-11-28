@@ -69,8 +69,8 @@ public class ChunkedWebRecSessionTest {
 		// Make an audio that contains "mine neli meetrit edasi".
 		T3_RESPONSE.add("mine neli");
 
-		T4_RESPONSE.add("2 ' IN \"");
-		T4_RESPONSE.add("2 min IN s");
+		T4_RESPONSE.add("convert 2 ' to \"");
+		T4_RESPONSE.add("convert 2 min to s");
 	}
 
 
