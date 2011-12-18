@@ -22,7 +22,9 @@
 # raw recording (wav) and compressed recording (flac)
 
 recognize=http://bark.phon.ioc.ee/speech-api/v1/recognize
+# Google works with both HTTP and HTTPS
 #recognize="https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=en-US"
+#recognize="http://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=en-US"
 
 timestamp=`date '+%Y%m%d-%H%M%S'`
 wav="$timestamp.wav"

@@ -20,6 +20,10 @@ import ee.ioc.phon.netspeechapi.recsession.NotAvailableException;
 
 public class ChunkedWebRecSessionTest {
 
+	private static final String MSG_NOT_AVAILABLE_EXCEPTION = "should not throw NotAvailableException";
+	private static final String MSG_IO_EXCEPTION = "should not throw IOException";
+	private static final String MSG_MALFORMED_URL_EXCEPTION = "should not throw MalformedURLException";
+
 	private static final String USER_AGENT_COMMENT = "ChunkedWebRecSessionTest";
 	private static final File T2_FILE = new File(Settings.DIR + "test_12345.raw");
 
@@ -42,25 +46,25 @@ public class ChunkedWebRecSessionTest {
 		try {
 			sWsUrl = new URL(Recognizer.DEFAULT_WS_URL);
 		} catch (MalformedURLException e) {
-			fail("should not throw MalformedURLException");
+			fail(MSG_MALFORMED_URL_EXCEPTION);
 		}
 
 		try {
 			sT3LmUrl = new URL(T3_LM);
 		} catch (MalformedURLException e) {
-			fail("should not throw MalformedURLException");
+			fail(MSG_MALFORMED_URL_EXCEPTION);
 		}
 
 		try {
 			sT4LmUrl = new URL(T4_LM);
 		} catch (MalformedURLException e) {
-			fail("should not throw MalformedURLException");
+			fail(MSG_MALFORMED_URL_EXCEPTION);
 		}
 
 		try {
 			sBytes = FileUtils.readFileToByteArray(T2_FILE);
 		} catch (IOException e) {
-			fail("should not throw IOException");
+			fail(MSG_IO_EXCEPTION);
 			e.printStackTrace();
 		}
 
@@ -85,10 +89,10 @@ public class ChunkedWebRecSessionTest {
 			recSession.sendChunk(sBytes, true);
 			response = recSession.getCurrentResult();
 		} catch (IOException e) {
-			fail("should not throw IOException");
+			fail(MSG_IO_EXCEPTION);
 			e.printStackTrace();
 		} catch (NotAvailableException e) {
-			fail("should not throw NotAvailableException");
+			fail(MSG_NOT_AVAILABLE_EXCEPTION);
 			e.printStackTrace();
 		}
 		assertEquals("1 2 3 4 5", response);
@@ -102,10 +106,10 @@ public class ChunkedWebRecSessionTest {
 		try {
 			recSession.create();
 		} catch (IOException e) {
-			fail("should not throw IOException");
+			fail(MSG_IO_EXCEPTION);
 			e.printStackTrace();
 		} catch (NotAvailableException e) {
-			fail("should not throw NotAvailableException");
+			fail(MSG_NOT_AVAILABLE_EXCEPTION);
 			e.printStackTrace();
 		}
 
@@ -117,7 +121,7 @@ public class ChunkedWebRecSessionTest {
 			try {
 				recSession.sendChunk(chunk, false);
 			} catch (IOException e) {
-				fail("should not throw IOException");
+				fail(MSG_IO_EXCEPTION);
 				e.printStackTrace();
 			}
 			begin += chunkSize;
@@ -128,14 +132,14 @@ public class ChunkedWebRecSessionTest {
 		try {
 			recSession.sendChunk(chunk, true);
 		} catch (IOException e) {
-			fail("should not throw IOException");
+			fail(MSG_IO_EXCEPTION);
 			e.printStackTrace();
 		}
 		String response = null;
 		try {
 			response = recSession.getCurrentResult();
 		} catch (IOException e) {
-			fail("should not throw IOException");
+			fail(MSG_IO_EXCEPTION);
 			e.printStackTrace();
 		}
 		assertEquals("1 2 3 4 5", response);
@@ -145,19 +149,14 @@ public class ChunkedWebRecSessionTest {
 	@Test
 	public final void testRecognize3() {
 		ChunkedWebRecSession recSession = new ChunkedWebRecSession(sWsUrl, sT3LmUrl);
-		recSession.setUserAgentComment(USER_AGENT_COMMENT);
-		recSession.setContentType(T3_CONTENT_TYPE);
 		List<String> response = null;
 		try {
-			recSession.create();
-			// blocks if true
-			recSession.sendChunk(fileToBytes(T3_FILE), true);
-			response = recSession.getResult().getUtterances();
+			response = sendFlac(recSession);
 		} catch (IOException e) {
-			fail("should not throw IOException");
+			fail(MSG_IO_EXCEPTION);
 			e.printStackTrace();
 		} catch (NotAvailableException e) {
-			fail("should not throw NotAvailableException");
+			fail(MSG_NOT_AVAILABLE_EXCEPTION);
 			e.printStackTrace();
 		}
 		assertEquals(T3_RESPONSE, response);
@@ -175,13 +174,34 @@ public class ChunkedWebRecSessionTest {
 			recSession.sendChunk(fileToBytes(T4_FILE), true);
 			response = recSession.getResult().getLinearizations();
 		} catch (IOException e) {
-			fail("should not throw IOException");
+			fail(MSG_IO_EXCEPTION);
 			e.printStackTrace();
 		} catch (NotAvailableException e) {
-			fail("should not throw NotAvailableException");
+			fail(MSG_NOT_AVAILABLE_EXCEPTION);
 			e.printStackTrace();
 		}
 		assertEquals(T4_RESPONSE, response);
+	}
+
+
+	@Test
+	public final void testRecognize5() {
+		URL urlWrong = null;
+		try {
+			urlWrong = new URL("http://bark.phon.ioc.ee/");
+		} catch (MalformedURLException e) {
+			fail(MSG_MALFORMED_URL_EXCEPTION);
+		}
+		ChunkedWebRecSession recSession = new ChunkedWebRecSession(urlWrong);
+		try {
+			sendFlac(recSession);
+			fail("Nonparsable response should be converted to an IOException");
+		} catch (IOException e) {
+			assertEquals(e.getMessage(), "Server response is not well-formed");
+		} catch (NotAvailableException e) {
+			fail(MSG_NOT_AVAILABLE_EXCEPTION);
+			e.printStackTrace();
+		}
 	}
 
 
@@ -189,9 +209,21 @@ public class ChunkedWebRecSessionTest {
 		try {
 			return FileUtils.readFileToByteArray(file);
 		} catch (IOException e) {
-			fail("should not throw IOException");
+			fail(MSG_IO_EXCEPTION);
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+
+	private List<String> sendFlac(ChunkedWebRecSession recSession) throws IOException, NotAvailableException {
+		recSession.setUserAgentComment(USER_AGENT_COMMENT);
+		recSession.setContentType(T3_CONTENT_TYPE);
+		List<String> response = null;
+		recSession.create();
+		// blocks if true
+		recSession.sendChunk(fileToBytes(T3_FILE), true);
+		response = recSession.getResult().getUtterances();
+		return response;
 	}
 }

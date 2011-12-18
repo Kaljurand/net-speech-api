@@ -33,7 +33,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	public static final String CONTENT_TYPE = "audio/x-raw-int;rate=16000;channels=1;signed=true;endianness=1234;depth=16;width=16";
 
 	// API identifier in the User-Agent
-	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.5";
+	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.6";
 
 	private String mContentType = CONTENT_TYPE;
 	private String userAgent = USER_AGENT;

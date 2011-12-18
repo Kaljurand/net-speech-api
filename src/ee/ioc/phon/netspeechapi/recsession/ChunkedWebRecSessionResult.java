@@ -16,6 +16,7 @@
 
 package ee.ioc.phon.netspeechapi.recsession;
 
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +35,14 @@ public class ChunkedWebRecSessionResult implements RecSessionResult {
 	private final List<String> mUtterances = new ArrayList<String>();
 	private final List<String> mLinearizations = new ArrayList<String>();
 
-	public ChunkedWebRecSessionResult(InputStreamReader reader) {
+	public ChunkedWebRecSessionResult(InputStreamReader reader) throws IOException {
 		Object obj = JSONValue.parse(reader);
-		JSONObject jsonObj = (JSONObject) obj;
 
+		if (obj == null) {
+			throw new IOException("Server response is not well-formed");
+		}
+
+		JSONObject jsonObj = (JSONObject) obj;
 		for (Object o1 : (JSONArray) jsonObj.get("hypotheses")) {
 			JSONObject jo1 = (JSONObject) o1;
 			add(mUtterances, jo1.get("utterance"));
