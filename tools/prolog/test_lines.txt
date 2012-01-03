@@ -50,3 +50,7 @@ null koma miinus kaksteist tuhat
 miinus null koma viis koma viis koma null
 miinus null koma viis koma miinus viis koma null
 kaks karpi s~okolaadi, S~okolaadi, z~okolaadi ja Z~okolaadi
+reportaaz~ Moskvits~
+z~
+S~
+elas metsas kes küsimärk koma kas mutionu semikoolon keset kuuski koolon noori vanu punkt hüüumärk

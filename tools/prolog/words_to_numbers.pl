@@ -2,7 +2,7 @@
 % Requires SWI-Prolog.
 %
 % Author: Kaarel Kaljurand
-% Version: 2011-07-08
+% Version: 2012-01-03
 
 % Recognizes and rewrites the word representation of Estonian
 % numbers that stand for integers (-10^6,10^6) and
@@ -95,11 +95,16 @@ ws(0) --> [].
 token(T) --> n_Q_neg(T).
 token(T) --> word(T).
 
+word('.') --> "punkt".
+word('?') --> "küsimärk".
+word('!') --> "hüüumärk".
 word(',') --> "koma".
-word(Word) --> letters(Codes), { atom_codes(Word, Codes) }.
+word(':') --> "koolon".
+word(';') --> "semikoolon".
+word(Word) --> letters([C | Cs]), { atom_codes(Word, [C | Cs]) }.
 
 letters([C | Cs]) --> letter(C), letters(Cs).
-letters([C]) --> letter(C).
+letters([]) --> [].
 
 % letter//1 consumes possibly several codes rewriting them into a single code.
 letter(C) --> caron([C]).
