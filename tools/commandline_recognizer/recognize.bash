@@ -50,7 +50,7 @@ trap "echo Stopping the playback" SIGINT
 flac -s -d $flac -c | aplay
 trap - SIGINT
 
-# Note: you can pipe the result through json_xs to get it pretty-printed.
+# Note: you can pipe the result through json_xs (or python -mjson.tool) to get it pretty-printed.
 # Then you also have to hide the header (i.e. remove -i)
 echo "Wait a bit, transcribing..."
 curl -i -X POST --data-binary @$flac -H "Content-Type: audio/x-flac; rate=16000" $recognize

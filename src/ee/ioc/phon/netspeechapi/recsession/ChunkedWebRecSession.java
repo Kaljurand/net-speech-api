@@ -1,6 +1,6 @@
 /*
  * This file is part of Net Speech API.
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2012, Institute of Cybernetics at Tallinn University of Technology
  *
  * Net Speech API is free software: you can redistribute it and/or modify it under the
  * terms of the GNU Lesser General Public License as published by the Free Software Foundation,
@@ -22,6 +22,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import ee.ioc.phon.netspeechapi.UserAgent;
@@ -32,8 +35,14 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 
 	public static final String CONTENT_TYPE = "audio/x-raw-int;rate=16000;channels=1;signed=true;endianness=1234;depth=16;width=16";
 
+	// Parameter keys
+	public static final String KEY_DEVICE_ID = "device_id";
+	public static final String KEY_PHRASE = "phrase";
+
 	// API identifier in the User-Agent
-	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.6";
+	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.7";
+
+	private final Map<String, String> mParams = new HashMap<String, String>();
 
 	private String mContentType = CONTENT_TYPE;
 	private String userAgent = USER_AGENT;
@@ -89,7 +98,14 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 
 	@Override
 	public void create() throws IOException, NotAvailableException {
-		URL url = new URL(configuration.getProperty(CONF_BASE_URL));
+		String urlAsString = configuration.getProperty(CONF_BASE_URL);
+		// Builds the final URL
+		// It can technically throw UnsupportedEncodingException (a type of IOException)
+		for (String key : mParams.keySet()) {
+			urlAsString += "&" + URLEncoder.encode(key, "utf-8") + "=" + URLEncoder.encode(mParams.get(key), "utf-8");
+		}
+
+		URL url = new URL(urlAsString);
 		connection = (HttpURLConnection) url.openConnection();
 		connection.setChunkedStreamingMode(1024);
 		connection.setRequestMethod("POST");
@@ -184,4 +200,38 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	public void setUserAgentComment(String userAgentComment) {
 		userAgent = USER_AGENT + " (" + userAgentComment + ")";
 	}
+
+
+	/**
+	 * <p>Sets an identifier, i.e. a string that can be used to
+	 * reliably group queries by the same speaker.</p>
+	 *
+	 * TODO: maybe rename to "speaker_id"
+	 *
+	 * @param deviceId device identifier
+	 */
+	public void setDeviceId(String deviceId) {
+		setParam(KEY_DEVICE_ID, deviceId);
+	}
+
+
+	/**
+	 * <p>Sets the desired transcription for the enclosed audio.</p>
+	 *
+	 * <p>This parameter is optional and is mostly intended for
+	 * calibration, speech data collection, and other similar
+	 * applications.</p>
+	 *
+	 *  @param phrase desired transcription
+	 */
+	public void setPhrase(String phrase) {
+		setParam(KEY_PHRASE, phrase);
+	}
+
+
+	// TODO: make it private by v1.0
+	public void setParam(String key, String value) {
+		mParams.put(key, value);
+	}
+
 }
