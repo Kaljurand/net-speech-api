@@ -1,14 +1,11 @@
 # Linux commandline client for the realtime Estonian speech recognition service
 # Author: Kaarel Kaljurand
-# Version: 2011-04-14
+# Version: 2012-09-09
 #
 # Dependencies:
-#	arecord/aplay, tested with 1.0.23
+#	arecord/aplay, tested with 1.0.25
 #	flac, tested with 1.2.1
-#	curl, tested with 7.21.0
-#	json_xs
-#	bash, tested with 4.1.5(1)-release
-#	echo
+#	curl, tested with 7.22.0
 #
 # Usage:
 # 1. Start up: bash recognize.bash
@@ -21,7 +18,10 @@
 # Two files are created into the current directory:
 # raw recording (wav) and compressed recording (flac)
 
-recognize=http://bark.phon.ioc.ee/speech-api/v1/recognize
+
+pgf="http://kaljurand.github.com/Grammars/grammars/pgf/Action.pgf"
+recognize="http://bark.phon.ioc.ee/test/speech-api/v1/recognize?lm=${pgf}&output-lang=App&lang=et"
+
 # Google works with both HTTP and HTTPS
 #recognize="https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=en-US"
 #recognize="http://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=en-US"
@@ -50,10 +50,14 @@ trap "echo Stopping the playback" SIGINT
 flac -s -d $flac -c | aplay
 trap - SIGINT
 
-# Note: you can pipe the result through json_xs (or python -mjson.tool) to get it pretty-printed.
-# Then you also have to hide the header (i.e. remove -i)
+# To pretty-print JSON, pipe the result through json_xs, json_pp or python -mjson.tool.
+# To show various meta data, add one of:
+# -i (only headers)
+# -v (more verbose)
+# --trace-ascii - (very verbose)
 echo "Wait a bit, transcribing..."
-curl -i -X POST --data-binary @$flac -H "Content-Type: audio/x-flac; rate=16000" $recognize
+curl -v -X POST --data-binary @$flac -H "Content-Type: audio/x-flac; rate=16000" $recognize
+#curl -X POST --data-binary @$flac -H "Content-Type: audio/x-flac; rate=16000" $recognize | json_pp
 
 echo
 echo "Done."

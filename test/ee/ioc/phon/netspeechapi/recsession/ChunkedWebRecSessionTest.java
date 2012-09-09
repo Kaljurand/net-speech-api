@@ -34,8 +34,9 @@ public class ChunkedWebRecSessionTest {
 	private static final List<String> T3_RESPONSE = new ArrayList<String>();
 
 	private static final File T4_FILE = new File(Settings.DIR + "test_kaks_minutit_sekundites.raw");
+	private static final String T4_LANG = "et";
 	private static final String T4_LM = "http://kaljurand.github.com/Grammars/grammars/pgf/Calc.pgf";
-	private static final String T4_LANG = "App";
+	private static final String T4_OUTPUT_LANG = "App";
 	private static final String T4_DEVICE_ID = "设备ID";
 	private static final String T4_PHRASE = "সেকেন্ড থেকে দুই মিনিট";
 	private static final List<String> T4_RESPONSE = new ArrayList<String>();
@@ -168,7 +169,8 @@ public class ChunkedWebRecSessionTest {
 
 	@Test
 	public final void testRecognize4() {
-		ChunkedWebRecSession recSession = new ChunkedWebRecSession(sWsUrl, sT4LmUrl, T4_LANG, 1);
+		ChunkedWebRecSession recSession = new ChunkedWebRecSession(sWsUrl, sT4LmUrl, T4_OUTPUT_LANG, 1);
+		recSession.setLang(T4_LANG);
 		recSession.setDeviceId(T4_DEVICE_ID);
 		recSession.setPhrase(T4_PHRASE);
 		recSession.setUserAgentComment(USER_AGENT_COMMENT);
@@ -207,6 +209,59 @@ public class ChunkedWebRecSessionTest {
 			e.printStackTrace();
 			fail(MSG_NOT_AVAILABLE_EXCEPTION);
 		}
+	}
+
+
+	@Test
+	public final void testRecognize6() {
+		ChunkedWebRecSession recSession = new ChunkedWebRecSession(sWsUrl);
+		recSession.setUserAgentComment(USER_AGENT_COMMENT);
+		try {
+			recSession.create();
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail(MSG_IO_EXCEPTION);
+		} catch (NotAvailableException e) {
+			e.printStackTrace();
+			fail(MSG_NOT_AVAILABLE_EXCEPTION);
+		}
+
+		int begin = 0;
+		int chunkSize = 6000;
+		while ((begin + chunkSize) < sBytes.length) {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+				fail();
+			}
+			byte[] chunk = new byte[chunkSize];
+			System.arraycopy(sBytes, begin, chunk, 0, chunkSize);
+			try {
+				recSession.sendChunk(chunk, false);
+			} catch (IOException e) {
+				e.printStackTrace();
+				fail(MSG_IO_EXCEPTION);
+			}
+			begin += chunkSize;
+		}
+		chunkSize = sBytes.length - begin;
+		byte[] chunk = new byte[chunkSize];
+		System.arraycopy(sBytes, begin, chunk, 0, chunkSize);
+		try {
+			recSession.sendChunk(chunk, true);
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail(MSG_IO_EXCEPTION);
+		}
+		String response = null;
+		try {
+			response = recSession.getResult().getUtterances().get(0);
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail(MSG_IO_EXCEPTION);
+		}
+		assertEquals("1 2 3 4 5", response);
 	}
 
 

@@ -36,6 +36,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	public static final String CONTENT_TYPE = "audio/x-raw-int;rate=16000;channels=1;signed=true;endianness=1234;depth=16;width=16";
 
 	// Parameter keys
+	public static final String KEY_LANG = "lang";
 	public static final String KEY_DEVICE_ID = "device_id";
 	public static final String KEY_PHRASE = "phrase";
 
@@ -199,6 +200,17 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	 */
 	public void setUserAgentComment(String userAgentComment) {
 		userAgent = USER_AGENT + " (" + userAgentComment + ")";
+	}
+
+
+	/**
+	 * <p>Declare the language of the input speech, e.g.
+	 * <code>en-US</code>, <code>et</code>, etc.</p>
+	 *
+	 * @param lang input speech language identifier
+	 */
+	public void setLang(String lang) {
+		setParam(KEY_LANG, lang);
 	}
 
 
