@@ -1,6 +1,6 @@
 # Linux commandline client for the realtime Estonian speech recognition service
 # Author: Kaarel Kaljurand
-# Version: 2012-09-09
+# Version: 2012-12-11
 #
 # Dependencies:
 #	arecord/aplay, tested with 1.0.25
@@ -18,9 +18,12 @@
 # Two files are created into the current directory:
 # raw recording (wav) and compressed recording (flac)
 
+test="test"
+lang="en-US"
+nbest="10"
 
 pgf="http://kaljurand.github.com/Grammars/grammars/pgf/Action.pgf"
-recognize="http://bark.phon.ioc.ee/test/speech-api/v1/recognize?lm=${pgf}&output-lang=App&lang=et"
+recognize="http://bark.phon.ioc.ee/${test}/speech-api/v1/recognize?lm=${pgf}&output-lang=Eng,App,Est&lang=${lang}&nbest=${nbest}"
 
 # Google works with both HTTP and HTTPS
 #recognize="https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=en-US"

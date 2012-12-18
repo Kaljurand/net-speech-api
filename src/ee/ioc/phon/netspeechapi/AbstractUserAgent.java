@@ -1,6 +1,6 @@
 /*
  * This file is part of Net Speech API.
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2012, Institute of Cybernetics at Tallinn University of Technology
  *
  * Net Speech API is free software: you can redistribute it and/or modify it under the
  * terms of the GNU Lesser General Public License as published by the Free Software Foundation,
@@ -31,7 +31,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 public abstract class AbstractUserAgent implements UserAgent {
 
 	// API identifier in the User-Agent
-	public static final String USER_AGENT = "NetSpeechApi/0.1.6";
+	public static final String USER_AGENT = "NetSpeechApi/0.1.7";
 
 	private String mUserAgent = USER_AGENT;
 

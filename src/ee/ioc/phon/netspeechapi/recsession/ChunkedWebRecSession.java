@@ -16,6 +16,8 @@
 
 package ee.ioc.phon.netspeechapi.recsession;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -41,7 +43,16 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	public static final String KEY_PHRASE = "phrase";
 
 	// API identifier in the User-Agent
-	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.7";
+	public static final String USER_AGENT = "ChunkedWebRecSession/0.0.8";
+
+	// When HTTP chunked encoding is used, the stream is divided into chunks,
+	// each prefixed with a header containing the chunk's size.
+	// Setting a large chunk length requires a large internal buffer, potentially wasting memory.
+	// Setting a small chunk length increases the number of bytes that must be transmitted because
+	// of the header on every chunk.
+	// Most caller should use 0 to get the system default.
+	// (Note: We used to have 1024 before, this might also be the default, see libcore.net.http)
+	private static final int CHUNK_LENGTH = 0;
 
 	private final Map<String, String> mParams = new HashMap<String, String>();
 
@@ -57,7 +68,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	private boolean finished = false;
 
 
-	public ChunkedWebRecSession(URL wsUrl)  {
+	public ChunkedWebRecSession(URL wsUrl) {
 		this(wsUrl, null, null, 1);
 	}
 
@@ -108,14 +119,15 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 
 		URL url = new URL(urlAsString);
 		connection = (HttpURLConnection) url.openConnection();
-		connection.setChunkedStreamingMode(1024);
+		connection.setChunkedStreamingMode(CHUNK_LENGTH);
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
 		connection.setDoInput(true);
 		connection.setRequestProperty("Content-Type", mContentType);
 		connection.setRequestProperty("User-Agent", userAgent);
-		connection.connect();
-		out = connection.getOutputStream();
+
+		// This should happen automatically with getOutputStream()
+		//connection.connect();
 
 		// System.out.println("Created connection: " + connection);
 	}
@@ -147,13 +159,18 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	@Override
 	public void sendChunk(byte[] bytes, boolean isLast) throws IOException {
 		if (bytes.length > 0) {
+			if (out == null) {
+				out = new BufferedOutputStream(connection.getOutputStream());
+			}
 			out.write(bytes);
 			// System.out.println("Wrote " + bytes.length + " bytes");
 		}
 		if (isLast) {
 			try {
-				out.close();
-				InputStream is = connection.getInputStream();
+				if (out != null) {
+					out.close();
+				}
+				InputStream is = new BufferedInputStream(connection.getInputStream());
 				result = new ChunkedWebRecSessionResult(new InputStreamReader(is));
 			} finally {
 				connection.disconnect();
@@ -162,7 +179,6 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 		}
 
 	}
-
 
 
 	public Properties getConfiguration() {
@@ -194,9 +210,8 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	 * <p>
 	 * Adds an additional identifier to the User-Agent string.
 	 * </p>
-	 * 
-	 * @param userAgentComment
-	 *            Application identifier in the User-Agent
+	 *
+	 * @param userAgentComment Application identifier in the User-Agent
 	 */
 	public void setUserAgentComment(String userAgentComment) {
 		userAgent = USER_AGENT + " (" + userAgentComment + ")";
@@ -234,7 +249,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	 * calibration, speech data collection, and other similar
 	 * applications.</p>
 	 *
-	 *  @param phrase desired transcription
+	 * @param phrase desired transcription
 	 */
 	public void setPhrase(String phrase) {
 		setParam(KEY_PHRASE, phrase);
