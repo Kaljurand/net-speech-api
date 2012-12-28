@@ -108,7 +108,6 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	}
 
 
-	@Override
 	public void create() throws IOException, NotAvailableException {
 		String urlAsString = configuration.getProperty(CONF_BASE_URL);
 		// Builds the final URL
@@ -136,7 +135,6 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	/**
 	 * @deprecated
 	 */
-	@Override
 	public String getCurrentResult() throws IOException {
 		if (result == null || result.getUtterances().isEmpty()) {
 			return "";
@@ -145,18 +143,16 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 	}
 
 
-	@Override
 	public ChunkedWebRecSessionResult getResult() throws IOException {
 		return result;
 	}
 
 
-	@Override
 	public boolean isFinished() {
 		return finished;
 	}
 
-	@Override
+
 	public void sendChunk(byte[] bytes, boolean isLast) throws IOException {
 		if (bytes.length > 0) {
 			if (out == null) {
@@ -189,7 +185,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 		this.configuration = configuration;
 	}
 
-	@Override
+
 	public void cancel() {
 		try {
 			connection.disconnect();

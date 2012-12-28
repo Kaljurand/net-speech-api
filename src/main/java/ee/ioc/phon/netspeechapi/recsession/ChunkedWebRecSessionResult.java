@@ -1,6 +1,6 @@
 /*
  * This file is part of Net Speech API.
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2012, Institute of Cybernetics at Tallinn University of Technology
  *
  * Net Speech API is free software: you can redistribute it and/or modify it under the
  * terms of the GNU Lesser General Public License as published by the Free Software Foundation,
@@ -65,7 +65,6 @@ public class ChunkedWebRecSessionResult implements RecSessionResult {
 	}
 
 
-	@Override
 	public List<String> getUtterances() {
 		return mUtterances;
 	}
