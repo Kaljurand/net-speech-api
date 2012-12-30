@@ -27,11 +27,14 @@ import org.json.simple.JSONValue;
 
 /**
  *
+ * For the input format description see: http://bark.phon.ioc.ee/speech-api/v1/
+ *
  * @author Kaarel Kaljurand
  *
  */
 public class ChunkedWebRecSessionResult implements RecSessionResult {
 
+	private final List<Hypothesis> mHypotheses = new ArrayList<Hypothesis>();
 	private final List<String> mUtterances = new ArrayList<String>();
 	private final List<String> mLinearizations = new ArrayList<String>();
 
@@ -47,12 +50,18 @@ public class ChunkedWebRecSessionResult implements RecSessionResult {
 			JSONObject jo1 = (JSONObject) o1;
 			add(mUtterances, jo1.get("utterance"));
 			Object lins = jo1.get("linearizations");
+			List<Linearization> linearizations = new ArrayList<Linearization>();
 			if (lins != null) {
 				for (Object o2 : (JSONArray) lins) {
 					JSONObject jo2 = (JSONObject) o2;
 					add(mLinearizations, jo2.get("output"));
+
+					String output = objToString(jo2.get("output"));
+					String lang = objToString(jo2.get("lang"));
+					linearizations.add(new Linearization(output, lang));
 				}
 			}
+			mHypotheses.add(new Hypothesis(objToString(jo1.get("utterance")), linearizations));
 		}
 	}
 
@@ -70,6 +79,11 @@ public class ChunkedWebRecSessionResult implements RecSessionResult {
 	}
 
 
+	public List<Hypothesis> getHypotheses() {
+		return mHypotheses;
+	}
+
+
 	private void add(List<String> list, Object obj) {
 		if (obj != null) {
 			String str = obj.toString();
@@ -77,5 +91,13 @@ public class ChunkedWebRecSessionResult implements RecSessionResult {
 				list.add(str);
 			}
 		}
+	}
+
+
+	private String objToString(Object obj) {
+		if (obj == null) {
+			return null;
+		}
+		return obj.toString();
 	}
 }

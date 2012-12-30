@@ -56,4 +56,6 @@ public interface RecSessionResult {
 	 */
 	public List<String> getUtterances();
 
+	public List<Hypothesis> getHypotheses();
+
 }

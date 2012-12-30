@@ -7,7 +7,7 @@
   <!-- This should match the number in
        src/main/java/ee/ioc/phon/netspeechapi/AbstractUserAgent.java
   -->
-  <version>0.1.7</version>
+  <version>0.1.8</version>
   <name>Net Speech API</name>
   <description>Java API for the online speech recognition services provided by phon.ioc.ee</description>
   <dependencies>
