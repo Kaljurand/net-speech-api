@@ -45,6 +45,8 @@ public class Transcription {
 	private static final String EL_TURN = "Turn";
 	private static final String EL_SPEAKERS = "Speakers";
 	private static final String EL_SPEAKER = "Speaker";
+	private static final String ATTR_START_TIME = "startTime";
+	private static final String ATTR_END_TIME = "endTime";
 
 	private final Map<String, Speaker> mIdToSpeaker = new HashMap<String, Speaker>();
 
@@ -125,24 +127,51 @@ public class Transcription {
 		return XmlUtils.getAttrValue(turn, "speaker");
 	}
 
+	public static String getSpeakerId(Node turn) {
+		return XmlUtils.getAttrValue(turn, "speaker");
+	}
 
 	/**
 	 * <p>Returns the time when the given turn starts in
 	 * number of milliseconds from the beginning of the audio.</p>
-	 * 
+	 *
 	 * <p>If the transcription does not specify the time, or
 	 * the specification contains a syntax error, then returns -1.</p>
-	 * 
+	 *
 	 * @param turn XML node
-	 * @return Starting time of the turn
+	 * @return Start time of the turn
+	 * @deprecated
 	 */
 	public int getTurnStartTime(Node turn) {
-		String startTime = XmlUtils.getAttrValue(turn, "startTime");
-		if (startTime == null) {
+		return getAttrValueAsMillis(turn, ATTR_START_TIME);
+	}
+
+	public static int getStartTime(Node turn) {
+		return getAttrValueAsMillis(turn, ATTR_START_TIME);
+	}
+
+
+	/**
+	 * <p>Returns the time when the given turn ends in
+	 * number of milliseconds from the beginning of the audio.</p>
+	 *
+	 * <p>If the transcription does not specify the time, or
+	 * the specification contains a syntax error, then returns -1.</p>
+	 *
+	 * @param turn XML node
+	 * @return End time of the turn
+	 */
+	public static int getEndTime(Node turn) {
+		return getAttrValueAsMillis(turn, ATTR_END_TIME);
+	}
+
+	private static int getAttrValueAsMillis(Node node, String attr) {
+		String value = XmlUtils.getAttrValue(node, attr);
+		if (value == null) {
 			return -1;
 		}
 		try {
-			return getMillis(startTime);
+			return getMillis(value);
 		} catch (NumberFormatException e) {
 			return -1;
 		}
