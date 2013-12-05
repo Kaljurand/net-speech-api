@@ -6,14 +6,16 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
-
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -59,23 +61,37 @@ public class WsDuplexRecognitionSession implements DuplexRecognitionSession {
 	}
 	
 	private String serverUrl;
-	private String contentType = "audio/x-raw, layout=(string)interleaved, rate=(int)16000, format=(string)S16LE, channels=(int)1";
+	
 	private MyWsClient wsClient;
 	private List<RecognitionEventListener> recognitionEventListeners = new LinkedList<RecognitionEventListener>();
+	private Map<String, String> parameters;
 	
-	public WsDuplexRecognitionSession(String serverUrl) throws IOException, URISyntaxException {
+	public WsDuplexRecognitionSession(String serverUrl) throws IOException, URISyntaxException {		
 		this.serverUrl = serverUrl;
+		this.parameters = new HashMap<String, String>();
+		this.parameters.put("content-type", "audio/x-raw, layout=(string)interleaved, rate=(int)16000, format=(string)S16LE, channels=(int)1");
 	}
 
 	public void connect() throws IOException {
-		// FIXME: or connectBlocking?
-		String contentTypeParam = URLEncoder.encode("content-type=" + contentType, "UTF-8");
+		String parameterString = "";
+		
+		if (parameters != null) {
+			for (Map.Entry<String, String> entry : parameters.entrySet()) {
+				if (parameterString.isEmpty()) {
+					parameterString = "?";
+				} else {
+					parameterString += "&";
+				}
+				parameterString +=  URLEncoder.encode(entry.getKey() + "=" + entry.getValue(), "UTF-8");
+			}
+		}
 		
 		URI serverURI;
 		try {
-			serverURI = new URI(this.serverUrl + "?" + contentTypeParam);
+			System.err.println(parameterString);
+			serverURI = new URI(this.serverUrl  + parameterString);
 			wsClient = new MyWsClient(serverURI);
-		
+			
 			wsClient.connectBlocking();
 		} catch (URISyntaxException e) {
 			throw new IOException(e);
@@ -129,6 +145,24 @@ public class WsDuplexRecognitionSession implements DuplexRecognitionSession {
 	}
 
 	public void setContentType(String contentType) {
-		this.contentType = contentType;
+		this.parameters.put("content-type", contentType);
 	}
+	
+	/**
+	 * Set user who is using the service. Sent to the server.
+	 * @param userId
+	 */
+	public void setUserId(String userId) {
+		this.parameters.put("user-id", userId);
+	}
+
+	/**
+	 * Set the content ID that is being dictated. For special purposes.
+	 * 
+	 * @param contentId
+	 */
+	public void setContentId(String contentId) {
+		this.parameters.put("content-id", contentId);
+	}
+	
 }

@@ -11,17 +11,20 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
+import org.junit.Ignore;
 
 import ee.ioc.phon.netspeechapi.Settings;
 
 public class WsDuplexRecognitionSessionTest {
 
-	public static final String DEFAULT_WS_URL = "ws://bark.phon.ioc.ee:82/dev/ws-speech/speech";
-	private static final File T1_FILE = new File(Settings.DIR + "test_lause2.raw");
+	public static final String DEFAULT_WS_URL = "ws://bark.phon.ioc.ee:82/dev/duplex-speech-api/ws/speech";
+	private static final File T1_FILE = new File(Settings.DIR + "test_12345.raw");
 	private static final File T2_FILE = new File(Settings.DIR + "test_2lauset.ogg");
 	
 	static class RecognitionEventAccumulator implements RecognitionEventListener {
@@ -70,6 +73,10 @@ public class WsDuplexRecognitionSessionTest {
 		WsDuplexRecognitionSession session = new WsDuplexRecognitionSession(DEFAULT_WS_URL);
 		RecognitionEventAccumulator eventAccumulator = new RecognitionEventAccumulator();
 		session.addRecognitionEventListener(eventAccumulator);
+		Map<String, String> params = new HashMap<String, String>();
+				
+		session.setUserId("WsDuplexRecognitionSessionTest");
+		session.setContentId("testRecognition");
 		session.connect();
 		sendFile(session, T1_FILE, 16000*2);
 		while (!eventAccumulator.isClosed()) {
@@ -80,10 +87,11 @@ public class WsDuplexRecognitionSessionTest {
 		RecognitionEvent lastEvent = eventAccumulator.getEvents().get(eventAccumulator.getEvents().size() - 1);
 		assertEquals(0, lastEvent.getStatus());
 		assertEquals(true, lastEvent.getResult().isFinal());
-		assertEquals("see on teine lause", lastEvent.getResult().getHypotheses().get(0).getTranscript());
+		assertEquals("üks-kaks-kolm-neli-viis.", lastEvent.getResult().getHypotheses().get(0).getTranscript());
 	}
 
 	
+	@Ignore("ogg doesn't work currently") 
 	@Test
 	public void testRecognition2() throws MalformedURLException, IOException, URISyntaxException, InterruptedException {
 		WsDuplexRecognitionSession session = new WsDuplexRecognitionSession(DEFAULT_WS_URL);
@@ -110,22 +118,27 @@ public class WsDuplexRecognitionSessionTest {
 	
 	private void sendFile(DuplexRecognitionSession session, File file, int bytesPerSecond) throws IOException, InterruptedException {
 		InputStream in = new FileInputStream(file);
-		byte buf[] = new byte[bytesPerSecond];
+		int chunksPerSecond = 4;
+		
+		byte buf[] = new byte[bytesPerSecond / chunksPerSecond];
 		
 		while (true) {
-			long millisWithinSecond = System.currentTimeMillis() % 1000;
+			long millisWithinChunkSecond = System.currentTimeMillis() % (1000 / chunksPerSecond);
 			int size = in.read(buf);
 			if (size < 0) {
+				byte buf2[] = new byte[0];
+				session.sendChunk(buf2, true);
 				break;
 			}
-			if (size == bytesPerSecond) {
+			
+			if (size == bytesPerSecond / chunksPerSecond) {
 				session.sendChunk(buf, false);
 			} else {
 				byte buf2[] = Arrays.copyOf(buf, size);
 				session.sendChunk(buf2, true);
 				break;
 			}
-			Thread.sleep(1000 - millisWithinSecond);
+			Thread.sleep(1000/chunksPerSecond - millisWithinChunkSecond);
 		}
 	}
 }
