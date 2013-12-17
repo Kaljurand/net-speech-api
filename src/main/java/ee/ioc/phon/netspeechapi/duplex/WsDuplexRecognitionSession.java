@@ -88,7 +88,6 @@ public class WsDuplexRecognitionSession implements DuplexRecognitionSession {
 		
 		URI serverURI;
 		try {
-			System.err.println(parameterString);
 			serverURI = new URI(this.serverUrl  + parameterString);
 			wsClient = new MyWsClient(serverURI);
 			
