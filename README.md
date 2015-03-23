@@ -1,11 +1,16 @@
 Net Speech API
 ==============
 
-Java API for the online speech recognition services provided by phon.ioc.ee.
+Java API for the following online speech recognition services:
 
-This library is used e.g. by the Android apps Kõnele and Diktofon.
+- [Ruby PocketSphinx Server](https://github.com/alumae/ruby-pocketsphinx-server)
+- [Kaldi Offline Transcriber](https://github.com/alumae/kaldi-offline-transcriber)
+- [Kaldi GStreamer server](https://github.com/alumae/kaldi-gstreamer-server)
 
-See more at: <http://code.google.com/p/net-speech-api/>
+For example, this library is used by
+
+- [Kõnele](http://kaljurand.github.io/K6nele/)
+- [Diktofon](https://github.com/Kaljurand/Diktofon)
 
 Building
 --------
