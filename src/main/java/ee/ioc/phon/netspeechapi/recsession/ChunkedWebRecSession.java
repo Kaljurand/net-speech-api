@@ -154,7 +154,7 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 
 
 	public void sendChunk(byte[] bytes, boolean isLast) throws IOException {
-		if (bytes.length > 0) {
+		if (bytes != null && bytes.length > 0) {
 			if (out == null) {
 				out = new BufferedOutputStream(connection.getOutputStream());
 			}
@@ -173,7 +173,6 @@ public class ChunkedWebRecSession implements RecSession, UserAgent {
 				finished = true;
 			}
 		}
-
 	}
 
 
