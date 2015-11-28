@@ -7,7 +7,7 @@
   <!-- This should match the number in
        src/main/java/ee/ioc/phon/netspeechapi/AbstractUserAgent.java
   -->
-  <version>0.1.9</version>
+  <version>0.2.0</version>
   <name>Net Speech API</name>
   <description>Java API for the online speech recognition services provided by phon.ioc.ee</description>
   <dependencies>
@@ -45,7 +45,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>11.0.2</version>
+      <version>18.0</version>
     </dependency>
     <dependency>
       <groupId>org.java-websocket</groupId>

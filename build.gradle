@@ -18,10 +18,11 @@ dependencies {
     // These are ignored anyway
     //compile 'org.apache.httpcomponents:httpcore:4.1.1'
     //compile 'org.apache.httpcomponents:httpclient:4.1.1'
-    compile 'org.apache.httpcomponents:httpmime:4.1.1'
+    compile ('org.apache.httpcomponents:httpmime:4.1.1') {
+        exclude group: 'commons-logging', module: 'commons-logging'
+    }
     compile 'com.googlecode.json-simple:json-simple:1.1'
-    // TODO: upgrade
-    compile 'com.google.guava:guava:11.0.2'
+    compile 'com.google.guava:guava:18.0'
     compile 'org.java-websocket:Java-WebSocket:1.3.0'
 }
 
@@ -34,7 +35,7 @@ android {
         // TODO: lower this
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 1
-        versionName '0.1.90'
+        versionCode 2
+        versionName '0.2.0'
     }
 }

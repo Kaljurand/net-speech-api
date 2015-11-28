@@ -17,12 +17,16 @@ Building
 
 Building the jar-file with and without testing:
 
-	$ mvn package
-	$ mvn package -DskipTests
+    $ mvn package
+    $ mvn package -DskipTests
 
 Building the Javadoc/website:
 
-	$ mvn site
+    $ mvn site
+
+Building the Android library:
+
+    $ gradle clean assembleRelease
 
 
 Setting up an Eclipse project
@@ -31,5 +35,5 @@ Setting up an Eclipse project
 The Eclipse (or any other IDE) project files are not included in
 this repository. To generate the required Eclipse files, run:
 
-	$ mvn -Declipse.workspace=/home/yourname/workspace/ eclipse:configure-workspace
-	$ mvn eclipse:eclipse
+    $ mvn -Declipse.workspace=/home/yourname/workspace/ eclipse:configure-workspace
+    $ mvn eclipse:eclipse
