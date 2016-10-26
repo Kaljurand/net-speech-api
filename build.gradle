@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.1'
+        classpath 'com.android.tools.build:gradle:2.2.2'
     }
 }
 
@@ -28,14 +28,14 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '24.0.2'
+    compileSdkVersion 25
+    buildToolsVersion '24.0.3'
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         // TODO: lower this
         minSdkVersion 9
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 202
         versionName '0.2.02'
     }
