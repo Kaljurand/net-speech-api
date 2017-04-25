@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.android.tools.build:gradle:2.3.1'
     }
 }
 
@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    compile 'commons-io:commons-io:2.0.1'
+    compile 'commons-io:commons-io:2.5'
     // These are ignored anyway
     //compile 'org.apache.httpcomponents:httpcore:4.1.1'
     //compile 'org.apache.httpcomponents:httpclient:4.1.1'
