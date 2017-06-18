@@ -1,17 +1,4 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-    }
-}
-
 apply plugin: 'com.android.library'
-
-repositories {
-    jcenter()
-}
 
 dependencies {
     compile 'commons-io:commons-io:2.5'
@@ -28,15 +15,15 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         // TODO: lower this
         minSdkVersion 9
-        targetSdkVersion 25
-        versionCode 202
-        versionName '0.2.02'
+        targetSdkVersion 26
+        versionCode 204
+        versionName '0.2.04'
     }
 }
