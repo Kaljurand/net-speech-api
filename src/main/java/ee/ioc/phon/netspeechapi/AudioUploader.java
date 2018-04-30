@@ -101,17 +101,16 @@ public class AudioUploader extends AbstractUserAgent {
 	 * @param mimeType MIME-type of the file
 	 * @param sampleRate sample rate of the file
 	 * @return token that identifies the transcription on the server
-	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
-	public String upload(File file, String mimeType, int sampleRate) throws ClientProtocolException, IOException {
+	public String upload(File file, String mimeType, int sampleRate) throws IOException {
 		MultipartEntity entity = createMultipartEntity(file, mimeType, sampleRate);
 		String str = postMultipartEntity(entity);
 		return str;
 	}
 
 
-	public String uploadFileUnderRandomName(File file, String mimeType, int sampleRate) throws ClientProtocolException, IOException {
+	public String uploadFileUnderRandomName(File file, String mimeType, int sampleRate) throws IOException {
 		String filename = MyFileUtils.createRandomFilename(mimeType);
 		FileBody fileBody = new FileBody(file, filename, mimeType, null);
 		MultipartEntity entity = createMultipartEntity(fileBody, mimeType, sampleRate);
