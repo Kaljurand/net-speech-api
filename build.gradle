@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 204
         versionName '0.2.04'
     }
