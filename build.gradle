@@ -5,7 +5,7 @@ dependencies {
     // These are ignored anyway
     //compile 'org.apache.httpcomponents:httpcore:4.1.1'
     //compile 'org.apache.httpcomponents:httpclient:4.1.1'
-    implementation('org.apache.httpcomponents:httpmime:4.1.1') {
+    implementation('org.apache.httpcomponents:httpmime:4.3.6') {
         exclude group: 'commons-logging', module: 'commons-logging'
     }
     implementation 'com.googlecode.json-simple:json-simple:1.1'
