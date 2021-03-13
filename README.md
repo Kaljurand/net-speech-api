@@ -7,11 +7,6 @@ Java API for the following online speech recognition services:
 - [Kaldi Offline Transcriber](https://github.com/alumae/kaldi-offline-transcriber)
 - [Kaldi GStreamer server](https://github.com/alumae/kaldi-gstreamer-server)
 
-For example, this library is used by
-
-- [Kõnele](http://kaljurand.github.io/K6nele/)
-- [Diktofon](https://github.com/Kaljurand/Diktofon)
-
 Building
 --------
 
